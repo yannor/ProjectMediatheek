@@ -33,7 +33,7 @@ public class Item {
         this.titel = titel;
     }
 
-    public int getNummer() {
+    public int getId() {
         return id;
     }
 
