@@ -1,4 +1,4 @@
-package domein;
+package gebruikers;
 
 public class Leerling extends Gebruiker
 {

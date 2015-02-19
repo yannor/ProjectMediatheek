@@ -1,5 +1,5 @@
 
-package domein;
+package gebruikers;
 
 public class Vrijwilliger extends Gebruiker 
 {
