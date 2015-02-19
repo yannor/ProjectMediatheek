@@ -24,31 +24,7 @@ public class Medewerker extends Gebruiker
 
     }
   
-  //methodes uitleningen
-  public void zoekUitlening()
-  {
-      
-  }
-  
-  public void zoekUitleningen()
-  {
-      
-  }
-  
-  public void voegUitleningToe()
-  {
-      
-  }
-  
-  public void wijzigUitlening()
-  {
-      
-  }
-  
-  public void verwijderUitlening()
-  {
-      
-  }
+
 }
 
 

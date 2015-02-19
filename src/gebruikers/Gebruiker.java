@@ -29,8 +29,24 @@ public class Gebruiker
     
     
     //methodes uitleningen
+   
+  
+  
+  public void voegUitleningToe(int leerlingId,int itemId)
+  {
+      //uitleningen.add(leerlingId, itemId, date.Today());
+  }
+  
+  public void wijzigUitlening(int uitleenId)
+  {
+      
+  }
+  
+  public void verwijderUitlening(int uitleenId)
+  {
+      //uitleningen.remove(uitleenId);
+  }
     
-    
-    
+    //filtermethodes uitlenen
     
 }

@@ -10,11 +10,15 @@ package item;
 public class Boek extends Item{
     private int aantalBlz;
     private float isbn;
+    private String auteur;
+    private String moeilijkheidgraad;
 
-    public Boek(String titel, int id, int aantalExemplaren, String beschrijving, String thema, int aantalBlz, float isbn) {
+    public Boek(String titel, int id, int aantalExemplaren, String beschrijving, String thema, int aantalBlz, float isbn, String auteur, String moeilijkheidgraad) {
         super(titel, id, aantalExemplaren, beschrijving, thema);
         this.aantalBlz= aantalBlz;
         this.isbn=isbn;
+        this.auteur=auteur;
+        this.moeilijkheidgraad=moeilijkheidgraad;
     }
 
     public int getAantalBlz() {

@@ -14,6 +14,7 @@ public class Item {
     private int aantalExemplaren;
     private String beschrijving;
     private String thema;
+    private boolean beschadigd;
 
     public Item(String titel, int nummer, int aantalExemplaren, String beschrijving, String thema) {
         this.titel = titel;
@@ -21,6 +22,7 @@ public class Item {
         this.aantalExemplaren = aantalExemplaren;
         this.beschrijving = beschrijving;
         this.thema = thema;
+        this.beschadigd=false;
     }
 
     public String getTitel() {
