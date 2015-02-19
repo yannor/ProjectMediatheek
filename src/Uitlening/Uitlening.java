@@ -7,17 +7,18 @@ import java.util.Date;
 public class Uitlening 
 {
     private int id; //auto-nummeren
-    private Item item;
-    private Gebruiker gebruiker;
+    private int item;
+    private int gebruiker;
     private Date datumUitgeleend;
-    private Date datumTerugVerwacht;
+    
 
-    public Uitlening(Item item, Gebruiker gebruiker, Date datumUitgeleend, Date datumTerugVerwacht) 
+    public Uitlening(Item item, Gebruiker gebruiker, Date datumUitgeleend) 
     {
-        this.item = item;
-        this.gebruiker = gebruiker;
+        this.item=item.getNummer();
+        this.gebruiker=gebruiker.getId();
+        
         this.datumUitgeleend = datumUitgeleend;
-        this.datumTerugVerwacht = datumTerugVerwacht;
+       
     }
 
     public int getId() 
@@ -31,22 +32,22 @@ public class Uitlening
     }
     
     
-    public Item getItem() 
+    public int getItem() 
     {
         return item;
     }
 
-    public void setItem(Item item) 
+    public void setItem(int item) 
     {
         this.item = item;
     }
 
-    public Gebruiker getGebruiker() 
+    public int getGebruiker() 
     {
         return gebruiker;
     }
 
-    public void setGebruiker(Gebruiker gebruiker) 
+    public void setGebruiker(int gebruiker) 
     {
         this.gebruiker = gebruiker;
     }
@@ -61,15 +62,6 @@ public class Uitlening
         this.datumUitgeleend = datumUitgeleend;
     }
 
-    public Date getDatumTerugVerwacht() 
-    {
-        return datumTerugVerwacht;
-    }
-
-    public void setDatumTerugVerwacht(Date datumTerugVerwacht) 
-    {
-        this.datumTerugVerwacht = datumTerugVerwacht;
-    }
     
 }
 
