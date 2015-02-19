@@ -1,19 +1,14 @@
 package item;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-
 public class Boek extends Item{
     private int aantalBlz;
-    private float isbn;
+    private int isbn;
     private String auteur;
     private String moeilijkheidgraad;
 
-    public Boek(String titel, int id, int aantalExemplaren, String beschrijving, String thema, int aantalBlz, float isbn, String auteur, String moeilijkheidgraad) {
+    
+    
+    public Boek(String titel, int id, int aantalExemplaren, String beschrijving, String thema, int aantalBlz, int isbn, String auteur, String moeilijkheidgraad) {
         super(titel, id, aantalExemplaren, beschrijving, thema);
         this.aantalBlz= aantalBlz;
         this.isbn=isbn;
@@ -33,7 +28,7 @@ public class Boek extends Item{
         return isbn;
     }
 
-    public void setIsbn(float isbn) {
+    public void setIsbn(int isbn) {
         this.isbn = isbn;
     }
 }

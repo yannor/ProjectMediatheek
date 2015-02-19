@@ -8,6 +8,5 @@ public class Vrijwilliger extends Gebruiker
         super();
     }
     
-    //methodes uitleningen
  
 }

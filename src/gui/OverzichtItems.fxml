@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.collections.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.collections.FXCollections ?>
+
+<fx:root dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="771.0" prefWidth="928.0" type="SplitPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+  <items>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="769.0" prefWidth="474.0">
+         <children>
+            <SplitPane dividerPositions="0.17365269461077845" orientation="VERTICAL" prefHeight="780.0" prefWidth="461.0">
+              <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="106.0" prefWidth="278.0">
+                     <children>
+                        <Label alignment="CENTER" layoutX="6.0" layoutY="6.0" prefHeight="17.0" prefWidth="75.0" text="Naam: " />
+                        <TextField fx:id="txtZoekTitel" layoutX="140.0" layoutY="2.0" />
+                        <Button fx:id="btnZoekThema" layoutX="171.0" layoutY="74.0" mnemonicParsing="false" text="Zoek id" />
+                        <Label alignment="CENTER" layoutX="6.0" layoutY="39.0" prefHeight="17.0" prefWidth="75.0" text="Thema:" />
+                        <TextField fx:id="txtZoekThema" layoutX="140.0" layoutY="35.0" prefHeight="17.0" prefWidth="149.0" />
+                        <Button fx:id="btnZoekNaam" layoutX="53.0" layoutY="74.0" mnemonicParsing="false" text="Zoek naam" />
+                     </children></AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="640.0" prefWidth="462.0">
+                     <children>
+                        <ScrollPane layoutY="-7.0" prefHeight="641.0" prefWidth="461.0">
+                           <content>
+                              <TableView fx:id="TableItems" onMouseClicked="#selectItem" prefHeight="632.0" prefWidth="461.0">
+                                <columns>
+                                  <TableColumn fx:id="idCol" prefWidth="75.0" text="Id" />
+                                  <TableColumn fx:id="naamCol" prefWidth="199.0" text="Naam" />
+                                </columns>
+                              </TableView>
+                           </content></ScrollPane>
+                     </children>
+                  </AnchorPane>
+              </items>
+            </SplitPane>
+         </children></AnchorPane>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="769.0" prefWidth="429.0">
+         <children>
+            <Button fx:id="btnDelete" layoutX="14.0" layoutY="663.0" mnemonicParsing="false" onAction="#delete" prefHeight="50.0" prefWidth="140.0" text="Delete Item" AnchorPane.leftAnchor="10.0" />
+            <Button fx:id="btnChange" alignment="CENTER" layoutX="162.0" layoutY="663.0" mnemonicParsing="false" onAction="#change" prefHeight="50.0" prefWidth="149.0" text="Change" AnchorPane.rightAnchor="156.0" />
+            <Button fx:id="btnAdd" layoutX="311.0" layoutY="663.0" mnemonicParsing="false" onAction="#add" prefHeight="50.0" prefWidth="140.0" text="Add Item" AnchorPane.rightAnchor="10.0" />
+            <Button fx:id="btnSave" layoutX="290.0" layoutY="562.0" mnemonicParsing="false" onAction="#save" text="Save" visible="false" />
+            <Button fx:id="btnCancel" layoutX="363.0" layoutY="562.0" mnemonicParsing="false" onAction="#cancel" text="Cancel" visible="false" />
+            <Label fx:id="lblChange" layoutX="126.0" layoutY="566.0" prefHeight="17.0" prefWidth="121.0" text="Wat wil je aanpassen?" visible="false" />
+            <TextArea fx:id="txtBeschrijving" editable="false" layoutX="126.0" layoutY="180.0" prefHeight="255.0" prefWidth="327.0" />
+            <Label layoutX="39.0" layoutY="171.0" text="Beschrijving" />
+            <Label layoutX="48.0" layoutY="113.0" prefHeight="17.0" prefWidth="64.0" text="Titel" />
+            <TextField fx:id="txtTitel" editable="false" layoutX="126.0" layoutY="109.0" prefHeight="25.0" prefWidth="327.0" />
+         </children></AnchorPane>
+  </items>
+</fx:root>

@@ -6,7 +6,7 @@ public class Medewerker extends Gebruiker
         super();
     }
     
-  //een geebruiker kan een item toevoegen in de lijst  
+  //een gebruiker kan een item toevoegen in de lijst  
   public void itemToevoegen(/*Item item*/)
     {
         //LijstItem.add(item);
