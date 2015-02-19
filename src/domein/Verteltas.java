@@ -2,6 +2,7 @@ package domein;
 
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /*
@@ -12,10 +13,11 @@ import java.util.List;
 
 
 public class Verteltas extends Item{
-    private List<Item> items = new ArrayList<Item>();
+    private List<Item> items;
 
-    public Verteltas(String titel, int nummer, int aantalExemplaren, String beschrijving, String thema) {
-        super(titel, nummer, aantalExemplaren, beschrijving, thema);
+    public Verteltas(String titel, int id, int aantalExemplaren, String beschrijving, String thema, Item[]array) {
+        super(titel, id, aantalExemplaren, beschrijving, thema);
+        items = new ArrayList<>(Arrays.asList(array));
     }
     
     public void voegItemToe(Item item){

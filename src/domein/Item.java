@@ -10,14 +10,14 @@ package domein;
 public class Item {
     
     private String titel;
-    private int nummer;
+    private int id;
     private int aantalExemplaren;
     private String beschrijving;
     private String thema;
 
     public Item(String titel, int nummer, int aantalExemplaren, String beschrijving, String thema) {
         this.titel = titel;
-        this.nummer = nummer;
+        this.id = nummer;
         this.aantalExemplaren = aantalExemplaren;
         this.beschrijving = beschrijving;
         this.thema = thema;
@@ -32,11 +32,11 @@ public class Item {
     }
 
     public int getNummer() {
-        return nummer;
+        return id;
     }
 
     public void setNummer(int nummer) {
-        this.nummer = nummer;
+        this.id = nummer;
     }
 
     public int getAantalExemplaren() {

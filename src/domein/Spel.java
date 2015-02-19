@@ -9,8 +9,8 @@ package domein;
 
 public class Spel extends Item{
 
-    public Spel(String titel, int nummer, int aantalExemplaren, String beschrijving, String thema) {
-        super(titel, nummer, aantalExemplaren, beschrijving, thema);
+    public Spel(String titel, int id, int aantalExemplaren, String beschrijving, String thema) {
+        super(titel, id, aantalExemplaren, beschrijving, thema);
     }
     
 }

@@ -9,10 +9,12 @@ package domein;
 
 public class Boek extends Item{
     private int aantalBlz;
+    private float isbn;
 
-    public Boek(String titel, int nummer, int aantalExemplaren, String beschrijving, String thema, int aantalBlz) {
-        super(titel, nummer, aantalExemplaren, beschrijving, thema);
+    public Boek(String titel, int id, int aantalExemplaren, String beschrijving, String thema, int aantalBlz, float isbn) {
+        super(titel, id, aantalExemplaren, beschrijving, thema);
         this.aantalBlz= aantalBlz;
+        this.isbn=isbn;
     }
 
     public int getAantalBlz() {
@@ -23,4 +25,11 @@ public class Boek extends Item{
         this.aantalBlz = aantalBlz;
     }
     
+     public float getIsbn() {
+        return isbn;
+    }
+
+    public void setIsbn(float isbn) {
+        this.isbn = isbn;
+    }
 }
