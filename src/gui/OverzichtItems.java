@@ -3,15 +3,9 @@ package gui;
 
 import java.io.IOException;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 
 import db.DbConnect;
 import item.*;
@@ -35,16 +29,13 @@ public class OverzichtItems extends SplitPane {
     private Label lblChange;
 
     @FXML
-    private TableView<Item> TableItems;
+    private TreeView<String> treeViewItems;
 
-    @FXML
-    private TableColumn<Item, Integer> idCol;
-
-    @FXML
-    private TableColumn<Item, String> naamCol;
+   
 
     public OverzichtItems(ItemBeheer domController) {
         this.domeinController = domController;
+        
         FXMLLoader loader = new FXMLLoader(getClass().getResource("OverzichtItems.fxml"));
         loader.setRoot(this);
         loader.setController(this);
@@ -55,7 +46,10 @@ public class OverzichtItems extends SplitPane {
             ex.printStackTrace();
         }
 
-        updateDetails();
+        
+        
+        updateTreeView();
+        
 
     }
 
@@ -71,11 +65,7 @@ public class OverzichtItems extends SplitPane {
 
     @FXML
     private void delete(ActionEvent event) {
-        Item item = TableItems.getSelectionModel().getSelectedItem();
-        txtTitel.setText("");
-        txtBeschrijving.setText("");
-        domeinController.removeItem(item);
-        updateDetails();
+        
 
     }
 
@@ -100,10 +90,7 @@ public class OverzichtItems extends SplitPane {
 
     @FXML
     private void save(ActionEvent event) {
-        String itemTitel = txtTitel.getText();
-        String itemBes = txtBeschrijving.getText();
-        int itemId = TableItems.getSelectionModel().getSelectedItem().getId();
-        domeinController.updateItem(itemId, itemTitel, itemBes);
+       
 
         lblChange.setVisible(false);
         btnSave.setVisible(false);
@@ -112,7 +99,7 @@ public class OverzichtItems extends SplitPane {
         txtTitel.setEditable(false);
         txtBeschrijving.setEditable(false);
 
-        updateDetails();
+        updateTreeView();
 
     }
 
@@ -128,81 +115,55 @@ public class OverzichtItems extends SplitPane {
 
     }
 
-    private void updateDetails() {
+    private void updateTreeView() {
 
-       // TableItems.setItems(domeinController.getItems());
-
-        idCol.setCellValueFactory(new PropertyValueFactory<>(getId()));
-
-        naamCol.setCellValueFactory(new PropertyValueFactory<>("titel"));
-        idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
-        TableItems.setItems(domeinController.getItems());
+        TreeItem<String> root = new TreeItem<> ("Items");
+        
+        TreeItem<String> boekenRoot = new TreeItem<> ("Boeken");
+        TreeItem<String> spellenRoot = new TreeItem<> ("Gezelschapsspellen");
+        TreeItem<String> vertelRoot = new TreeItem<> ("Verteltassen");
+        
+       Object []boekenArray= connect.getAlleBoeken().toArray();
+       
+       for(int i=1; i<=boekenArray.length;i++)
+       {
+           TreeItem<String> boek = new TreeItem<>(connect.getBoek(i));
+           boekenRoot.getChildren().add(boek);
+       }
+       
+       Object []spellenArray= connect.getAlleSpellen().toArray();
+       
+       for(int i=1; i<=spellenArray.length;i++)
+       {
+           TreeItem<String> spel = new TreeItem<>(connect.getSpel(i));
+           spellenRoot.getChildren().add(spel);
+       }
+ 
+        Object []vertelArray= connect.getAlleVertelTassen().toArray();
+       
+       for(int i=1; i<=vertelArray.length;i++)
+       {
+           TreeItem<String> verteltas = new TreeItem<>(connect.getVerteltas(i));
+           vertelRoot.getChildren().add(verteltas);
+       }
+         
+        
+        
+         root.getChildren().addAll(boekenRoot, spellenRoot, vertelRoot);
+       
+         treeViewItems.setRoot(root);
+         treeViewItems.setShowRoot(false);
+        
+        
 
     }
 
     @FXML
     public void selectItem() {
-        txtTitel.setText(TableItems.getSelectionModel().getSelectedItem().getTitel());
-        txtBeschrijving.setText(TableItems.getSelectionModel().getSelectedItem().getBeschrijving());
+       
 
     }
-/*
-    protected void schermAddItemOpenen() {
-        Stage stage = new Stage();
-        stage.setTitle("Item toevoegen");
 
-        Scene scene = new Scene(new ItemToevoegen(new ItemBeheer()));
-        stage.setScene(scene);
-
-        this.setDisable(true);
-
-        //Het hoofdvenster mag niet afgesloten worden
-       
-        Stage stageItems = (Stage) txtBeschrijving.getScene().getWindow();
-        EventHandler handler = (Event event) -> {
-            event.consume();
-        };
-        stageItems.addEventHandler(WindowEvent.WINDOW_CLOSE_REQUEST, handler);
-
-        //het subvenster mag niet gesloten  worden
-        //----------------------------------------        
-        stage.setOnCloseRequest(
-                (WindowEvent event) -> {
-                    event.consume();
-                });
-
-        //luisteraar indien het subscherm gesloten wordt. 
-        //---------------------------------------------
-        stage.addEventHandler(WindowEvent.WINDOW_HIDING, (WindowEvent event) -> {
-            OverzichtItems.this.setDisable(false);
-
-            stageItems.removeEventHandler(WindowEvent.WINDOW_CLOSE_REQUEST, handler);
-        });
-
-        // Het subscherm wordt niet kleiner dan het minimum scherm.
-        //---------------------------------------------------------
-        stage.setOnShown((WindowEvent t) -> {
-            stage.setMinWidth(stage.getWidth());
-            stage.setMinHeight(stage.getHeight());
-        });
-
-        stage.show();
-
-        
-        //bij de anier hieronder wordt dit scherm gesloten bij het opstarten en terug geopend als item is toegevoegd, op deze manier wordt nieuw ite direct ingeladen
-        /*
-        Stage stage = new Stage();
-        //stage.close();
-        Stage dezeStage = (Stage) TableItems.getScene().getWindow();
-        dezeStage.close();
-        Scene scene = new Scene(new ItemToevoegen(domeinController));
-stage.setScene(scene);
-stage.setTitle("Item Toevoegen");
-stage.setOnShown((WindowEvent t) -> {
-stage.setMinWidth(stage.getWidth());
-stage.setMinHeight(stage.getHeight());
-});
-stage.show();*/
         
     }
 

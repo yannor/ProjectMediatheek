@@ -1,7 +1,9 @@
 package db;
 
 import item.Boek;
+import item.Item;
 import item.Spel;
+import item.Verteltas;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -26,7 +28,56 @@ public class DbConnect {
             System.out.println("error " + ex);
         }
     }
+ public String getBoek(int id) {
+        
+        String boekTitel="";
+        try {
 
+            String query = "SELECT titel FROM Boeken WHERE id="+id;
+            rs = st.executeQuery(query);
+
+            rs.next();
+            boekTitel=rs.getString(1);
+        } catch (Exception ex) {
+            System.out.println("error " + ex);
+        }
+
+        return boekTitel;
+    }
+ 
+  public String getSpel(int id) {
+        
+        String spelTitel="";
+        try {
+
+            String query = "SELECT naam FROM gezelschapsspellen WHERE id="+id;
+            rs = st.executeQuery(query);
+
+            rs.next();
+            spelTitel=rs.getString(1);
+        } catch (Exception ex) {
+            System.out.println("error " + ex);
+        }
+
+        return spelTitel;
+    }
+  
+  public String getVerteltas(int id) {
+        
+        String verteltasNaam="";
+        try {
+
+            String query = "SELECT naam FROM verteltas WHERE id="+id;
+            rs = st.executeQuery(query);
+
+            rs.next();
+            verteltasNaam=rs.getString(1);
+        } catch (Exception ex) {
+            System.out.println("error " + ex);
+        }
+
+        return verteltasNaam;
+    }
     
     
       public List<Boek> getAlleBoeken() {
@@ -88,6 +139,37 @@ public class DbConnect {
         }
 
         return spelen;
+    }
+        
+        
+         public List<Verteltas> getAlleVertelTassen() {
+        List<Verteltas> tassen = new ArrayList<>();
+        
+        try {
+
+            String query = "SELECT * FROM verteltas";
+            rs = st.executeQuery(query);
+
+            while (rs.next()) {
+
+                int id = rs.getInt("id");
+               
+                String titel= rs.getString("naam");
+                int aantal= rs.getInt("aantal");
+                String bes= rs.getString("beschrijving");
+                String thema= rs.getString("thema");
+                String leesniveau= rs.getString("leesniveau");
+                Item[] items={};
+
+                tassen.add(new Verteltas(titel,id, aantal, bes, thema,items, leesniveau));
+                 
+                
+            }
+        } catch (Exception ex) {
+            System.out.println("error " + ex);
+        }
+
+        return tassen;
     }
 
         
