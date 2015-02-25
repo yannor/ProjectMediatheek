@@ -39,7 +39,7 @@
             <Label layoutX="20.0" layoutY="44.0" prefHeight="17.0" prefWidth="41.0" text="Naam:" />
             <TextField fx:id="txtNaam" layoutX="88.0" layoutY="40.0" prefHeight="25.0" prefWidth="159.0" />
             <TextField fx:id="txtISBN" layoutX="369.0" layoutY="40.0" prefHeight="25.0" prefWidth="134.0" />
-            <Label layoutX="311.0" layoutY="44.0" prefHeight="17.0" prefWidth="41.0" text="ISBN:" />
+            <Label fx:id="lblISBN" layoutX="311.0" layoutY="44.0" prefHeight="17.0" prefWidth="41.0" text="ISBN:" />
             <TextArea fx:id="txtBeschrijving" layoutX="147.0" layoutY="409.0" prefHeight="194.0" prefWidth="358.0" />
             <Label layoutX="27.0" layoutY="409.0" text="Beschrijving: " />
             <Label layoutX="20.0" layoutY="130.0" text="Thema: " />

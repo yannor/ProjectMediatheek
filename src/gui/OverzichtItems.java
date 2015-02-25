@@ -9,6 +9,9 @@ import javafx.scene.control.*;
 import db.DbConnect;
 import item.*;
 import static java.lang.Integer.parseInt;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 public class OverzichtItems extends SplitPane {
 
@@ -26,7 +29,7 @@ public class OverzichtItems extends SplitPane {
     private Button btnAdd, btnDelete, btnChange, btnSave, btnCancel;
 
     @FXML
-    private Label lblChange;
+    private Label lblChange, lblISBN;
 
     @FXML
     private TreeView<String> treeViewItems;
@@ -36,7 +39,7 @@ public class OverzichtItems extends SplitPane {
     TreeItem<String> boekenRoot;
     TreeItem<String> spellenRoot;
     TreeItem<String> vertelRoot;
-    
+
     int selected;
 
     public OverzichtItems(ItemBeheer domController) {
@@ -78,7 +81,7 @@ public class OverzichtItems extends SplitPane {
     @FXML
     private void add(ActionEvent event) {
 
-        //schermAddItemOpenen();
+        schermAddItemOpenen();
     }
 
     @FXML
@@ -88,14 +91,14 @@ public class OverzichtItems extends SplitPane {
         btnSave.setVisible(true);
         btnCancel.setVisible(true);
 
-         txtNaam.setEditable(true);
-          txtISBN.setEditable(true);
-          txtThema.setEditable(true);
-          txtAantal.setEditable(true);
-          txtAuteur.setEditable(true);
-          txtPaginas.setEditable(true);
-          txtLeesniveau.setEditable(true);
-          txtBeschrijving.setEditable(true);
+        txtNaam.setEditable(true);
+        txtISBN.setEditable(true);
+        txtThema.setEditable(true);
+        txtAantal.setEditable(true);
+        txtAuteur.setEditable(true);
+        txtPaginas.setEditable(true);
+        txtLeesniveau.setEditable(true);
+        txtBeschrijving.setEditable(true);
 
     }
 
@@ -107,35 +110,27 @@ public class OverzichtItems extends SplitPane {
         btnCancel.setVisible(false);
 
         txtNaam.setEditable(false);
-          txtISBN.setEditable(false);
-          txtThema.setEditable(false);
-          txtAantal.setEditable(false);
-          txtAuteur.setEditable(false);
-          txtPaginas.setEditable(false);
-          txtLeesniveau.setEditable(false);
-          txtBeschrijving.setEditable(false);
+        txtISBN.setEditable(false);
+        txtThema.setEditable(false);
+        txtAantal.setEditable(false);
+        txtAuteur.setEditable(false);
+        txtPaginas.setEditable(false);
+        txtLeesniveau.setEditable(false);
+        txtBeschrijving.setEditable(false);
 
-      
-         
-        
-      if(treeViewItems.getSelectionModel().getSelectedItem().getParent().equals(boekenRoot))
-      {
-         
-          domeinController.updateBoek(selected, txtNaam.getText(), txtISBN.getText(), txtThema.getText()
-                  , parseInt(txtAantal.getText()), txtAuteur.getText(),
-                  parseInt(txtPaginas.getText()),txtLeesniveau.getText(), txtBeschrijving.getText());
-      }
-      if(treeViewItems.getSelectionModel().getSelectedItem().getParent().equals(spellenRoot))
-      {
-       selected=selected-1;
-          
-      }
-      if(treeViewItems.getSelectionModel().getSelectedItem().getParent().equals(vertelRoot))
-      {
-         
-          selected=selected-2; 
-      }
-      
+        if (treeViewItems.getSelectionModel().getSelectedItem().getParent().equals(boekenRoot)) {
+
+            domeinController.updateBoek(selected, txtNaam.getText(), txtISBN.getText(), txtThema.getText(), parseInt(txtAantal.getText()), txtAuteur.getText(),
+                    parseInt(txtPaginas.getText()), txtLeesniveau.getText(), txtBeschrijving.getText());
+        }
+        if (treeViewItems.getSelectionModel().getSelectedItem().getParent().equals(spellenRoot)) {
+            selected = selected - 1;
+
+        }
+        if (treeViewItems.getSelectionModel().getSelectedItem().getParent().equals(vertelRoot)) {
+
+            selected = selected - 2;
+        }
 
     }
 
@@ -146,27 +141,26 @@ public class OverzichtItems extends SplitPane {
         btnCancel.setVisible(false);
 
         select();
-          txtNaam.setEditable(false);
-          txtISBN.setEditable(false);
-          txtThema.setEditable(false);
-          txtAantal.setEditable(false);
-          txtAuteur.setEditable(false);
-          txtPaginas.setEditable(false);
-          txtLeesniveau.setEditable(false);
-          txtBeschrijving.setEditable(false);
-        
+        txtNaam.setEditable(false);
+        txtISBN.setEditable(false);
+        txtThema.setEditable(false);
+        txtAantal.setEditable(false);
+        txtAuteur.setEditable(false);
+        txtPaginas.setEditable(false);
+        txtLeesniveau.setEditable(false);
+        txtBeschrijving.setEditable(false);
 
     }
 
     private void updateTreeView() {
 
         int lenB = connect.getAlleBoeken().size();
-        
+
         for (int i = 1; i <= lenB; i++) {
             TreeItem<String> boek = new TreeItem<>(connect.getBoek(i).getTitel());
-            boekenRoot.getChildren().add(boek);      
+            boekenRoot.getChildren().add(boek);
         }
-        int lenS= connect.getAlleSpellen().size();
+        int lenS = connect.getAlleSpellen().size();
 
         for (int i = 1; i <= lenS; i++) {
             TreeItem<String> spel = new TreeItem<>(connect.getSpel(i).getTitel());
@@ -184,81 +178,90 @@ public class OverzichtItems extends SplitPane {
 
         treeViewItems.setRoot(root);
         treeViewItems.setShowRoot(false);
-        
+
         txtNaam.setEditable(false);
-          txtISBN.setEditable(false);
-          txtThema.setEditable(false);
-          txtAantal.setEditable(false);
-          txtAuteur.setEditable(false);
-          txtPaginas.setEditable(false);
-          txtLeesniveau.setEditable(false);
-          txtBeschrijving.setEditable(false);
-        
+        txtISBN.setEditable(false);
+        txtThema.setEditable(false);
+        txtAantal.setEditable(false);
+        txtAuteur.setEditable(false);
+        txtPaginas.setEditable(false);
+        txtLeesniveau.setEditable(false);
+        txtBeschrijving.setEditable(false);
 
     }
 
-    
-     @FXML  
-    private void select() 
-    {
+    @FXML
+    private void select() {
 
-       if(treeViewItems.getSelectionModel().getSelectedItem().getParent().equals(root)) 
-       {
-          txtNaam.setText("");
-          txtISBN.setText("");
-          txtThema.setText("");
-          txtAantal.setText("");
-          txtAuteur.setText("");
-          txtPaginas.setText("");
-          txtLeesniveau.setText("");
-          txtBeschrijving.setText("");
-       }
-        
-        
-      if(treeViewItems.getSelectionModel().getSelectedItem().getParent().equals(boekenRoot))
-      {
-          selected=treeViewItems.getSelectionModel().getSelectedIndex();
-          txtNaam.setText(connect.getBoek(selected).getTitel());
-          txtISBN.setText(connect.getBoek(selected).getIsbn());
-          txtThema.setText(connect.getBoek(selected).getThema());
-          txtAantal.setText(""+connect.getBoek(selected).getAantalExemplaren());
-          txtAuteur.setText(connect.getBoek(selected).getAuteur());
-          txtPaginas.setText(""+connect.getBoek(selected).getAantalBlz());
-          txtLeesniveau.setText(connect.getBoek(selected).getMoeilijkheidgraad());
-          txtBeschrijving.setText(connect.getBoek(selected).getBeschrijving());
-      }
-      if(treeViewItems.getSelectionModel().getSelectedItem().getParent().equals(spellenRoot))
-      {
-           selected=treeViewItems.getSelectionModel().getSelectedIndex()-1;
-          txtNaam.setText(connect.getSpel(selected).getTitel());
-          txtISBN.setText("");
-          txtThema.setText(connect.getSpel(selected).getThema());
-          txtAantal.setText(""+connect.getSpel(selected).getAantalExemplaren());
-          txtAuteur.setText("");
-          txtPaginas.setText("");
-          txtLeesniveau.setText("");
-          txtBeschrijving.setText(connect.getSpel(selected).getBeschrijving());
-      }
-      if(treeViewItems.getSelectionModel().getSelectedItem().getParent().equals(vertelRoot))
-      {
-           selected=treeViewItems.getSelectionModel().getSelectedIndex()-2;
-           
-          txtNaam.setText(connect.getVerteltas(selected).getTitel());
-          txtISBN.setText("");
-          txtThema.setText(connect.getVerteltas(selected).getThema());
-          txtAantal.setText(""+connect.getVerteltas(selected).getAantalExemplaren());
-          txtAuteur.setText("");
-          txtPaginas.setText("");
-          txtLeesniveau.setText("");
-          txtBeschrijving.setText(connect.getVerteltas(selected).getBeschrijving());
-      }
-      
-      
-      
-      
-        
+        if (treeViewItems.getSelectionModel().getSelectedItem().getParent().equals(root)) {
+            txtNaam.setText("");
+            txtISBN.setText("");
+            txtThema.setText("");
+            txtAantal.setText("");
+            txtAuteur.setText("");
+            txtPaginas.setText("");
+            txtLeesniveau.setText("");
+            txtBeschrijving.setText("");
+            txtISBN.setVisible(false);
+            lblISBN.setVisible(false);
+        }
+
+        if (treeViewItems.getSelectionModel().getSelectedItem().getParent().equals(boekenRoot)) {
+            selected = treeViewItems.getSelectionModel().getSelectedIndex();
+            txtNaam.setText(connect.getBoek(selected).getTitel());
+            txtISBN.setVisible(true);
+            lblISBN.setVisible(true);
+            txtISBN.setText(connect.getBoek(selected).getIsbn());
+            txtThema.setText(connect.getBoek(selected).getThema());
+            txtAantal.setText("" + connect.getBoek(selected).getAantalExemplaren());
+            txtAuteur.setText(connect.getBoek(selected).getAuteur());
+            txtPaginas.setText("" + connect.getBoek(selected).getAantalBlz());
+            txtLeesniveau.setText(connect.getBoek(selected).getMoeilijkheidgraad());
+            txtBeschrijving.setText(connect.getBoek(selected).getBeschrijving());
+        }
+        if (treeViewItems.getSelectionModel().getSelectedItem().getParent().equals(spellenRoot)) {
+            selected = treeViewItems.getSelectionModel().getSelectedIndex() - 1;
+            txtNaam.setText(connect.getSpel(selected).getTitel());
+            txtISBN.setText("");
+            txtISBN.setVisible(false);
+            lblISBN.setVisible(false);
+            txtThema.setText(connect.getSpel(selected).getThema());
+            txtAantal.setText("" + connect.getSpel(selected).getAantalExemplaren());
+            txtAuteur.setText("");
+            txtPaginas.setText("");
+            txtLeesniveau.setText("");
+            txtBeschrijving.setText(connect.getSpel(selected).getBeschrijving());
+        }
+        if (treeViewItems.getSelectionModel().getSelectedItem().getParent().equals(vertelRoot)) {
+            selected = treeViewItems.getSelectionModel().getSelectedIndex() - 2;
+
+            txtNaam.setText(connect.getVerteltas(selected).getTitel());
+            txtISBN.setText("");
+            txtISBN.setVisible(false);
+            lblISBN.setVisible(false);
+            txtThema.setText(connect.getVerteltas(selected).getThema());
+            txtAantal.setText("" + connect.getVerteltas(selected).getAantalExemplaren());
+            txtAuteur.setText("");
+            txtPaginas.setText("");
+            txtLeesniveau.setText("");
+            txtBeschrijving.setText(connect.getVerteltas(selected).getBeschrijving());
+        }
+
     }
-    
-    
-    
+
+    public void schermAddItemOpenen() {
+        Stage stage = new Stage();
+        //stage.close();
+        Stage dezeStage = (Stage) treeViewItems.getScene().getWindow();
+        dezeStage.close();
+        Scene scene = new Scene(new AddItems());
+        stage.setScene(scene);
+        stage.setTitle("Item Toevoegen");
+        stage.setOnShown((WindowEvent t) -> {
+            stage.setMinWidth(stage.getWidth());
+            stage.setMinHeight(stage.getHeight());
+        });
+        stage.show();
+    }
+
 }
