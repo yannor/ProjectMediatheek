@@ -1,4 +1,4 @@
-
+/*
 package oud;
 
 import gui.*;
@@ -205,5 +205,5 @@ stage.setMinHeight(stage.getHeight());
 });
 stage.show();*/
         
-    }
+//    }
 

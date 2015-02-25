@@ -39,8 +39,8 @@ public void removeItem(Item item) {
 connect.deleteItem(item.getId());
 }
 
-public void updateItem(int id,String tit, String bes) {
+public void updateBoek(int id, String naam, String isbn, String thema, int aantalExemplaren, String auteur, int aantalBlz,String leesniveau, String bes) {
 
-connect.updateItem(id,tit, bes);
+connect.updateBoek( id,  naam,  isbn,  thema,  aantalExemplaren,  auteur,  aantalBlz, leesniveau,  bes);
 }
 }

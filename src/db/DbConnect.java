@@ -28,81 +28,103 @@ public class DbConnect {
             System.out.println("error " + ex);
         }
     }
- public String getBoek(int id) {
-        
-        String boekTitel="";
+
+    public Boek getBoek(int id) {
+
+        Boek boek = null;
         try {
 
-            String query = "SELECT titel FROM Boeken WHERE id="+id;
+            String query = "SELECT * FROM boeken WHERE id=" + id;
             rs = st.executeQuery(query);
 
             rs.next();
-            boekTitel=rs.getString(1);
+
+            String titel = rs.getString("titel");
+            int aantal = rs.getInt("aantalExemplaren");
+            String bes = rs.getString("beschrijving");
+            String thema = rs.getString("thema");
+            int aantalBlz = rs.getInt("aantalBlz");
+            String isbn = rs.getString("isbn");
+            String auteur = rs.getString("auteur");
+            String niveau = rs.getString("niveau");
+
+            boek = new Boek(titel, id, aantal, bes, thema, aantalBlz, isbn, auteur, niveau);
         } catch (Exception ex) {
             System.out.println("error " + ex);
         }
 
-        return boekTitel;
+        return boek;
     }
- 
-  public String getSpel(int id) {
-        
-        String spelTitel="";
+
+    public Spel getSpel(int id) {
+
+        Spel spel = null;
         try {
 
-            String query = "SELECT naam FROM gezelschapsspellen WHERE id="+id;
+            String query = "SELECT * FROM gezelschapsspellen WHERE id=" + id;
             rs = st.executeQuery(query);
 
             rs.next();
-            spelTitel=rs.getString(1);
+
+            String titel = rs.getString("naam");
+            int aantal = rs.getInt("aantal");
+            String bes = rs.getString("beschrijving");
+            String thema = rs.getString("thema");
+
+            spel = new Spel(titel, id, aantal, bes, thema);
         } catch (Exception ex) {
             System.out.println("error " + ex);
         }
 
-        return spelTitel;
+        return spel;
     }
-  
-  public String getVerteltas(int id) {
-        
-        String verteltasNaam="";
+
+    public Verteltas getVerteltas(int id) {
+
+        Verteltas tas = null;
         try {
 
-            String query = "SELECT naam FROM verteltas WHERE id="+id;
+            String query = "SELECT * FROM verteltas WHERE id=" + id;
             rs = st.executeQuery(query);
 
             rs.next();
-            verteltasNaam=rs.getString(1);
+
+            String titel = rs.getString("naam");
+            int aantal = rs.getInt("aantal");
+            String bes = rs.getString("beschrijving");
+            String thema = rs.getString("thema");
+            String leesniveau = rs.getString("leesniveau");
+            Item[] items = {};
+
+            tas = new Verteltas(titel, id, aantal, bes, thema, items, leesniveau);
         } catch (Exception ex) {
             System.out.println("error " + ex);
         }
 
-        return verteltasNaam;
+        return tas;
     }
-    
-    
-      public List<Boek> getAlleBoeken() {
+
+    public List<Boek> getAlleBoeken() {
         List<Boek> boeken = new ArrayList<>();
-        Boek boek;
+
         try {
 
-            String query = "SELECT * FROM Boeken";
+            String query = "SELECT * FROM boeken";
             rs = st.executeQuery(query);
 
             while (rs.next()) {
 
                 int id = rs.getInt("id");
-                String titel= rs.getString("titel");
-                int aantal= rs.getInt("aantalExemplaren");
-                String bes= rs.getString("beschrijving");
-                String thema= rs.getString("thema");
-                int aantalBlz= rs.getInt("aantalBlz");
-                int isbn= rs.getInt("isbn");
-                String auteur= rs.getString("auteur");
-                String niveau= rs.getString("niveau");
-                
-               
+                String titel = rs.getString("titel");
+                int aantal = rs.getInt("aantalExemplaren");
+                String bes = rs.getString("beschrijving");
+                String thema = rs.getString("thema");
+                int aantalBlz = rs.getInt("aantalBlz");
+                String isbn = rs.getString("isbn");
+                String auteur = rs.getString("auteur");
+                String niveau = rs.getString("niveau");
 
-                boeken.add(new Boek(titel,id,aantal,bes,thema,aantalBlz,isbn,auteur,niveau));
+                boeken.add(new Boek(titel, id, aantal, bes, thema, aantalBlz, isbn, auteur, niveau));
             }
         } catch (Exception ex) {
             System.out.println("error " + ex);
@@ -110,9 +132,8 @@ public class DbConnect {
 
         return boeken;
     }
-      
-      
-        public List<Spel> getAlleSpellen() {
+
+    public List<Spel> getAlleSpellen() {
         List<Spel> spelen = new ArrayList<>();
         Spel spel;
         try {
@@ -123,16 +144,14 @@ public class DbConnect {
             while (rs.next()) {
 
                 int id = rs.getInt("id");
-               
-                String titel= rs.getString("naam");
-                int aantal= rs.getInt("aantal");
-                String bes= rs.getString("beschrijving");
-                String thema= rs.getString("thema");
-                
 
-                spelen.add(new Spel(titel,id, aantal, bes, thema));
-                
-                
+                String titel = rs.getString("naam");
+                int aantal = rs.getInt("aantal");
+                String bes = rs.getString("beschrijving");
+                String thema = rs.getString("thema");
+
+                spelen.add(new Spel(titel, id, aantal, bes, thema));
+
             }
         } catch (Exception ex) {
             System.out.println("error " + ex);
@@ -140,11 +159,10 @@ public class DbConnect {
 
         return spelen;
     }
-        
-        
-         public List<Verteltas> getAlleVertelTassen() {
+
+    public List<Verteltas> getAlleVertelTassen() {
         List<Verteltas> tassen = new ArrayList<>();
-        
+
         try {
 
             String query = "SELECT * FROM verteltas";
@@ -153,17 +171,16 @@ public class DbConnect {
             while (rs.next()) {
 
                 int id = rs.getInt("id");
-               
-                String titel= rs.getString("naam");
-                int aantal= rs.getInt("aantal");
-                String bes= rs.getString("beschrijving");
-                String thema= rs.getString("thema");
-                String leesniveau= rs.getString("leesniveau");
-                Item[] items={};
 
-                tassen.add(new Verteltas(titel,id, aantal, bes, thema,items, leesniveau));
-                 
-                
+                String titel = rs.getString("naam");
+                int aantal = rs.getInt("aantal");
+                String bes = rs.getString("beschrijving");
+                String thema = rs.getString("thema");
+                String leesniveau = rs.getString("leesniveau");
+                Item[] items = {};
+
+                tassen.add(new Verteltas(titel, id, aantal, bes, thema, items, leesniveau));
+
             }
         } catch (Exception ex) {
             System.out.println("error " + ex);
@@ -172,11 +189,7 @@ public class DbConnect {
         return tassen;
     }
 
-        
-        
-        
-    public void addItem(String tit, String bes)
-    {
+    public void addItem(String tit, String bes) {
 
         try {
 
@@ -190,13 +203,12 @@ public class DbConnect {
         }
 
     }
-    
-    public void deleteItem(int id)
-    {
+
+    public void deleteItem(int id) {
 
         try {
 
-            String query = "DELETE FROM Items WHERE ID="+id;
+            String query = "DELETE FROM Items WHERE ID=" + id;
             st.executeUpdate(query);
 
         } catch (Exception ex) {
@@ -204,16 +216,17 @@ public class DbConnect {
         }
 
     }
-    
-     public void updateItem(int id,String tit, String bes)
-    {
+
+    public void updateBoek(int id, String naam, String isbn, String thema, int aantalExemplaren, String auteur, int aantalBlz,String leesniveau, String bes) {
 
         try {
 
             //query opnieuw schrijven
-            String query = "UPDATE items\n" +
-"SET Titel=\""+tit+"\",Beschrijving=\"" +bes+
-"\"WHERE ID="+id;
+            String query = "UPDATE boeken\n" +
+"SET titel=\""+naam+"\",isbn=\""+isbn+"\",thema=\""+thema+"\""+
+                    ",aantalExemplaren="+aantalExemplaren+",auteur=\""+auteur+"\",aantalBlz="+aantalBlz+"\n"+
+                            ",niveau=\""+leesniveau+"\",beschrijving=\""+bes+"\""+
+"WHERE id="+id;
             st.executeUpdate(query);
 
         } catch (Exception ex) {
