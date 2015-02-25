@@ -189,13 +189,18 @@ public class DbConnect {
         return tassen;
     }
 
-    public void addItem(String tit, String bes) {
+    public void addBoek(String naam, String isbn, String thema, int aantalExemplaren, String auteur, int aantalBlz,String leesniveau, String bes) {
 
         try {
 
             //query opnieuw schrijven
-            String query = "INSERT INTO items(Titel, Beschrijving)\n"
-                    + "VALUES (\"" + tit + "\",\"" + bes + "\")";
+            String query = "INSERT INTO boeken(isbn, titel,thema,beschrijving,auteur,aantalBlz,niveau,aantalExemplaren)"
+                    + "VALUES (\"" + isbn + "\",\"" + naam +"\","+"\""+thema+"\","
+                    +"\""+bes+"\","
+                    +"\""+auteur+"\","
+                    +""+aantalBlz+","
+                    +"\""+leesniveau+"\","
+                    +""+aantalExemplaren+")";
             st.executeUpdate(query);
 
         } catch (Exception ex) {
@@ -217,16 +222,16 @@ public class DbConnect {
 
     }
 
-    public void updateBoek(int id, String naam, String isbn, String thema, int aantalExemplaren, String auteur, int aantalBlz,String leesniveau, String bes) {
+    public void updateBoek(int id, String naam, String isbn, String thema, int aantalExemplaren, String auteur, int aantalBlz, String leesniveau, String bes) {
 
         try {
 
             //query opnieuw schrijven
-            String query = "UPDATE boeken\n" +
-"SET titel=\""+naam+"\",isbn=\""+isbn+"\",thema=\""+thema+"\""+
-                    ",aantalExemplaren="+aantalExemplaren+",auteur=\""+auteur+"\",aantalBlz="+aantalBlz+"\n"+
-                            ",niveau=\""+leesniveau+"\",beschrijving=\""+bes+"\""+
-"WHERE id="+id;
+            String query = "UPDATE boeken\n"
+                    + "SET titel=\"" + naam + "\",isbn=\"" + isbn + "\",thema=\"" + thema + "\""
+                    + ",aantalExemplaren=" + aantalExemplaren + ",auteur=\"" + auteur + "\",aantalBlz=" + aantalBlz + "\n"
+                    + ",niveau=\"" + leesniveau + "\",beschrijving=\"" + bes + "\""
+                    + "WHERE id=" + id;
             st.executeUpdate(query);
 
         } catch (Exception ex) {

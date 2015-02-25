@@ -157,20 +157,20 @@ public class OverzichtItems extends SplitPane {
         int lenB = connect.getAlleBoeken().size();
 
         for (int i = 1; i <= lenB; i++) {
-            TreeItem<String> boek = new TreeItem<>(connect.getBoek(i).getTitel());
+            TreeItem<String> boek = new TreeItem<>(connect.getAlleBoeken().get(i-1).getTitel());
             boekenRoot.getChildren().add(boek);
         }
         int lenS = connect.getAlleSpellen().size();
 
         for (int i = 1; i <= lenS; i++) {
-            TreeItem<String> spel = new TreeItem<>(connect.getSpel(i).getTitel());
+            TreeItem<String> spel = new TreeItem<>(connect.getAlleSpellen().get(i-1).getTitel());
             spellenRoot.getChildren().add(spel);
         }
 
         int lenV = connect.getAlleVertelTassen().size();
 
         for (int i = 1; i <= lenV; i++) {
-            TreeItem<String> verteltas = new TreeItem<>(connect.getVerteltas(i).getTitel());
+            TreeItem<String> verteltas = new TreeItem<>(connect.getAlleVertelTassen().get(i-1).getTitel());
             vertelRoot.getChildren().add(verteltas);
         }
 
@@ -207,7 +207,8 @@ public class OverzichtItems extends SplitPane {
         }
 
         if (treeViewItems.getSelectionModel().getSelectedItem().getParent().equals(boekenRoot)) {
-            selected = treeViewItems.getSelectionModel().getSelectedIndex();
+            int hulp = treeViewItems.getSelectionModel().getSelectedIndex()-1;
+            selected= connect.getAlleBoeken().get(hulp).getId();
             txtNaam.setText(connect.getBoek(selected).getTitel());
             txtISBN.setVisible(true);
             lblISBN.setVisible(true);
@@ -220,7 +221,8 @@ public class OverzichtItems extends SplitPane {
             txtBeschrijving.setText(connect.getBoek(selected).getBeschrijving());
         }
         if (treeViewItems.getSelectionModel().getSelectedItem().getParent().equals(spellenRoot)) {
-            selected = treeViewItems.getSelectionModel().getSelectedIndex() - 1;
+            int hulp = treeViewItems.getSelectionModel().getSelectedIndex() - 1;
+            selected= connect.getAlleSpellen().get(hulp).getId();
             txtNaam.setText(connect.getSpel(selected).getTitel());
             txtISBN.setText("");
             txtISBN.setVisible(false);
@@ -233,7 +235,8 @@ public class OverzichtItems extends SplitPane {
             txtBeschrijving.setText(connect.getSpel(selected).getBeschrijving());
         }
         if (treeViewItems.getSelectionModel().getSelectedItem().getParent().equals(vertelRoot)) {
-            selected = treeViewItems.getSelectionModel().getSelectedIndex() - 2;
+            int hulp = treeViewItems.getSelectionModel().getSelectedIndex() - 2;
+            selected= connect.getAlleSpellen().get(hulp).getId();
 
             txtNaam.setText(connect.getVerteltas(selected).getTitel());
             txtISBN.setText("");
@@ -254,7 +257,7 @@ public class OverzichtItems extends SplitPane {
         //stage.close();
         Stage dezeStage = (Stage) treeViewItems.getScene().getWindow();
         dezeStage.close();
-        Scene scene = new Scene(new AddItems());
+        Scene scene = new Scene(new AddItems(domeinController));
         stage.setScene(scene);
         stage.setTitle("Item Toevoegen");
         stage.setOnShown((WindowEvent t) -> {

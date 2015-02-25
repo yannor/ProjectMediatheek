@@ -29,10 +29,10 @@ return items;
 public boolean noItems() {
 return items.isEmpty();
 }
-public void addItem(Item item) {
-if (item != null) {
-connect.addItem(item.getTitel(), item.getBeschrijving());
-}
+public void addBoek(String naam, String isbn, String thema, int aantalExemplaren, String auteur, int aantalBlz,String leesniveau, String bes) {
+
+connect.addBoek( naam,  isbn,  thema,  aantalExemplaren,  auteur,  aantalBlz, leesniveau,  bes);
+
 }
 public void removeItem(Item item) {
 
