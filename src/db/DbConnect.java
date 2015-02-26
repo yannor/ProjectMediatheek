@@ -73,6 +73,7 @@ public class DbConnect {
 
             spel = new Spel(titel, id, aantal, bes, thema);
         } catch (Exception ex) {
+            
             System.out.println("error " + ex);
         }
 
@@ -208,12 +209,74 @@ public class DbConnect {
         }
 
     }
-
-    public void deleteItem(int id) {
+    
+    public void addSpel(String naam, int aantalExemplaren, String bes, String inhoud, String thema) {
 
         try {
 
-            String query = "DELETE FROM Items WHERE ID=" + id;
+            //query opnieuw schrijven
+            String query = "INSERT INTO gezelschapsspellen( naam,  aantal,  beschrijving,  inhoud,  thema)"
+                    + "VALUES( \"" + naam +  "\"," + aantalExemplaren + ""
+                    + ",\"" + bes + "\"\n"
+                    + ",\"" + inhoud + "\",\""+thema+"\")";
+                    
+            st.executeUpdate(query);
+
+        } catch (Exception ex) {
+            System.out.println("error " + ex);
+        }
+
+    }
+    
+      public void addVerteltas(String naam, int aantalExemplaren, String bes, String thema, String niveau) {
+
+        try {
+
+            //query opnieuw schrijven
+            String query = "INSERT INTO verteltas( naam,  aantal,  beschrijving,  thema,  leesniveau)"
+                    + "VALUES( \"" + naam +  "\"," + aantalExemplaren + ""
+                    + ",\"" + bes + "\"\n"
+                    + ",\"" + thema + "\",\""+niveau+"\")";
+                    
+            st.executeUpdate(query);
+
+        } catch (Exception ex) {
+            System.out.println("error " + ex);
+        }
+
+    }
+
+    public void deleteVerteltas(int id) {
+
+        try {
+
+            String query = "DELETE FROM verteltas WHERE ID=" + id;
+            st.executeUpdate(query);
+
+        } catch (Exception ex) {
+            System.out.println("error " + ex);
+        }
+
+    }
+    
+    public void deleteBoek(int id) {
+
+        try {
+
+            String query = "DELETE FROM boeken WHERE ID=" + id;
+            st.executeUpdate(query);
+
+        } catch (Exception ex) {
+            System.out.println("error " + ex);
+        }
+
+    }
+    
+    public void deleteSpel(int id) {
+
+        try {
+
+            String query = "DELETE FROM gezelschapsspellen WHERE ID=" + id;
             st.executeUpdate(query);
 
         } catch (Exception ex) {
@@ -247,8 +310,8 @@ public class DbConnect {
             //query opnieuw schrijven
             String query = "UPDATE gezelschapsspellen\n"
                     + "SET naam=\"" + naam +  "\",thema=\"" + thema + "\""
-                    + ",aantalExemplaren=" + aantalExemplaren + "\",aantalBlz=" + "\n"
-                    + "\",beschrijving=\"" + bes + "\", inhoud=\""+inhoud+"\""
+                    + ",aantal=" + aantalExemplaren + ""
+                    + ",beschrijving=\"" + bes + "\", inhoud=\""+inhoud+"\""
                     + "WHERE id=" + id;
             st.executeUpdate(query);
 
@@ -265,8 +328,8 @@ public class DbConnect {
             //query opnieuw schrijven
             String query = "UPDATE verteltas\n"
                    + "SET naam=\"" + naam +  "\",thema=\"" + thema + "\""
-                    + ",aantalExemplaren=" + aantalExemplaren + "\",aantalBlz=" + "\n"
-                    + "\",beschrijving=\"" + bes + "\", niveau=\""+niveau+"\""
+                    + ",aantal=" + aantalExemplaren + "\n"
+                    + ",beschrijving=\"" + bes + "\", leesniveau=\""+niveau+"\""
                     + "WHERE id=" + id;
             st.executeUpdate(query);
 

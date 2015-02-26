@@ -34,9 +34,34 @@ public void addBoek(String naam, String isbn, String thema, int aantalExemplaren
 connect.addBoek( naam,  isbn,  thema,  aantalExemplaren,  auteur,  aantalBlz, leesniveau,  bes);
 
 }
-public void removeItem(Item item) {
 
-connect.deleteItem(item.getId());
+public void addSpel(String naam, int aantalExemplaren, String bes, String inhoud, String thema) {
+
+connect.addSpel( naam,  aantalExemplaren,  bes, inhoud, thema);
+
+}
+
+
+public void addVerteltas(String naam, int aantalExemplaren, String bes, String thema, String niveau) {
+
+connect.addVerteltas( naam,  aantalExemplaren,  bes, thema, niveau);
+
+}
+
+
+public void deleteBoek(int id) {
+
+connect.deleteBoek(id);
+}
+
+public void deleteSpel(int id) {
+
+connect.deleteBoek(id);
+}
+
+public void deleteVerteltas(int id) {
+
+connect.deleteBoek(id);
 }
 
 public void updateBoek(int id, String naam, String isbn, String thema, int aantalExemplaren, String auteur, int aantalBlz,String leesniveau, String bes) {

@@ -35,7 +35,7 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" prefHeight="34.0" prefWidth="150.0" text="Auteur: " GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+      <Label fx:id="lblAuteur" alignment="CENTER" prefHeight="34.0" prefWidth="150.0" text="Auteur: " GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <font>
             <Font size="16.0" />
          </font>
@@ -45,12 +45,12 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" prefHeight="30.0" prefWidth="162.0" text="ISBN: " GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+      <Label fx:id="lblISBN" alignment="CENTER" prefHeight="30.0" prefWidth="162.0" text="ISBN: " GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" prefHeight="30.0" prefWidth="204.0" text="Aantal blz: " GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+      <Label fx:id="lblAantalBlz" alignment="CENTER" prefHeight="30.0" prefWidth="204.0" text="Aantal blz: " GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2">
          <font>
             <Font size="16.0" />
          </font>
@@ -78,7 +78,7 @@
       <TextField fx:id="txtThema" maxWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
       <TextField fx:id="txtAantalExemp" maxWidth="46.0" prefHeight="25.0" prefWidth="46.0" GridPane.columnIndex="3" GridPane.halignment="RIGHT" />
       <TextArea fx:id="txaBeschrijving" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-       <ComboBox fx:id="comboItem" prefHeight="25.0" prefWidth="318.0" GridPane.columnIndex="1">
+       <ComboBox fx:id="comboItem" onAction="#chooseItem" prefHeight="25.0" prefWidth="318.0" GridPane.columnIndex="1">
 <items>
        <FXCollections fx:factory="observableArrayList">
           <String fx:value="Boek" />

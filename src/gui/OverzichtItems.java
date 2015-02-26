@@ -9,7 +9,9 @@ import javafx.scene.control.*;
 import db.DbConnect;
 import item.*;
 import static java.lang.Integer.parseInt;
+import java.util.Optional;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
@@ -76,6 +78,30 @@ public class OverzichtItems extends SplitPane {
     @FXML
     private void delete(ActionEvent event) {
 
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+alert.setTitle("Delete item");
+
+alert.setContentText("Bent u zeker dat u "+treeViewItems.getSelectionModel().getSelectedItem().getValue()+" wilt verwijderen?");
+
+Optional<ButtonType> result = alert.showAndWait();
+if (result.get() == ButtonType.OK){
+    // ... user chose OK
+      if (treeViewItems.getSelectionModel().getSelectedItem().getParent().equals(boekenRoot)) {
+
+            domeinController.deleteBoek(selected);
+        }
+        if (treeViewItems.getSelectionModel().getSelectedItem().getParent().equals(spellenRoot)) {
+            domeinController.deleteSpel(selected - 1);
+
+        }
+        if (treeViewItems.getSelectionModel().getSelectedItem().getParent().equals(vertelRoot)) {
+            domeinController.deleteVerteltas(selected - 2);
+        }
+        
+} else {
+    // ... user chose CANCEL or closed the dialog
+}
+      
     }
 
     @FXML
@@ -124,13 +150,13 @@ public class OverzichtItems extends SplitPane {
                     parseInt(txtPaginas.getText()), txtLeesniveau.getText(), txtBeschrijving.getText());
         }
         if (treeViewItems.getSelectionModel().getSelectedItem().getParent().equals(spellenRoot)) {
-            domeinController.updateSpel(selected-1, txtNaam.getText(),  parseInt(txtAantal.getText()), txtBeschrijving.getText(),
+            domeinController.updateSpel(selected , txtNaam.getText(), parseInt(txtAantal.getText()), txtBeschrijving.getText(),
                     "", txtThema.getText());
 
         }
         if (treeViewItems.getSelectionModel().getSelectedItem().getParent().equals(vertelRoot)) {
-domeinController.updateSpel(selected-2, txtNaam.getText(),  parseInt(txtAantal.getText()), txtBeschrijving.getText(),
-                     txtThema.getText(), txtLeesniveau.getText());
+            domeinController.updateVerteltas(selected , txtNaam.getText(), parseInt(txtAantal.getText()), txtBeschrijving.getText(),
+                    txtThema.getText(), txtLeesniveau.getText());
         }
 
     }
@@ -155,23 +181,24 @@ domeinController.updateSpel(selected-2, txtNaam.getText(),  parseInt(txtAantal.g
 
     private void updateTreeView() {
 
+        
         int lenB = connect.getAlleBoeken().size();
 
         for (int i = 1; i <= lenB; i++) {
-            TreeItem<String> boek = new TreeItem<>(connect.getAlleBoeken().get(i-1).getTitel());
+            TreeItem<String> boek = new TreeItem<>(connect.getAlleBoeken().get(i - 1).getTitel());
             boekenRoot.getChildren().add(boek);
         }
         int lenS = connect.getAlleSpellen().size();
 
         for (int i = 1; i <= lenS; i++) {
-            TreeItem<String> spel = new TreeItem<>(connect.getAlleSpellen().get(i-1).getTitel());
+            TreeItem<String> spel = new TreeItem<>(connect.getAlleSpellen().get(i - 1).getTitel());
             spellenRoot.getChildren().add(spel);
         }
 
         int lenV = connect.getAlleVertelTassen().size();
 
         for (int i = 1; i <= lenV; i++) {
-            TreeItem<String> verteltas = new TreeItem<>(connect.getAlleVertelTassen().get(i-1).getTitel());
+            TreeItem<String> verteltas = new TreeItem<>(connect.getAlleVertelTassen().get(i - 1).getTitel());
             vertelRoot.getChildren().add(verteltas);
         }
 
@@ -194,7 +221,7 @@ domeinController.updateSpel(selected-2, txtNaam.getText(),  parseInt(txtAantal.g
     @FXML
     private void select() {
 
-        if (treeViewItems.getSelectionModel().getSelectedItem().getParent().equals(root)) {
+        if (treeViewItems.getSelectionModel().getSelectedItem().getParent().equals(root)|| treeViewItems.getSelectionModel().getSelectedItem().equals(root)) {
             txtNaam.setText("");
             txtISBN.setText("");
             txtThema.setText("");
@@ -206,10 +233,13 @@ domeinController.updateSpel(selected-2, txtNaam.getText(),  parseInt(txtAantal.g
             txtISBN.setVisible(false);
             lblISBN.setVisible(false);
         }
+        
 
         if (treeViewItems.getSelectionModel().getSelectedItem().getParent().equals(boekenRoot)) {
-            int hulp = treeViewItems.getSelectionModel().getSelectedIndex()-1;
-            selected= connect.getAlleBoeken().get(hulp).getId();
+            
+            int hulp = treeViewItems.getSelectionModel().getSelectedIndex() - 1;
+            selected = connect.getAlleBoeken().get(hulp).getId();
+            
             txtNaam.setText(connect.getBoek(selected).getTitel());
             txtISBN.setVisible(true);
             lblISBN.setVisible(true);
@@ -222,8 +252,19 @@ domeinController.updateSpel(selected-2, txtNaam.getText(),  parseInt(txtAantal.g
             txtBeschrijving.setText(connect.getBoek(selected).getBeschrijving());
         }
         if (treeViewItems.getSelectionModel().getSelectedItem().getParent().equals(spellenRoot)) {
-            int hulp = treeViewItems.getSelectionModel().getSelectedIndex() - 1;
-            selected= connect.getAlleSpellen().get(hulp).getId();
+            int hulp=0;
+            if(boekenRoot.isExpanded())
+            {
+               hulp = treeViewItems.getSelectionModel().getSelectedIndex()-2-connect.getAlleBoeken().size() ; 
+            }
+            else
+            {
+                 hulp = treeViewItems.getSelectionModel().getSelectedIndex()-2 ;
+            }
+            
+            
+            selected = connect.getAlleSpellen().get(hulp).getId();
+            
             txtNaam.setText(connect.getSpel(selected).getTitel());
             txtISBN.setText("");
             txtISBN.setVisible(false);
@@ -236,8 +277,25 @@ domeinController.updateSpel(selected-2, txtNaam.getText(),  parseInt(txtAantal.g
             txtBeschrijving.setText(connect.getSpel(selected).getBeschrijving());
         }
         if (treeViewItems.getSelectionModel().getSelectedItem().getParent().equals(vertelRoot)) {
-            int hulp = treeViewItems.getSelectionModel().getSelectedIndex() - 2;
-            selected= connect.getAlleSpellen().get(hulp).getId();
+            int hulp=0;
+            if(boekenRoot.isExpanded()&!spellenRoot.isExpanded())
+            {
+               hulp = treeViewItems.getSelectionModel().getSelectedIndex()-3-connect.getAlleBoeken().size() ; 
+            }
+            else
+                if(spellenRoot.isExpanded()&!boekenRoot.isExpanded())
+            {
+               hulp = treeViewItems.getSelectionModel().getSelectedIndex()-3-connect.getAlleSpellen().size() ; 
+            }
+            else
+                    if(spellenRoot.isExpanded()&&boekenRoot.isExpanded())
+                    {
+                      hulp = treeViewItems.getSelectionModel().getSelectedIndex()-3-connect.getAlleSpellen().size()-connect.getAlleBoeken().size() ;  
+                    }
+            else
+                    {hulp = treeViewItems.getSelectionModel().getSelectedIndex() - 3;}
+            
+            selected = connect.getAlleVertelTassen().get(hulp).getId();
 
             txtNaam.setText(connect.getVerteltas(selected).getTitel());
             txtISBN.setText("");
@@ -249,7 +307,10 @@ domeinController.updateSpel(selected-2, txtNaam.getText(),  parseInt(txtAantal.g
             txtPaginas.setText("");
             txtLeesniveau.setText("");
             txtBeschrijving.setText(connect.getVerteltas(selected).getBeschrijving());
+        
         }
+        
+        
 
     }
 
