@@ -124,12 +124,13 @@ public class OverzichtItems extends SplitPane {
                     parseInt(txtPaginas.getText()), txtLeesniveau.getText(), txtBeschrijving.getText());
         }
         if (treeViewItems.getSelectionModel().getSelectedItem().getParent().equals(spellenRoot)) {
-            selected = selected - 1;
+            domeinController.updateSpel(selected-1, txtNaam.getText(),  parseInt(txtAantal.getText()), txtBeschrijving.getText(),
+                    "", txtThema.getText());
 
         }
         if (treeViewItems.getSelectionModel().getSelectedItem().getParent().equals(vertelRoot)) {
-
-            selected = selected - 2;
+domeinController.updateSpel(selected-2, txtNaam.getText(),  parseInt(txtAantal.getText()), txtBeschrijving.getText(),
+                     txtThema.getText(), txtLeesniveau.getText());
         }
 
     }

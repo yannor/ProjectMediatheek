@@ -239,5 +239,41 @@ public class DbConnect {
         }
 
     }
+    
+    public void updateSpel(int id, String naam, int aantalExemplaren, String bes, String inhoud, String thema) {
+
+        try {
+
+            //query opnieuw schrijven
+            String query = "UPDATE gezelschapsspellen\n"
+                    + "SET naam=\"" + naam +  "\",thema=\"" + thema + "\""
+                    + ",aantalExemplaren=" + aantalExemplaren + "\",aantalBlz=" + "\n"
+                    + "\",beschrijving=\"" + bes + "\", inhoud=\""+inhoud+"\""
+                    + "WHERE id=" + id;
+            st.executeUpdate(query);
+
+        } catch (Exception ex) {
+            System.out.println("error " + ex);
+        }
+
+    }
+    
+    public void updateVerteltas(int id, String naam, int aantalExemplaren, String bes,String thema, String niveau) {
+
+        try {
+
+            //query opnieuw schrijven
+            String query = "UPDATE verteltas\n"
+                   + "SET naam=\"" + naam +  "\",thema=\"" + thema + "\""
+                    + ",aantalExemplaren=" + aantalExemplaren + "\",aantalBlz=" + "\n"
+                    + "\",beschrijving=\"" + bes + "\", niveau=\""+niveau+"\""
+                    + "WHERE id=" + id;
+            st.executeUpdate(query);
+
+        } catch (Exception ex) {
+            System.out.println("error " + ex);
+        }
+
+    }
 
 }

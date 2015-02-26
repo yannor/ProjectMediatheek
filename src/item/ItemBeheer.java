@@ -43,4 +43,14 @@ public void updateBoek(int id, String naam, String isbn, String thema, int aanta
 
 connect.updateBoek( id,  naam,  isbn,  thema,  aantalExemplaren,  auteur,  aantalBlz, leesniveau,  bes);
 }
+
+public void updateSpel(int id, String naam, int aantalExemplaren, String bes, String inhoud, String thema) {
+
+connect.updateSpel( id,  naam,  aantalExemplaren,  bes, inhoud, thema);
+}
+
+public void updateVerteltas(int id, String naam, int aantalExemplaren, String bes, String thema, String niveau) {
+
+connect.updateVerteltas( id,  naam,  aantalExemplaren,  bes, thema, niveau);
+}
 }
