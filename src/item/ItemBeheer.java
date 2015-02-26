@@ -56,12 +56,12 @@ connect.deleteBoek(id);
 
 public void deleteSpel(int id) {
 
-connect.deleteBoek(id);
+connect.deleteSpel(id);
 }
 
 public void deleteVerteltas(int id) {
 
-connect.deleteBoek(id);
+connect.deleteVerteltas(id);
 }
 
 public void updateBoek(int id, String naam, String isbn, String thema, int aantalExemplaren, String auteur, int aantalBlz,String leesniveau, String bes) {

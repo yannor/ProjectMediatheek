@@ -4,11 +4,13 @@ import db.DbConnect;
 import item.ItemBeheer;
 import java.io.IOException;
 import static java.lang.Integer.parseInt;
+import java.util.Optional;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
@@ -70,12 +72,37 @@ public class AddItems extends GridPane {
                     parseInt(txtAantalExemp.getText()),txaBeschrijving.getText(),txtThema.getText(), txtThema.getText() );
         }
 
-        Alert alert = new Alert(AlertType.INFORMATION);
-        alert.setTitle("Item toegevoegd");
-        alert.setHeaderText(null);
-        alert.setContentText("\""+txtNaam.getText() + "\" is toegevoegd");
+        
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+        ButtonType buttonTypeJa = new ButtonType("Ja");
+ButtonType buttonTypeNee = new ButtonType("Nee");
 
-        alert.showAndWait();
+
+alert.getButtonTypes().setAll(buttonTypeJa, buttonTypeNee);
+        
+              
+alert.setTitle("Item toegevoegd");
+
+alert.setContentText("\n"+txtNaam.getText()+"\n is toegevoegd.\nWilt u nog een item toevoegen?");
+
+Optional<ButtonType> result = alert.showAndWait();
+if (result.get() == buttonTypeNee){
+    // ... user chose OK
+    cancel();
+      
+        
+} else {
+    // ... user chose CANCEL or closed the dialog
+    comboItem.getSelectionModel().selectFirst();
+    txtNaam.setText("");
+    txtAuteur.setText("");
+    txtThema.setText("");
+    txtAantalBlz.setText("");
+    txtAantalExemp.setText("");
+    txtNiveau.setText("");
+    txtISBN.setText("");
+    txaBeschrijving.setText("");
+}
     }
 
     @FXML

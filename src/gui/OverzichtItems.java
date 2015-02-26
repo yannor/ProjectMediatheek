@@ -91,11 +91,11 @@ if (result.get() == ButtonType.OK){
             domeinController.deleteBoek(selected);
         }
         if (treeViewItems.getSelectionModel().getSelectedItem().getParent().equals(spellenRoot)) {
-            domeinController.deleteSpel(selected - 1);
+            domeinController.deleteSpel(selected );
 
         }
         if (treeViewItems.getSelectionModel().getSelectedItem().getParent().equals(vertelRoot)) {
-            domeinController.deleteVerteltas(selected - 2);
+            domeinController.deleteVerteltas(selected );
         }
         
 } else {
