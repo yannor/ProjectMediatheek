@@ -15,7 +15,8 @@ import gui.HomePage;
 import gui.HomePage_uit;
 import items.*;
 
-
+// cd en boeken werken via db, de rest nog niet.
+//bij cd wordt de tableview nog niet gevuld met de liedjes
 public class Zoeken extends BorderPane {
 
     @FXML
