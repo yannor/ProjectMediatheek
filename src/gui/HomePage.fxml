@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<fx:root prefHeight="693.0" prefWidth="901.0" styleClass="back" stylesheets="@css.css" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Button fx:id="btnBeheer" layoutX="540.0" layoutY="319.0" mnemonicParsing="false" onAction="#beheer" opacity="0.8" prefHeight="161.0" prefWidth="326.0" styleClass="beheer" />
+      <Button fx:id="btnZoeken" layoutX="13.0" layoutY="85.0" mnemonicParsing="false" onAction="#zoeken" opacity="0.85" prefHeight="393.0" prefWidth="480.0" styleClass="zoeken" />
+      <Button fx:id="btnUitloggen" layoutX="754.0" layoutY="14.0" mnemonicParsing="false" onAction="#uitloggen" opacity="0.8" prefHeight="49.0" prefWidth="109.0" styleClass="colors" text="Uitloggen" />
+      <Button fx:id="btnUitleningen" layoutX="543.0" layoutY="85.0" mnemonicParsing="false" onAction="#uitleningTerugbrengen" opacity="0.8" prefHeight="209.0" prefWidth="320.0" styleClass="terugbrengen" />
+      <Label fx:id="lblWelkom" layoutX="44.0" layoutY="14.0" prefHeight="49.0" prefWidth="480.0" text="Welkom">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+   </children>
+</fx:root>

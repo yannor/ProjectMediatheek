@@ -1,0 +1,88 @@
+
+
+.colors {
+-fx-background-color: #EB8E00;
+-fx-text-fill: white;
+}
+
+
+.zoeken {
+-fx-background-image: url("afbeeldingen/zoek.png");
+-fx-background-size: cover;
+-fx-background-repeat: no-repeat;
+-fx-background-color: #5CA32A;
+}
+
+.beheer {
+-fx-background-image: url("afbeeldingen/wiel.png");
+-fx-background-size: cover;
+-fx-background-repeat: no-repeat;
+-fx-background-color: #5C032A;
+}
+
+.terugbrengen {
+-fx-background-image: url("afbeeldingen/arrow.png");
+-fx-background-size: cover;
+-fx-background-repeat: no-repeat;
+-fx-background-color: #D83F1F;
+}
+.back{
+-fx-background-image: url("afbeeldingen/tuin.png");
+-fx-background-position: bottom;
+-fx-background-size: cover;
+-fx-background-repeat: no-repeat;
+}
+
+.back_topZoek
+{
+  -fx-background-color: #5CA32A;
+  -fx-height: 200px;
+}
+
+.back_topUitlening
+{
+  -fx-background-color: #D83F1F;
+  -fx-height: 200px;
+  -fx-background-size: cover;
+}
+
+.back_topBeheer
+{
+  -fx-background-color: #5C032A;
+  -fx-height: 200px;
+  -fx-background-size: cover;
+}
+
+.home_zoek{
+-fx-background-image: url("afbeeldingen/home.png");
+-fx-background-size: cover;
+-fx-background-repeat: no-repeat;
+-fx-background-color: #5CA32A;
+
+}
+
+.home_uitlening{
+-fx-background-image: url("afbeeldingen/home.png");
+-fx-background-size: cover;
+-fx-background-repeat: no-repeat;
+-fx-background-color: #D83F1F;
+
+}
+
+.home_beheer{
+-fx-background-image: url("afbeeldingen/home.png");
+-fx-background-size: cover;
+-fx-background-repeat: no-repeat;
+-fx-background-color: #5C032A;
+
+}
+
+.treeView 
+{
+  -fx-font: 12pt "Arial";
+}
+
+.border_collor{
+    -fx-border-color:black;
+    
+}
