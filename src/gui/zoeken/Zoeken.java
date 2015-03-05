@@ -86,6 +86,18 @@ public class Zoeken extends BorderPane {
 
         testVertelList.add("Pesten");
         testVertelList.add("vertrouwen");
+         testVertelList.add("Pesten");
+        testVertelList.add("vertrouwen");
+         testVertelList.add("Pesten");
+        testVertelList.add("vertrouwen");
+         testVertelList.add("Pesten");
+        testVertelList.add("vertrouwen");
+         testVertelList.add("Pesten");
+        testVertelList.add("vertrouwen");
+         testVertelList.add("Pesten");
+        testVertelList.add("vertrouwen");
+         testVertelList.add("Pesten");
+        testVertelList.add("vertrouwen");
 
         for (int i = 0; i < connect.getAlleCds().size(); i++) {
 
