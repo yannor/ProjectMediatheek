@@ -96,6 +96,7 @@ public class Zoeken extends BorderPane {
             boekList.add(connect.getAlleBoeken().get(i).getNaam());
         }
 
+        
         vulTreeView(boekList, cdList, testDvdList, testSpelList, testVertelList);
 
         itemRoot.getChildren().addAll(boekenRoot, cdRoot, dvdRoot, spellenRoot, vertelRoot);
