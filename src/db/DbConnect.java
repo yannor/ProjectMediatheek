@@ -20,7 +20,9 @@ public class DbConnect {
         try {
             Class.forName("com.mysql.jdbc.Driver");
 
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mediatheek", "root", "root");
+            
+            
+            con = DriverManager.getConnection("jdbc:mysql://db4free.net:3306/mediatheek6", "yannor", "DeKrekel");
             st = con.createStatement();
 
         } catch (Exception ex) {
@@ -53,8 +55,8 @@ public class DbConnect {
 
         return boek;
     }
-
-    public Cd getCd(int id) {
+    
+     public Cd getCd(int id) {
 
         Cd cd = null;
         try {
@@ -64,12 +66,13 @@ public class DbConnect {
 
             rs.next();
 
-            String naam = rs.getString("naam");
+              
+                String naam = rs.getString("naam");
+               
+                String leeftijd = rs.getString("leeftijd");
+                int aantal = rs.getInt("aantal");
 
-            String leeftijd = rs.getString("leeftijd");
-            int aantal = rs.getInt("aantal");
-
-            cd = new Cd(id, naam, "", leeftijd, aantal, getLiedjes(id));
+                cd = new Cd(id, naam, "", leeftijd, aantal, getLiedjes(id));
         } catch (Exception ex) {
             System.out.println("error " + ex);
         }
@@ -97,6 +100,8 @@ public class DbConnect {
 
         return aantal;
     }
+
+   
 
     public List<Boek> getAlleBoeken() {
         List<Boek> boeken = new ArrayList<>();
@@ -126,21 +131,21 @@ public class DbConnect {
 
         return boeken;
     }
-
+    
     public List<Lied> getLiedjes(int cdId) {
         List<Lied> liedjes = new ArrayList<>();
         // Boek boek;
 
         try {
 
-            String query = "SELECT * FROM liedjes WHERE cdId=" + cdId;
+            String query = "SELECT * FROM liedjes WHERE cdId="+cdId;
             rs = st.executeQuery(query);
 
             while (rs.next()) {
-
+     
                 String naam = rs.getString("naam");
                 String zanger = rs.getString("zanger");
-
+             
                 int min = rs.getInt("min");
                 int sec = rs.getInt("sec");
 
@@ -148,13 +153,13 @@ public class DbConnect {
             }
         } catch (Exception ex) {
             System.out.println("error " + ex);
-
+            
         }
 
         return liedjes;
     }
 
-    public List<Cd> getAlleCds() {
+     public List<Cd> getAlleCds() {
         List<Cd> cds = new ArrayList<>();
         // Boek boek;
 
@@ -167,16 +172,16 @@ public class DbConnect {
 
                 int id = rs.getInt("cdId");
                 String naam = rs.getString("naam");
-
+                
                 String leeftijd = rs.getString("leeftijd");
                 int aantal = rs.getInt("aantal");
-                List<Lied> l = getLiedjes(id);
+                List<Lied> l= getLiedjes(id);
 
                 cds.add(new Cd(id, naam, "", leeftijd, aantal, l));
             }
         } catch (Exception ex) {
             System.out.println("error " + ex);
-
+            
         }
 
         return cds;
