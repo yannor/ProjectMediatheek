@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<fx:root id="AnchorPane" type="AnchorPane" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+   <children>
+      <Label fx:id="label" layoutX="261.0" layoutY="149.0" text="Label" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0" />
+   </children>
+</fx:root>
