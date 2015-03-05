@@ -85,11 +85,10 @@ public class HomePage_uit extends Pane {
         stage.getIcons().add(applicationIcon);
         Stage dezeStage = (Stage) btnZoeken.getScene().getWindow();
         dezeStage.close();
-      /*  Dimension screenSize= Toolkit.getDefaultToolkit().getScreenSize();
+        Dimension screenSize= Toolkit.getDefaultToolkit().getScreenSize();
          double width= screenSize.getWidth();
-        double height= screenSize.getHeight();*/
-        Scene scene = new Scene(new gui.zoeken.Zoeken(false, ""));
-        
+        double height= screenSize.getHeight();
+        Scene scene = new Scene(new gui.zoeken.Zoeken(false, ""), width, height);
         
         
         
