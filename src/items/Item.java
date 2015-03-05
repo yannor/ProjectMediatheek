@@ -4,7 +4,6 @@ package items;
 
 public class Item {
     
-    private int exemplaar;
     private int id;
     private String naam;
     private String thema;
@@ -22,13 +21,6 @@ public class Item {
         this.beschadigd=false;
     }
 
-    public int getExemplaar() {
-        return exemplaar;
-    }
-
-    public void setExemplaar(int exemplaar) {
-        this.exemplaar = exemplaar;
-    }
 
     public String getNaam() {
         return naam;
