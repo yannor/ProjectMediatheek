@@ -15,4 +15,7 @@ public class Spel extends Item{
         super(id, naam, thema, leeftijd, aantal);
     }
     
+    
+    
+    
 }

@@ -11,10 +11,11 @@ import java.util.List;
 
 
 public class Verteltas extends Item{
-    private List<Item> items = new ArrayList<Item>();
+    private List<Item> items = new ArrayList<>();
 
-    public Verteltas(int id, String naam, String thema, String leeftijd, int aantal) {
+    public Verteltas(int id, String naam, String thema, String leeftijd, int aantal, List<Item> items) {
         super(id, naam, thema, leeftijd, aantal);
+        this.items=items;
     }
     
     public void voegItemToe(Item item){

@@ -11,8 +11,7 @@ public class Cd extends Item {
 
     public Cd(int id, String naam, String thema, String leeftijd, int aantal, List<Lied> liedjes) {
         super(id, naam, thema, leeftijd, aantal);
-        this.liedjes=liedjes;
-        vulCd(id);
+        this.liedjes=liedjes;   
         
     }
 
