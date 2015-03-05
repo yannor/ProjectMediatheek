@@ -88,15 +88,13 @@ public class HomePage_uit extends Pane {
         Dimension screenSize= Toolkit.getDefaultToolkit().getScreenSize();
         double width= screenSize.getWidth();
         double height= screenSize.getHeight();
-        Scene scene = new Scene(new gui.zoeken.Zoeken(false, ""), width, height);
+        Scene scene = new Scene(new gui.zoeken.Zoeken(false, ""));
+         stage.setScene(scene);
         
+        stage.setWidth(width);
+        stage.setHeight(height);
         
-        stage.setOnShown((WindowEvent t) -> {
-                stage.setMinWidth(scene.getWidth());
-                stage.setMinHeight(scene.getHeight());
-            });
-        
-        stage.setScene(scene);
+       
         stage.setMaximized(true);
         stage.setTitle("Zoeken");
 
