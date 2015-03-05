@@ -86,18 +86,7 @@ public class Zoeken extends BorderPane {
 
         testVertelList.add("Pesten");
         testVertelList.add("vertrouwen");
-         testVertelList.add("Pesten");
-        testVertelList.add("vertrouwen");
-         testVertelList.add("Pesten");
-        testVertelList.add("vertrouwen");
-         testVertelList.add("Pesten");
-        testVertelList.add("vertrouwen");
-         testVertelList.add("Pesten");
-        testVertelList.add("vertrouwen");
-         testVertelList.add("Pesten");
-        testVertelList.add("vertrouwen");
-         testVertelList.add("Pesten");
-        testVertelList.add("vertrouwen");
+        
 
         for (int i = 0; i < connect.getAlleCds().size(); i++) {
 
@@ -330,7 +319,15 @@ public class Zoeken extends BorderPane {
                 txtAantal.setText(cd.getAantal() + "");
                 txaBeschrijving.setText("");
                 txtAuteur.setText("");
-                txtPagLen.setText(cd.getLiedjes().get(test).getMin() + ":" + cd.getLiedjes().get(test).getSec());
+                int min=0;
+                int sec=0;
+                for(int i=0;i<connect.getLiedjes(cd.getId()).size();i++)
+                {
+                     min=min+connect.getLiedjes(cd.getId()).get(i).getMin();
+                     sec =sec +connect.getLiedjes(cd.getId()).get(i).getSec();
+                }
+                    
+                txtPagLen.setText(min+":"+sec);
 
                 lblTableView.setText("Liedjes");
                 lblTableView.setLayoutX(25);
