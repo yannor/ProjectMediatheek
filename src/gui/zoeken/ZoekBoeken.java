@@ -241,4 +241,36 @@ public class ZoekBoeken extends BorderPane
         removeOld();
         vulTreeView(boekenWel);
     }
+    
+    @FXML
+    public void btnBoekenPressed()
+    {
+        Stage stage = (Stage) lblNaam.getScene().getWindow();
+        stage.setScene(null);
+        stage.setScene(new Scene(new ZoekBoeken(ingelogd, gebruikersNaam)));
+    }
+    
+    @FXML
+    public void btnCdsPressed()
+    {
+        Stage stage = (Stage) lblNaam.getScene().getWindow();
+        stage.setScene(null);
+        stage.setScene(new Scene(new ZoekCds(ingelogd, gebruikersNaam)));
+    }
+    
+    @FXML
+    public void btnDvdsPressed()
+    {
+        Stage stage = (Stage) lblNaam.getScene().getWindow();
+        stage.setScene(null);
+        stage.setScene(new Scene(new ZoekDvds(ingelogd, gebruikersNaam)));
+    }
+    
+    @FXML
+    public void btnSpellenPressed()
+    {
+        Stage stage = (Stage) lblNaam.getScene().getWindow();
+        stage.setScene(null);
+        stage.setScene(new Scene(new ZoekSpellen(ingelogd, gebruikersNaam)));
+    }
 }

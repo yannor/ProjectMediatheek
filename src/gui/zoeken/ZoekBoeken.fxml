@@ -27,8 +27,9 @@
                   <HBox layoutX="14.0" layoutY="38.0" spacing="5.0">
                      <children>
                         <Button fx:id="boekenBtn" disable="true" mnemonicParsing="false" text="Boeken" />
-                        <Button fx:id="cdsBtn" mnemonicParsing="false" text="Cd's" />
-                        <Button fx:id="spellenBtn" mnemonicParsing="false" text="Spellen" />
+                        <Button fx:id="cdsBtn" mnemonicParsing="false" onAction="#btnCdsPressed" text="Cd's" />
+                        <Button fx:id="dvdsButton" mnemonicParsing="false" onAction="#btnDvdsPressed" text="Dvd's" />
+                        <Button fx:id="spellenBtn" mnemonicParsing="false" onAction="#btnSpellenPressed" text="Spellen" />
                         <Button fx:id="verteltassenBtn" mnemonicParsing="false" text="Verteltassen" />
                      </children>
                   </HBox>

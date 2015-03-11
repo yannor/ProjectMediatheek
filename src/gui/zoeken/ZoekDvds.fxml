@@ -28,13 +28,12 @@
                      <children>
                         <Button fx:id="boekenBtn" mnemonicParsing="false" onAction="#btnBoekenPressed" text="Boeken" />
                         <Button fx:id="cdsBtn" mnemonicParsing="false" onAction="#btnCdsPressed" text="Cd's" />
-                        <Button fx:id="dvdsButton" mnemonicParsing="false" onAction="#btnDvdsPressed" text="Dvd's" />
-                        <Button fx:id="spellenBtn" disable="true" mnemonicParsing="false" text="Spellen" />
+                        <Button disable="true" mnemonicParsing="false" text="Dvd's" />
+                        <Button fx:id="spellenBtn" mnemonicParsing="false" onAction="#btnSpellenPressed" text="Spellen" />
                         <Button fx:id="verteltassenBtn" mnemonicParsing="false" text="Verteltassen" />
                      </children>
                   </HBox>
-               </children>
-            </Pane>
+               </children></Pane>
             <Button fx:id="btnBackHome" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#backHome" prefHeight="73.0" prefWidth="98.0" styleClass="home_zoek" HBox.hgrow="NEVER">
                <HBox.margin>
                   <Insets bottom="50.0" />
@@ -97,7 +96,7 @@
                   <Insets left="10.0" right="10.0" />
                </GridPane.margin>
             </Label>
-            <Label fx:id="lblThema" text="Thema" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+            <Label fx:id="lblThema" text="Thema" GridPane.rowIndex="1">
                <font>
                   <Font size="24.0" />
                </font>
@@ -113,7 +112,7 @@
                   <Insets />
                </GridPane.margin>
             </TextField>
-            <Label fx:id="lblLeeftijd" text="Leeftijd" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <Label fx:id="lblLeeftijd" text="Leeftijd" GridPane.rowIndex="2">
                <font>
                   <Font size="24.0" />
                </font>
@@ -121,12 +120,12 @@
                   <Insets left="10.0" right="10.0" />
                </GridPane.margin>
             </Label>
-            <TextField fx:id="txtLeeftijd" editable="false" styleClass="border_collor" GridPane.columnIndex="3" GridPane.rowIndex="1">
+            <TextField fx:id="txtLeeftijd" editable="false" styleClass="border_collor" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <font>
                   <Font size="18.0" />
                </font>
             </TextField>
-            <Label fx:id="lblAantal" text="Aantal aanwezig" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+            <Label fx:id="lblAantal" text="Aantal aanwezig" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <font>
                   <Font size="24.0" />
                </font>
@@ -134,12 +133,20 @@
                   <Insets left="10.0" right="10.0" />
                </GridPane.margin>
             </Label>
-            <TextField fx:id="txtAantal" editable="false" styleClass="border_collor" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <TextField fx:id="txtAantal" editable="false" styleClass="border_collor" GridPane.columnIndex="3" GridPane.rowIndex="1">
                <font>
                   <Font size="18.0" />
                </font>
             </TextField>
-            <Label fx:id="lblBeschrijving" text="Beschrijving" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+            <Label fx:id="lblPagLen" text="Paginas/lengte" GridPane.columnIndex="2" GridPane.rowIndex="2">
+               <font>
+                  <Font size="24.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="10.0" right="10.0" />
+               </GridPane.margin>
+            </Label>
+            <Label fx:id="lblBeschrijving" text="Beschrijving" GridPane.rowIndex="3">
                <font>
                   <Font size="24.0" />
                </font>
@@ -155,6 +162,14 @@
                   <Insets bottom="5.0" top="5.0" />
                </GridPane.margin>
             </TextArea>
+            <TextField fx:id="txtPagLen" editable="false" prefWidth="75.0" styleClass="border_collor" GridPane.columnIndex="3" GridPane.rowIndex="2">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets right="5.0" />
+               </GridPane.margin>
+            </TextField>
          </children>
       </GridPane>
    </center>
