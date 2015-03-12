@@ -93,7 +93,7 @@ public class Zoeken extends BorderPane {
             cdList.add(connect.getAlleCds().get(i).getNaam());
         }
 
-        for (int i = 0; i < connect.getAlleBoeken().size(); i++) {
+        for (int i = 0; i < 5; i++) {
             boekList.add(connect.getAlleBoeken().get(i).getNaam());
         }
 

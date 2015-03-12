@@ -156,7 +156,7 @@
       </VBox>
    </left>
    <center>
-      <GridPane>
+      <GridPane styleClass="back">
          <columnConstraints>
             <ColumnConstraints hgrow="NEVER" maxWidth="-Infinity" minWidth="150.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" />
