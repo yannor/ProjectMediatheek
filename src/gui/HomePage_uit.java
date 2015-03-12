@@ -89,7 +89,7 @@ public class HomePage_uit extends Pane {
         double width= screenSize.getWidth();
         double height= screenSize.getHeight();
         Scene scene = new Scene(new gui.zoeken.Zoeken(false, ""));
-         stage.setScene(scene);
+        stage.setScene(scene);
         
         stage.setWidth(width);
         stage.setHeight(height);

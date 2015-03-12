@@ -175,9 +175,9 @@ public class DbConnect {
                 
                 String leeftijd = rs.getString("leeftijd");
                 int aantal = rs.getInt("aantal");
-                List<Lied> l= getLiedjes(id);
+               // List<Lied> l= getLiedjes(id);
 
-                cds.add(new Cd(id, naam, "", leeftijd, aantal, l));
+                cds.add(new Cd(id, naam, "", leeftijd, aantal, null));
             }
         } catch (Exception ex) {
             System.out.println("error " + ex);
