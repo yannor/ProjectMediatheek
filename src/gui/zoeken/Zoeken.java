@@ -283,6 +283,9 @@ public class Zoeken extends BorderPane {
                 txtAuteur.setText(boek.getAuteur());
                 txtPagLen.setText("" + boek.getPaginas());
                 lblPagLen.setText("Pagina's");
+                
+                
+                
 
             }
 
