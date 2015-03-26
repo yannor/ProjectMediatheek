@@ -20,16 +20,11 @@ import items.*;
 public class Zoeken extends BorderPane {
 
     @FXML
-    private Button btnBackHome, btnLeen;
-
+    private Button btnBackHome;
+    
     @FXML
-    private Label lblNaam, lblThema, lblLeeftijd, lblAantal, lblBeschrijving, lblAuteur, lblTableView, lblPagLen;
+    private TextField txtZoeken;
 
-    @FXML
-    private TextField txtZoeken, txtThema, txtLeeftijd, txtAantal, txtAuteur, txtPagLen;
-
-    @FXML
-    private TextArea txaBeschrijving;
 
     @FXML
     private TreeView<String> treeView;
@@ -101,8 +96,7 @@ public class Zoeken extends BorderPane {
         vulTreeView(boekList, cdList, testDvdList, testSpelList, testVertelList);
 
         itemRoot.getChildren().addAll(boekenRoot, cdRoot, dvdRoot, spellenRoot, vertelRoot);
-        btnLeen.setVisible(ingelogd);
-
+        
     }
 
     @FXML
@@ -113,7 +107,7 @@ public class Zoeken extends BorderPane {
             Stage stage = new Stage();
             Image applicationIcon = new Image("gui/afbeeldingen/logo_krekel.png");
             stage.getIcons().add(applicationIcon);
-            //stage.close();
+            stage.close();
             Stage dezeStage = (Stage) btnBackHome.getScene().getWindow();
             dezeStage.close();
             stage.setScene(scene);
@@ -127,7 +121,7 @@ public class Zoeken extends BorderPane {
         } else {
             Scene scene = new Scene(new HomePage_uit());
             Stage stage = new Stage();
-            //stage.close();
+            stage.close();
             Image applicationIcon = new Image("gui/afbeeldingen/logo_krekel.png");
             stage.getIcons().add(applicationIcon);
             Stage dezeStage = (Stage) btnBackHome.getScene().getWindow();
@@ -145,16 +139,7 @@ public class Zoeken extends BorderPane {
 
     public void vulTreeView(List listBoek, List listCd, List listDvd, List listSpel, List listVertel) {
 
-        basisVisibleZetten(false);
-        lblPagLen.setVisible(false);
-        txtPagLen.setVisible(false);
-        lblAuteur.setVisible(false);
-        txtAuteur.setVisible(false);
-        lblBeschrijving.setVisible(false);
-        txaBeschrijving.setVisible(false);
-        lblTableView.setVisible(false);
-        tableView.setVisible(false);
-
+       
         int lenB = listBoek.size();
 
         for (int i = 0; i < lenB; i++) {
@@ -246,16 +231,7 @@ public class Zoeken extends BorderPane {
         try {
             if (treeView.getSelectionModel().getSelectedItem().getParent().equals(itemRoot)) {
 
-                basisVisibleZetten(false);
-
-                lblPagLen.setVisible(false);
-                txtPagLen.setVisible(false);
-                lblAuteur.setVisible(false);
-                txtAuteur.setVisible(false);
-                lblBeschrijving.setVisible(false);
-                txaBeschrijving.setVisible(false);
-                lblTableView.setVisible(false);
-                tableView.setVisible(false);
+               //ander pane
             }
 
             if (treeView.getSelectionModel().getSelectedItem().getParent().equals(boekenRoot)) {
@@ -265,26 +241,7 @@ public class Zoeken extends BorderPane {
 
                 Boek boek = connect.getBoek(test);
 
-                basisVisibleZetten(true);
-
-                lblNaam.setText(boek.getNaam());
-
-                lblPagLen.setVisible(true);
-                txtPagLen.setVisible(true);
-                lblAuteur.setVisible(true);
-                txtAuteur.setVisible(true);
-                lblBeschrijving.setVisible(true);
-                txaBeschrijving.setVisible(true);
-                lblTableView.setVisible(false);
-                tableView.setVisible(false);
-
-                txtThema.setText(boek.getThema());
-                txtLeeftijd.setText(boek.getLeeftijd());
-                txtAantal.setText("" + boek.getAantal());
-                txaBeschrijving.setText(boek.getBeschrijving());
-                txtAuteur.setText(boek.getAuteur());
-                txtPagLen.setText("" + boek.getPaginas());
-                lblPagLen.setText("Pagina's");
+               //ander pane
                 
                 
                 
@@ -300,45 +257,9 @@ public class Zoeken extends BorderPane {
 
                 Cd cd = connect.getCd(test);
 
-                basisVisibleZetten(true);
+               
 
-                lblNaam.setText(cd.getNaam());
-
-                lblPagLen.setVisible(true);
-                txtPagLen.setVisible(true);
-                lblAuteur.setVisible(false);
-                txtAuteur.setVisible(false);
-                lblBeschrijving.setVisible(false);
-                txaBeschrijving.setVisible(false);
-                lblTableView.setVisible(true);
-                tableView.setVisible(true);
-
-                lblThema.setVisible(false);
-                txtThema.setVisible(false);
-
-                lblPagLen.setText("Lengte");
-
-                txtLeeftijd.setText(cd.getLeeftijd());
-                txtAantal.setText(cd.getAantal() + "");
-                txaBeschrijving.setText("");
-                txtAuteur.setText("");
-                int min=0;
-                int sec=0;
-                for(int i=0;i<connect.getLiedjes(cd.getId()).size();i++)
-                {
-                     min=min+connect.getLiedjes(cd.getId()).get(i).getMin();
-                     sec =sec +connect.getLiedjes(cd.getId()).get(i).getSec();
-                }
-                    
-                txtPagLen.setText(min+":"+sec);
-
-                lblTableView.setText("Liedjes");
-                lblTableView.setLayoutX(25);
-                lblTableView.setLayoutY(285);
-
-                tableView.setLayoutX(25);
-                tableView.setLayoutY(325);
-
+                //ander pane
             }
 
             if (treeView.getSelectionModel().getSelectedItem().getParent().equals(dvdRoot)) {
@@ -347,26 +268,9 @@ public class Zoeken extends BorderPane {
                 selected = treeView.getSelectionModel().getSelectedItem().toString();
                 selected = selected.substring(18, selected.length() - 2);
 
-                basisVisibleZetten(true);
+               
 
-                lblNaam.setText(selected);
-
-                lblPagLen.setVisible(true);
-                txtPagLen.setVisible(true);
-                lblAuteur.setVisible(false);
-                txtAuteur.setVisible(false);
-                lblBeschrijving.setVisible(true);
-                txaBeschrijving.setVisible(true);
-                lblTableView.setVisible(false);
-                tableView.setVisible(false);
-
-                lblPagLen.setText("Lengte");
-                txtThema.setText(selected);
-                txtLeeftijd.setText(selected);
-                txtAantal.setText(selected);
-                txaBeschrijving.setText(selected);
-                txtAuteur.setText(selected);
-                txtPagLen.setText(selected);
+              //ander pane
 
             }
 
@@ -376,26 +280,9 @@ public class Zoeken extends BorderPane {
                 selected = treeView.getSelectionModel().getSelectedItem().toString();
                 selected = selected.substring(18, selected.length() - 2);
 
-                basisVisibleZetten(true);
+              
 
-                lblNaam.setText(selected);
-
-                lblPagLen.setVisible(false);
-                txtPagLen.setVisible(false);
-                lblAuteur.setVisible(false);
-                txtAuteur.setVisible(false);
-                lblBeschrijving.setVisible(true);
-                txaBeschrijving.setVisible(true);
-                lblTableView.setVisible(false);
-                tableView.setVisible(false);
-
-                txtThema.setText(selected);
-                txtLeeftijd.setText(selected);
-                txtAantal.setText(selected);
-                txaBeschrijving.setText(selected);
-                txtAuteur.setText(selected);
-                txtPagLen.setText(selected);
-
+               //ander pane
             }
 
             if (treeView.getSelectionModel().getSelectedItem().getParent().equals(vertelRoot)) {
@@ -404,31 +291,9 @@ public class Zoeken extends BorderPane {
                 selected = treeView.getSelectionModel().getSelectedItem().toString();
                 selected = selected.substring(18, selected.length() - 2);
 
-                basisVisibleZetten(true);
+               
 
-                lblNaam.setText(selected);
-
-                lblPagLen.setVisible(false);
-                txtPagLen.setVisible(false);
-                lblAuteur.setVisible(false);
-                txtAuteur.setVisible(false);
-                lblBeschrijving.setVisible(true);
-                txaBeschrijving.setVisible(true);
-                lblTableView.setVisible(true);
-                tableView.setVisible(true);
-
-                txtThema.setText(selected);
-                txtLeeftijd.setText(selected);
-                txtAantal.setText(selected);
-                txaBeschrijving.setText(selected);
-                txtAuteur.setText(selected);
-                txtPagLen.setText(selected);
-
-                lblTableView.setLayoutX(400);
-                lblTableView.setLayoutY(285);
-                lblTableView.setText("Inhoud");
-                tableView.setLayoutX(400);
-                tableView.setLayoutY(325);
+                //ander pane
 
             }
         } catch (NullPointerException nu) {
@@ -439,17 +304,7 @@ public class Zoeken extends BorderPane {
 
     }
 
-    private void basisVisibleZetten(boolean visible) {
-
-        lblNaam.setVisible(visible);
-        lblAantal.setVisible(visible);
-        txtAantal.setVisible(visible);
-        lblLeeftijd.setVisible(visible);
-        txtLeeftijd.setVisible(visible);
-        lblThema.setVisible(visible);
-        txtThema.setVisible(visible);
-    }
-
+   
     @FXML
     public void search() {
 
