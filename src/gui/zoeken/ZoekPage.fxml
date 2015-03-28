@@ -11,12 +11,6 @@
 <?import javafx.scene.layout.*?>
 
 <fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="546.0" prefWidth="273.0" stylesheets="@../css.css" type="BorderPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-   <center>
-      <Pane opacity="0.6" prefHeight="200.0" prefWidth="200.0" styleClass="back" BorderPane.alignment="CENTER">
-         <children>
-            <Pane layoutX="-13.0" layoutY="93.0" prefHeight="200.0" prefWidth="200.0" />
-         </children></Pane>
-   </center>
    <top>
       <HBox layoutY="-11.0" maxHeight="75.0" minHeight="75.0" opacity="0.8" prefHeight="75.0" styleClass="back_topZoek">
          <children>

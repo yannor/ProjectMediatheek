@@ -9,6 +9,11 @@ public class Cd extends Item {
     private List<Lied> liedjes;
     private DbConnect connect= new DbConnect();
 
+    public Cd(int id, String naam, String thema, String leeftijd, int aantal)
+    {
+        super(id, naam, thema, leeftijd, aantal);
+    }
+
     public Cd(int id, String naam, String thema, String leeftijd, int aantal, List<Lied> liedjes) {
         super(id, naam, thema, leeftijd, aantal);
         this.liedjes=liedjes;   
