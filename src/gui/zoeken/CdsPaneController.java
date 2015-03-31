@@ -68,7 +68,7 @@ public class CdsPaneController extends AnchorPane
 
     public CdsPaneController(Cd cd)
     {
-        this.cd = cd;
+        this.cd = db.getCd(cd.getId());
         
         FXMLLoader loader = new FXMLLoader(getClass().getResource("CdsPane.fxml"));
         loader.setRoot(this);

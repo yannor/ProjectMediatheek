@@ -90,7 +90,7 @@ public class Zoeken extends BorderPane
         for (int i = 0; i < alleCds.size(); i++) 
         {
             cdList.add(alleCds.get(i).getNaam());
-            cdMap.put(alleCds.get(i).getId(), connect.getAlleCds().get(i).getNaam());
+            cdMap.put(alleCds.get(i).getId(), alleCds.get(i).getNaam());
         }
         
         vulTreeView(boekMap, cdMap, dvdMap, spelMap, vertelMap);
@@ -269,7 +269,7 @@ public class Zoeken extends BorderPane
             if (treeView.getSelectionModel().getSelectedItem().getParent().equals(cdRoot)) 
             {
                 int selectedId = keys.get(treeView.getSelectionModel().getSelectedIndex() - 2);
-                Cd cd = connect.getCd(selectedId);
+                Cd cd = connect.getCd(1);
                 //ander pane
                 setCenter(null);
                 setCenter(new CdsPaneController(cd));
