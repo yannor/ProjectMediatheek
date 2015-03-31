@@ -61,7 +61,7 @@ public class BoekenPaneController extends AnchorPane
     
     private Boek boek;
     
-    public BoekenPaneController(Boek boek)
+    public BoekenPaneController(Boek boek, boolean ingelogd)
     {
         this.boek = boek;
         

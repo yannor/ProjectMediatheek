@@ -10,6 +10,7 @@ import items.Cd;
 import items.Lied;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -65,10 +66,12 @@ public class CdsPaneController extends AnchorPane
     
     private Cd cd;
     private DbConnect db;
+    private boolean ingelogd;
 
-    public CdsPaneController(Cd cd)
+    public CdsPaneController(Cd cd, boolean ingelogd)
     {
-        this.cd = db.getCd(cd.getId());
+        this.cd = cd;
+        this.ingelogd = ingelogd;
         
         FXMLLoader loader = new FXMLLoader(getClass().getResource("CdsPane.fxml"));
         loader.setRoot(this);
@@ -82,20 +85,25 @@ public class CdsPaneController extends AnchorPane
         {
             ex.printStackTrace();
         }
-        System.out.println(cd.getId());
         
         vulGegevensIn();
     }
     
     private void vulGegevensIn()
     {
+        if(!ingelogd)
+        {
+            btnLeen.setDisable(true);
+            btnLeen.setVisible(false);
+        }
         lblNaam.setText(cd.getNaam());
         
         txtThema.setText(cd.getThema());
         txtLeeftijd.setText(cd.getLeeftijd());
         txtAantal.setText("" + cd.getAantal());
         
-        ObservableList<Lied> liedjes = FXCollections.observableArrayList(db.getLiedjes(cd.getId()));
+        // db.getLiedjes(cd.getId()) werkt niet
+        ObservableList<Lied> liedjes = FXCollections.observableArrayList(new ArrayList<Lied>());
         
         colSoortZanger.setCellValueFactory(new PropertyValueFactory<Lied, String>("zanger"));
         colAantalLengte.setCellValueFactory(new PropertyValueFactory<Lied, String>("aantal"));

@@ -14,8 +14,4 @@ public class Spel extends Item{
     public Spel(int id, String naam, String thema, String leeftijd, int aantal) {
         super(id, naam, thema, leeftijd, aantal);
     }
-    
-    
-    
-    
 }

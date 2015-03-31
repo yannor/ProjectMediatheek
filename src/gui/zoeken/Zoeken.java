@@ -32,9 +32,9 @@ public class Zoeken extends BorderPane
     private DbConnect connect = new DbConnect();
 
     private List<String> cdList = new ArrayList<>();
-    private List<String> testDvdList = new ArrayList<>();
-    private List<String> testSpelList = new ArrayList<>();
-    private List<String> testVertelList = new ArrayList<>();
+    private List<String> dvdList = new ArrayList<>();
+    private List<String> spelList = new ArrayList<>();
+    private List<String> vertelList = new ArrayList<>();
     private List<String> boekList = new ArrayList<>();
     
     private List<Integer> keys = new ArrayList<>();
@@ -69,15 +69,6 @@ public class Zoeken extends BorderPane
         dvdRoot = new TreeItem<>("Dvd's");
         spellenRoot = new TreeItem<>("Gezelschapsspellen");
         vertelRoot = new TreeItem<>("Verteltassen");
-
-        testDvdList.add("300");
-        testDvdList.add("Avengers");
-
-        testSpelList.add("Wie is het");
-        testSpelList.add("Monopoly");
-
-        testVertelList.add("Pesten");
-        testVertelList.add("vertrouwen");
         
         List<Boek> alleBoeken = connect.getAlleBoeken();
         for (int i = 0; i < alleBoeken.size(); i++) 
@@ -91,6 +82,27 @@ public class Zoeken extends BorderPane
         {
             cdList.add(alleCds.get(i).getNaam());
             cdMap.put(alleCds.get(i).getId(), alleCds.get(i).getNaam());
+        }
+        
+        List<Dvd> alleDvds = connect.getAlleDvds();
+        for (int i = 0; i < alleDvds.size(); i++) 
+        {
+            dvdList.add(alleDvds.get(i).getNaam());
+            dvdMap.put(alleDvds.get(i).getId(), alleDvds.get(i).getNaam());
+        }
+        
+        List<Spel> alleSpellen = connect.getAlleSpelen();
+        for (int i = 0; i < alleSpellen.size(); i++) 
+        {
+            spelList.add(alleSpellen.get(i).getNaam());
+            spelMap.put(alleSpellen.get(i).getId(), alleSpellen.get(i).getNaam());
+        }
+        
+        List<Verteltas> alleVerteltassen = connect.getAlleVerteltassen();
+        for (int i = 0; i < alleVerteltassen.size(); i++) 
+        {
+            vertelList.add(alleVerteltassen.get(i).getNaam());
+            vertelMap.put(alleVerteltassen.get(i).getId(), alleVerteltassen.get(i).getNaam());
         }
         
         vulTreeView(boekMap, cdMap, dvdMap, spelMap, vertelMap);
@@ -118,7 +130,6 @@ public class Zoeken extends BorderPane
                 stage.setMinHeight(scene.getHeight());
             });
             stage.show();
-
         } 
         else 
         {
@@ -259,38 +270,52 @@ public class Zoeken extends BorderPane
             if (treeView.getSelectionModel().getSelectedItem().getParent().equals(boekenRoot))
             {
                 int selectedId = keys.get(treeView.getSelectionModel().getSelectedIndex() - 1);
+                System.out.println("Selected id: " + selectedId);
                 Boek boek = connect.getBoek(selectedId);
 
                 //ander pane
                 setCenter(null);
-                setCenter(new BoekenPaneController(boek));
+                setCenter(new BoekenPaneController(boek, ingelogd));
             }
 
             if (treeView.getSelectionModel().getSelectedItem().getParent().equals(cdRoot)) 
             {
                 int selectedId = keys.get(treeView.getSelectionModel().getSelectedIndex() - 2);
-                Cd cd = connect.getCd(1);
+                System.out.println("Selected id: " + selectedId);
+                Cd cd = connect.getCd(selectedId);
                 //ander pane
                 setCenter(null);
-                setCenter(new CdsPaneController(cd));
+                setCenter(new CdsPaneController(cd, ingelogd));
             }
 
             if (treeView.getSelectionModel().getSelectedItem().getParent().equals(dvdRoot)) 
             {
                 int selectedId = keys.get(treeView.getSelectionModel().getSelectedIndex() - 3);
-                //ander pane
+                System.out.println("Selected id: " + selectedId);
+                Dvd dvd = connect.getDvd(selectedId);
+                
+                setCenter(null);
+                setCenter(new DvdsPaneController(dvd, ingelogd));
             }
 
             if (treeView.getSelectionModel().getSelectedItem().getParent().equals(spellenRoot)) {
 
                 int selectedId = keys.get(treeView.getSelectionModel().getSelectedIndex() - 4);
-                //ander pane
+                System.out.println("Selected id: " + selectedId);
+                Spel spel = connect.getSpel(selectedId);
+                
+                setCenter(null);
+                setCenter(new SpellenPaneController(spel, ingelogd));
             }
 
             if (treeView.getSelectionModel().getSelectedItem().getParent().equals(vertelRoot)) {
 
                 int selectedId = keys.get(treeView.getSelectionModel().getSelectedIndex() - 5);
-                //ander pane
+                System.out.println("Selected id: " + selectedId);
+                Verteltas verteltas = connect.getVerteltas(selectedId);
+                
+                setCenter(null);
+                setCenter(new VerteltassenPaneController(verteltas, ingelogd));
             }
         } 
         catch (Exception ex) 

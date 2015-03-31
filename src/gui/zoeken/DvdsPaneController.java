@@ -5,21 +5,25 @@
  */
 package gui.zoeken;
 
+import items.Dvd;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 
 /**
  * FXML Controller class
  *
  * @author Robin
  */
-public class DvdsPaneController implements Initializable
+public class DvdsPaneController extends AnchorPane
 {
     @FXML
     private Button btnLeen;
@@ -46,13 +50,43 @@ public class DvdsPaneController implements Initializable
     @FXML
     private TextField txtPagLen;
 
-    /**
-     * Initializes the controller class.
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb)
+    private Dvd dvd;
+    private boolean ingelogd;
+    
+    public DvdsPaneController(Dvd dvd, boolean ingelogd)
     {
-        // TODO
-    }    
+        this.dvd = dvd;
+        
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("DvdsPane.fxml"));
+        loader.setRoot(this);
+        loader.setController(this);
+
+        try 
+        {
+            loader.load();
+        } 
+        catch (IOException ex) 
+        {
+            ex.printStackTrace();
+        }
+        
+        vulGegevensIn();
+    }
+
+    private void vulGegevensIn()
+    {
+        if(!ingelogd)
+        {
+            btnLeen.setDisable(true);
+        }
+        
+        lblNaam.setText(dvd.getNaam());
+        
+        txtThema.setText(dvd.getThema());
+        txtLeeftijd.setText(dvd.getLeeftijd());
+        txtAantal.setText("" + dvd.getAantal());
+        txtPagLen.setText("" + dvd.getMin());
+    }
+    
     
 }
