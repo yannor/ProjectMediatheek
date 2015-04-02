@@ -13,9 +13,9 @@ import java.util.*;
 import gui.HomePage;
 import gui.HomePage_uit;
 import items.*;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 
-// cd en boeken werken via db, de rest nog niet.
-//bij cd wordt de tableview nog niet gevuld met de liedjes
 public class Zoeken extends BorderPane 
 {
     @FXML private Button btnBackHome;
@@ -104,6 +104,15 @@ public class Zoeken extends BorderPane
             vertelList.add(alleVerteltassen.get(i).getNaam());
             vertelMap.put(alleVerteltassen.get(i).getId(), alleVerteltassen.get(i).getNaam());
         }
+        
+        treeView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<TreeItem<String>>() 
+        {
+            @Override
+            public void changed(ObservableValue<? extends TreeItem<String>> observable, TreeItem<String> oud, TreeItem<String> nieuw) 
+            {
+                select();
+            }
+        });
         
         vulTreeView(boekMap, cdMap, dvdMap, spelMap, vertelMap);
 
@@ -263,14 +272,15 @@ public class Zoeken extends BorderPane
     {
         try
         {
-            if (treeView.getSelectionModel().getSelectedItem().getParent().equals(itemRoot))
-            {
-            }
+//            if (treeView.getSelectionModel().getSelectedItem().getParent().equals(itemRoot))
+//            {
+//            }
 
             if (treeView.getSelectionModel().getSelectedItem().getParent().equals(boekenRoot))
             {
                 int selectedId = keys.get(treeView.getSelectionModel().getSelectedIndex() - 1);
                 System.out.println("Selected id: " + selectedId);
+                System.out.println("Selected index: " + (treeView.getSelectionModel().getSelectedIndex() - 1));
                 Boek boek = connect.getBoek(selectedId);
 
                 //ander pane
@@ -280,8 +290,15 @@ public class Zoeken extends BorderPane
 
             if (treeView.getSelectionModel().getSelectedItem().getParent().equals(cdRoot)) 
             {
-                int selectedId = keys.get(treeView.getSelectionModel().getSelectedIndex() - 2);
+                int i = 0;
+                if(!boekenRoot.isExpanded())
+                {
+                    i += boekenRoot.getChildren().size();
+                }
+                int selectedId = keys.get(treeView.getSelectionModel().getSelectedIndex() - 2 + i);
                 System.out.println("Selected id: " + selectedId);
+                System.out.println("Selected index: " + (treeView.getSelectionModel().getSelectedIndex() - 2 + i));
+                i = 0;
                 Cd cd = connect.getCd(selectedId);
                 //ander pane
                 setCenter(null);
@@ -290,28 +307,74 @@ public class Zoeken extends BorderPane
 
             if (treeView.getSelectionModel().getSelectedItem().getParent().equals(dvdRoot)) 
             {
-                int selectedId = keys.get(treeView.getSelectionModel().getSelectedIndex() - 3);
+                int i = 0;
+                if(!boekenRoot.isExpanded())
+                {
+                    i += boekenRoot.getChildren().size();
+                }
+                if(!cdRoot.isExpanded())
+                {
+                    i += cdRoot.getChildren().size();
+                }
+                int selectedId = keys.get(treeView.getSelectionModel().getSelectedIndex() - 3 + i);
+                
                 System.out.println("Selected id: " + selectedId);
+                System.out.println("Selected index: " + (treeView.getSelectionModel().getSelectedIndex() - 3 + i));
                 Dvd dvd = connect.getDvd(selectedId);
                 
                 setCenter(null);
                 setCenter(new DvdsPaneController(dvd, ingelogd));
             }
 
-            if (treeView.getSelectionModel().getSelectedItem().getParent().equals(spellenRoot)) {
-
-                int selectedId = keys.get(treeView.getSelectionModel().getSelectedIndex() - 4);
+            if (treeView.getSelectionModel().getSelectedItem().getParent().equals(spellenRoot)) 
+            {
+                int i = 0;
+                if(!boekenRoot.isExpanded())
+                {
+                    i += boekenRoot.getChildren().size();
+                }
+                if(!cdRoot.isExpanded())
+                {
+                    i += cdRoot.getChildren().size();
+                }
+                if(!dvdRoot.isExpanded())
+                {
+                    i += dvdRoot.getChildren().size();
+                }
+                int selectedId = keys.get(treeView.getSelectionModel().getSelectedIndex() - 4 + i);
+                
                 System.out.println("Selected id: " + selectedId);
+                System.out.println("Selected index: " + (treeView.getSelectionModel().getSelectedIndex() - 4 + i));
                 Spel spel = connect.getSpel(selectedId);
                 
                 setCenter(null);
                 setCenter(new SpellenPaneController(spel, ingelogd));
             }
 
-            if (treeView.getSelectionModel().getSelectedItem().getParent().equals(vertelRoot)) {
+            if (treeView.getSelectionModel().getSelectedItem().getParent().equals(vertelRoot)) 
+            {
+                int i = 0;
+                if(!boekenRoot.isExpanded())
+                {
+                    i += boekenRoot.getChildren().size();
+                }
+                if(!cdRoot.isExpanded())
+                {
+                    i += cdRoot.getChildren().size();
+                }
+                if(!dvdRoot.isExpanded())
+                {
+                    i += dvdRoot.getChildren().size();
+                }
+                if(!spellenRoot.isExpanded())
+                {
+                    i += spellenRoot.getChildren().size();
+                }
 
-                int selectedId = keys.get(treeView.getSelectionModel().getSelectedIndex() - 5);
+                int selectedId = keys.get(treeView.getSelectionModel().getSelectedIndex() - 5 + i);
+                
                 System.out.println("Selected id: " + selectedId);
+                System.out.println("Selected index: " + (treeView.getSelectionModel().getSelectedIndex() - 5 + i));
                 Verteltas verteltas = connect.getVerteltas(selectedId);
                 
                 setCenter(null);

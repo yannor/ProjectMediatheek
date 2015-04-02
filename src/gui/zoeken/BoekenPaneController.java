@@ -60,10 +60,12 @@ public class BoekenPaneController extends AnchorPane
     private TextField txtPagLen;
     
     private Boek boek;
+    private boolean ingelogd;
     
     public BoekenPaneController(Boek boek, boolean ingelogd)
     {
         this.boek = boek;
+        this.ingelogd = ingelogd;
         
         FXMLLoader loader = new FXMLLoader(getClass().getResource("BoekenPane.fxml"));
         loader.setRoot(this);
@@ -83,6 +85,11 @@ public class BoekenPaneController extends AnchorPane
     
     private void vulGegevensIn()
     {
+        if(!ingelogd)
+        {
+            btnLeen.setDisable(true);
+            btnLeen.setVisible(false);
+        }
         lblNaam.setText(boek.getNaam());
 
         txtThema.setText(boek.getThema());

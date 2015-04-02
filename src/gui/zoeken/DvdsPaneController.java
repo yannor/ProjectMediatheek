@@ -78,6 +78,7 @@ public class DvdsPaneController extends AnchorPane
         if(!ingelogd)
         {
             btnLeen.setDisable(true);
+            btnLeen.setVisible(false);
         }
         
         lblNaam.setText(dvd.getNaam());

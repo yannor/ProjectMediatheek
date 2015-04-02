@@ -67,6 +67,7 @@ public class HomePage extends Pane {
 
         Scene scene = new Scene(new gui.zoeken.Zoeken(true, gebruikersNaam));
         stage.setScene(scene);
+        stage.setMaximized(true);
         stage.setTitle("Zoeken");
 
         stage.show();
