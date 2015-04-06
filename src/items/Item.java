@@ -10,8 +10,9 @@ public class Item {
     private String leeftijd;
     private int aantal;
     private boolean beschadigd;
+    private String beschrijving;
 
-    public Item( int id, String naam, String thema, String leeftijd, int aantal ) {
+    public Item(int id, String naam, String thema, String beschrijving, String leeftijd, int aantal ) {
         
         this.id = id;
         this.naam = naam;
@@ -19,6 +20,7 @@ public class Item {
         this.leeftijd = leeftijd;
         this.aantal = aantal;
         this.beschadigd=false;
+        this.beschrijving = beschrijving;
     }
 
 
@@ -69,10 +71,14 @@ public class Item {
     public void setId(int id) {
         this.id = id;
     }
-    
-    
-    
 
-    
-    
+    public String getBeschrijving()
+    {
+        return beschrijving;
+    }
+
+    public void setBeschrijving(String beschrijving)
+    {
+        this.beschrijving = beschrijving;
+    }
 }

@@ -7,7 +7,6 @@ package gui.zoeken;
 
 import db.DbConnect;
 import items.Cd;
-import items.Lied;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -21,6 +20,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
@@ -63,10 +63,14 @@ public class CdsPaneController extends AnchorPane
     private TableColumn colNaam;
     @FXML
     private TextField txtPagLen;
+    @FXML
+    private TextArea txaBeschrijving;
     
     private Cd cd;
     private DbConnect db;
     private boolean ingelogd;
+    @FXML
+    private AnchorPane AnchorPane;
 
     public CdsPaneController(Cd cd, boolean ingelogd)
     {
@@ -101,15 +105,6 @@ public class CdsPaneController extends AnchorPane
         txtThema.setText(cd.getThema());
         txtLeeftijd.setText(cd.getLeeftijd());
         txtAantal.setText("" + cd.getAantal());
-        
-        // db.getLiedjes(cd.getId()) werkt niet
-        ObservableList<Lied> liedjes = FXCollections.observableArrayList(new ArrayList<Lied>());
-        
-        colSoortZanger.setCellValueFactory(new PropertyValueFactory<Lied, String>("zanger"));
-        colAantalLengte.setCellValueFactory(new PropertyValueFactory<Lied, String>("aantal"));
-        colNaam.setCellValueFactory(new PropertyValueFactory<Lied, String>("naam"));
-        
-        tableView.setItems(liedjes);
-        tableView.getColumns().addAll(colSoortZanger, colAantalLengte, colNaam);
+        txaBeschrijving.setText(cd.getBeschrijving());
     }
 }

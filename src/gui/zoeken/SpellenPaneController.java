@@ -45,9 +45,13 @@ public class SpellenPaneController extends AnchorPane
     private Label lblBeschrijving;
     @FXML
     private TextArea txaBeschrijving;
+    @FXML
+    private TextField txtUitgeverij;
 
     private Spel spel;
     private boolean ingelogd;
+    @FXML
+    private AnchorPane AnchorPane;
     
     public SpellenPaneController(Spel spel, boolean ingelogd)
     {
@@ -82,5 +86,7 @@ public class SpellenPaneController extends AnchorPane
         txtThema.setText(spel.getThema());
         txtLeeftijd.setText(spel.getLeeftijd());
         txtAantal.setText("" + spel.getAantal());
+        txtUitgeverij.setText(spel.getUitgeverij());
+        txaBeschrijving.setText(spel.getBeschrijving());
     }
 }

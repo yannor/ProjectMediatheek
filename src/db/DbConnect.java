@@ -3,7 +3,6 @@ package db;
 import items.Boek;
 import items.Cd;
 import items.Dvd;
-import items.Lied;
 import items.Spel;
 import items.Verteltas;
 import java.sql.Connection;
@@ -49,9 +48,9 @@ public class DbConnect {
             int aantal = rs.getInt("aantal");
             String beschrijving = rs.getString("beschrijving");
             String auteur = rs.getString("auteur");
-            int paginas = rs.getInt("paginas");
+            String uitgeverij = rs.getString("uitgeverij");
 
-            boek = new Boek(id, naam, thema, leeftijd, aantal, beschrijving, auteur, paginas);
+            boek = new Boek(id, naam, thema, beschrijving, leeftijd, aantal, auteur, uitgeverij);
         } catch (Exception ex) {
             System.out.println("error " + ex);
         }
@@ -94,13 +93,13 @@ public class DbConnect {
                 int id = rs.getInt("boekId");
                 String naam = rs.getString("naam");
                 String thema = rs.getString("thema");
+                String beschrijving = rs.getString("beschrijving");
                 String leeftijd = rs.getString("leeftijd");
                 int aantal = rs.getInt("aantal");
-                String beschrijving = rs.getString("beschrijving");
                 String auteur = rs.getString("auteur");
-                int paginas = rs.getInt("paginas");
+                String uitgeverij = rs.getString("uitgeverij");
 
-                boeken.add(new Boek(id, naam, thema, leeftijd, aantal, beschrijving, auteur, paginas));
+                boeken.add(new Boek(id, naam, thema, beschrijving, leeftijd, aantal, auteur, uitgeverij));
             }
         } catch (Exception ex) {
             System.out.println("error " + ex);
@@ -141,13 +140,13 @@ public class DbConnect {
 
             rs.next();
 
-              
                 String naam = rs.getString("naam");
-               
+                String thema = rs.getString("thema");
                 String leeftijd = rs.getString("leeftijd");
                 int aantal = rs.getInt("aantal");
+                String beschrijving = rs.getString("beschrijving");
 
-                cd = new Cd(id, naam, "", leeftijd, aantal, getLiedjes(id));
+                cd = new Cd(id, naam, thema, beschrijving, leeftijd, aantal);
         } catch (Exception ex) {
             System.out.println("error " + ex);
         }
@@ -168,12 +167,12 @@ public class DbConnect {
 
                 int id = rs.getInt("cdId");
                 String naam = rs.getString("naam");
-                
+                String thema = rs.getString("thema");
+                String beschrijving = rs.getString("beschrijving");
                 String leeftijd = rs.getString("leeftijd");
                 int aantal = rs.getInt("aantal");
-                //List<Lied> l= getLiedjes(id);
-
-                cds.add(new Cd(id, naam, "", leeftijd, aantal, null));
+                
+                cds.add(new Cd(id, naam, thema, beschrijving, leeftijd, aantal));
             }
         } catch (Exception ex) {
             System.out.println("error " + ex);
@@ -183,10 +182,10 @@ public class DbConnect {
         return cds;
     }
     
-    public void addNieuweCd(int id, String naam, String thema, String leeftijd, int aantal, List<Lied> liedjes){
+    public void addNieuweCd(int id, String naam, String thema, String beschrijving, String leeftijd, int aantal){
         try{
             
-            String query = "INSERT INTO cd VALUES(" + id + ","+ naam + ","+ thema + "," + leeftijd + "," + aantal + "," + liedjes + ")";
+            String query = "INSERT INTO cd VALUES(" + id + ","+ naam + "," + leeftijd  + ","+ aantal + ","+ thema + ","   + beschrijving + ")";
             st.executeQuery(query);
             
         } catch(Exception ex){
@@ -201,33 +200,6 @@ public class DbConnect {
         }catch(Exception ex){
             System.out.println("error " + ex);
         }
-    }
-
-    public List<Lied> getLiedjes(int cdId) {
-        List<Lied> liedjes = new ArrayList<>();
-        // Boek boek;
-
-        try {
-
-            String query = "SELECT * FROM liedjes WHERE cdId="+cdId;
-            rs = st.executeQuery(query);
-
-            while (rs.next()) {
-     
-                String naam = rs.getString("naam");
-                String zanger = rs.getString("zanger");
-             
-                int min = rs.getInt("min");
-                int sec = rs.getInt("sec");
-
-                liedjes.add(new Lied(naam, zanger, min, sec));
-            }
-        } catch (Exception ex) {
-            System.out.println("error " + ex);
-            
-        }
-
-        return liedjes;
     }
     
     public Dvd getDvd(int id) {
@@ -245,12 +217,12 @@ public class DbConnect {
 
             String naam = rs.getString("naam");
             String thema = rs.getString("thema");
+            String beschrijving = rs.getString("beschrijving");
             String leeftijd = rs.getString("leeftijd");
             int aantal = rs.getInt("aantal");
-            int min = rs.getInt("min");
             
 
-            dvd = new Dvd(id, naam, thema, leeftijd, aantal, min);
+            dvd = new Dvd(id, naam, thema, beschrijving, leeftijd, aantal);
         } catch (Exception ex) {
             System.out.println("error " + ex);
         }
@@ -272,11 +244,11 @@ public class DbConnect {
                 int id = rs.getInt("dvdId");
                 String naam = rs.getString("naam");
                 String thema = rs.getString("thema");
+                String beschrijving = rs.getString("beschrijving");
                 String leeftijd = rs.getString("leeftijd");
                 int aantal = rs.getInt("aantal");
-                int min = rs.getInt("min");
 
-                dvds.add(new Dvd(id, naam, thema, leeftijd, aantal, min));
+                dvds.add(new Dvd(id, naam, thema, beschrijving, leeftijd, aantal));
             }
         } catch (Exception ex) {
             System.out.println("error " + ex);
@@ -286,10 +258,10 @@ public class DbConnect {
         return dvds;
     }
     
-    public void addNieuwDvds(int id, String naam, String thema, String leeftijd, int aantal, int min){
+    public void addNieuwDvds(int id, String naam, String thema, String leeftijd, int aantal, String beschrijving){
         try{
             
-            String query = "INSERT INTO dvd VALUES(" + id + ","+ naam + ","+ thema + "," + leeftijd + "," + aantal + "," + min + ")";
+            String query = "INSERT INTO dvd VALUES(" + id + ","+ naam + ","+ thema + "," + leeftijd + "," + aantal + "," + beschrijving + ")";
             st.executeQuery(query);
             
         } catch(Exception ex){
@@ -316,13 +288,15 @@ public class DbConnect {
 
             rs.next();
 
-            String naam = rs.getString("naam");
-            String thema = rs.getString("thema");
-            String leeftijd = rs.getString("leeftijd");
-            int aantal = rs.getInt("aantal");
+                String naam = rs.getString("naam");
+                String thema = rs.getString("thema");
+                String beschrijving = rs.getString("beschrijving");
+                String leeftijd = rs.getString("leeftijd");
+                int aantal = rs.getInt("aantal");
+                String uitgeverij = rs.getString("uitgeverij");
             
 
-            spel = new Spel(id, naam, thema, leeftijd, aantal);
+            spel = new Spel(id, naam, thema, beschrijving, leeftijd, aantal, uitgeverij);
         } catch (Exception ex) {
             System.out.println("error " + ex);
         }
@@ -344,11 +318,13 @@ public class DbConnect {
                 int id = rs.getInt("spelId");
                 String naam = rs.getString("naam");
                 String thema = rs.getString("thema");
+                String beschrijving = rs.getString("beschrijving");
                 String leeftijd = rs.getString("leeftijd");
                 int aantal = rs.getInt("aantal");
+                String uitgeverij = rs.getString("uitgeverij");
                 
 
-                spelen.add(new Spel(id, naam, thema, leeftijd, aantal));
+                spelen.add(new Spel(id, naam, thema, beschrijving, leeftijd, aantal, uitgeverij));
             }
         } catch (Exception ex) {
             System.out.println("error " + ex);
@@ -385,15 +361,15 @@ public class DbConnect {
             String query = "SELECT * FROM verteltas WHERE vertelId=" + id;
             rs = st.executeQuery(query);
 
-            rs.next();
-            //int id, String naam, String thema, String leeftijd, int aantal, List<Item> items
-            String naam = rs.getString("naam");
-            String thema = rs.getString("thema");
-            String leeftijd = rs.getString("leeftijd");
-            int aantal = rs.getInt("aantal");
-            
+                rs.next();
+                String naam = rs.getString("naam");
+                String thema = rs.getString("thema");
+                String beschrijving = rs.getString("beschrijving");
+                String leeftijd = rs.getString("leeftijd");
+                int aantal = rs.getInt("aantal");
+                
 
-            verteltas = new Verteltas(id, naam, thema, leeftijd, aantal, null);
+                verteltas = new Verteltas(id, naam, thema, beschrijving, leeftijd, aantal, null);
         } catch (Exception ex) {
             System.out.println("error " + ex);
         }
@@ -414,11 +390,12 @@ public class DbConnect {
                 int id = rs.getInt("vertelId");
                 String naam = rs.getString("naam");
                 String thema = rs.getString("thema");
+                String beschrijving = rs.getString("beschrijving");
                 String leeftijd = rs.getString("leeftijd");
                 int aantal = rs.getInt("aantal");
                 
 
-                verteltassen.add(new Verteltas(id, naam, thema, leeftijd, aantal, null));
+                verteltassen.add(new Verteltas(id, naam, thema, beschrijving, leeftijd, aantal, null));
             }
         } catch (Exception ex) {
             System.out.println("error " + ex);

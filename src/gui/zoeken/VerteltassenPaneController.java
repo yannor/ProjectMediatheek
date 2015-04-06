@@ -56,7 +56,7 @@ public class VerteltassenPaneController extends AnchorPane
         this.ingelogd = ingelogd;
         this.verteltas = verteltas;
         
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("SpellenPane.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("VerteltassenPane.fxml"));
         loader.setRoot(this);
         loader.setController(this);
 
@@ -84,5 +84,6 @@ public class VerteltassenPaneController extends AnchorPane
         txtThema.setText(verteltas.getThema());
         txtLeeftijd.setText(verteltas.getLeeftijd());
         txtAantal.setText("" + verteltas.getAantal());
+        txaBeschrijving.setText(verteltas.getBeschrijving());
     }
 }

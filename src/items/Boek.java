@@ -4,24 +4,15 @@ public class Boek extends Item{
     
     private String beschrijving;
     private String auteur;
-    private int paginas;
+    private String uitgeverij;
 
     
     
-    public Boek( int boekId, String naam, String thema, String leeftijd, int aantal, 
-            String beschrijving, String auteur, int paginas) {
-        super(boekId, naam, thema, leeftijd,aantal);
-        this.beschrijving= beschrijving;
+    public Boek(int boekId, String naam, String thema, String beschrijving, String leeftijd, int aantal, String auteur, String uitgeverij) 
+    {
+        super(boekId, naam, thema, beschrijving, leeftijd, aantal);
         this.auteur=auteur;
-        this.paginas=paginas;
-    }
-
-    public String getBeschrijving() {
-        return beschrijving;
-    }
-
-    public void setBeschrijving(String beschrijving) {
-        this.beschrijving = beschrijving;
+        this.uitgeverij = uitgeverij;
     }
 
     public String getAuteur() {
@@ -32,13 +23,13 @@ public class Boek extends Item{
         this.auteur = auteur;
     }
 
-    public int getPaginas() {
-        return paginas;
+    public String getUitgeverij()
+    {
+        return uitgeverij;
     }
 
-    public void setPaginas(int paginas) {
-        this.paginas = paginas;
+    public void setUitgeverij(String uitgeverij)
+    {
+        this.uitgeverij = uitgeverij;
     }
-
-    
 }

@@ -13,16 +13,29 @@ import java.util.List;
 public class Verteltas extends Item{
     private List<Item> items = new ArrayList<>();
 
-    public Verteltas(int id, String naam, String thema, String leeftijd, int aantal, List<Item> items) {
-        super(id, naam, thema, leeftijd, aantal);
+    public Verteltas(int id, String naam, String thema, String beschrijving, String leeftijd, int aantal, List<Item> items) 
+    {
+        super(id, naam, thema, beschrijving, leeftijd, aantal);
         this.items=items;
     }
+
+    public List<Item> getItems()
+    {
+        return items;
+    }
+
+    public void setItems(List<Item> items)
+    {
+        this.items = items;
+    }
     
-    public void voegItemToe(Item item){
+    public void voegItemToe(Item item)
+    {
         items.add(item);
     }
     
-    public void verwijderItem(Item item){
+    public void verwijderItem(Item item)
+    {
         items.remove(item);
     }
 }

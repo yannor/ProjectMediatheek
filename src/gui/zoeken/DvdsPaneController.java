@@ -86,7 +86,7 @@ public class DvdsPaneController extends AnchorPane
         txtThema.setText(dvd.getThema());
         txtLeeftijd.setText(dvd.getLeeftijd());
         txtAantal.setText("" + dvd.getAantal());
-        txtPagLen.setText("" + dvd.getMin());
+        txaBeschrijving.setText(dvd.getBeschrijving());
     }
     
     

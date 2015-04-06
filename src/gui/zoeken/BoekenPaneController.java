@@ -61,6 +61,10 @@ public class BoekenPaneController extends AnchorPane
     
     private Boek boek;
     private boolean ingelogd;
+    @FXML
+    private AnchorPane AnchorPane;
+    @FXML
+    private TextField txtUitgeverij;
     
     public BoekenPaneController(Boek boek, boolean ingelogd)
     {
@@ -97,7 +101,6 @@ public class BoekenPaneController extends AnchorPane
         txtAantal.setText("" + boek.getAantal());
         txaBeschrijving.setText(boek.getBeschrijving());
         txtAuteur.setText(boek.getAuteur());
-        txtPagLen.setText("" + boek.getPaginas());
-        lblPagLen.setText("Pagina's");
+        txtUitgeverij.setText(boek.getUitgeverij());
     }
 }
