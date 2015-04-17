@@ -8,20 +8,13 @@ package gui.zoeken;
 import db.DbConnect;
 import items.Boek;
 import java.io.IOException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TreeItem;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
 
 /**
  * FXML Controller class
@@ -58,27 +51,34 @@ public class BoekenPaneController extends AnchorPane
     private TextField txtAuteur;
     @FXML
     private TextField txtPagLen;
-    
-    private Boek boek;
-    private boolean ingelogd;
     @FXML
     private AnchorPane AnchorPane;
     @FXML
     private TextField txtUitgeverij;
+    @FXML
+    private Button btnOpslaan;
+    @FXML
+    private Button btnAnnuleren;
+    
+    private Boek boek;
+    private DbConnect db;
+    private boolean ingelogd;
+    
     
     public BoekenPaneController(Boek boek, boolean ingelogd)
     {
         this.boek = boek;
         this.ingelogd = ingelogd;
+        db = new DbConnect();
         
         FXMLLoader loader = new FXMLLoader(getClass().getResource("BoekenPane.fxml"));
         loader.setRoot(this);
         loader.setController(this);
 
-        try 
+        try
         {
             loader.load();
-        } 
+        }
         catch (IOException ex) 
         {
             ex.printStackTrace();
@@ -92,10 +92,38 @@ public class BoekenPaneController extends AnchorPane
         if(!ingelogd)
         {
             btnLeen.setDisable(true);
+            btnOpslaan.setDisable(true);
+            btnAnnuleren.setDisable(true);
             btnLeen.setVisible(false);
+            btnOpslaan.setVisible(false);
+            btnAnnuleren.setVisible(false);
         }
         lblNaam.setText(boek.getNaam());
 
+        txtThema.setText(boek.getThema());
+        txtLeeftijd.setText(boek.getLeeftijd());
+        txtAantal.setText("" + boek.getAantal());
+        txaBeschrijving.setText(boek.getBeschrijving());
+        txtAuteur.setText(boek.getAuteur());
+        txtUitgeverij.setText(boek.getUitgeverij());
+    }
+    
+    @FXML
+    private void opslaan()
+    {
+        boek.setThema(txtThema.getText());
+        boek.setLeeftijd(txtLeeftijd.getText());
+        boek.setAantal(Integer.parseInt(txtAantal.getText()));
+        boek.setBeschrijving(txaBeschrijving.getText());
+        boek.setAuteur(txtAuteur.getText());
+        boek.setUitgeverij(txtUitgeverij.getText());
+        
+        db.wijzigBoek(boek);
+    }
+    
+    @FXML
+    private void annuleren()
+    {
         txtThema.setText(boek.getThema());
         txtLeeftijd.setText(boek.getLeeftijd());
         txtAantal.setText("" + boek.getAantal());

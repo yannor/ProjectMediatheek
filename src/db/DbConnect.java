@@ -7,6 +7,7 @@ import items.Spel;
 import items.Verteltas;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -126,6 +127,27 @@ public class DbConnect {
             String query = "DELETE FROM boeken WHERE naam='" + naam + "'";
             st.executeQuery(query);
         }catch(Exception ex){
+            System.out.println("error " + ex);
+        }
+    }
+    
+    public void wijzigBoek(Boek boek)
+    {
+        try
+        {
+            PreparedStatement query = con.prepareStatement("UPDATE boeken SET naam = ?, thema = ?, leeftijd = ?, aantal = ?, beschrijving = ?, auteur = ?, uitgeverij = ? WHERE boekId = ?");
+            query.setString(1, boek.getNaam());
+            query.setString(2, boek.getThema());
+            query.setString(3, boek.getLeeftijd());
+            query.setInt(4, boek.getAantal());
+            query.setString(5, boek.getBeschrijving());
+            query.setString(6, boek.getAuteur());
+            query.setString(7, boek.getUitgeverij());
+            query.setInt(8, boek.getId());
+            query.executeUpdate();
+        }
+        catch(Exception ex)
+        {
             System.out.println("error " + ex);
         }
     }
