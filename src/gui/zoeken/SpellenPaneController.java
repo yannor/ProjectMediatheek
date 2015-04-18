@@ -5,6 +5,7 @@
  */
 package gui.zoeken;
 
+import db.DbConnect;
 import items.Spel;
 import java.io.IOException;
 import java.net.URL;
@@ -47,16 +48,22 @@ public class SpellenPaneController extends AnchorPane
     private TextArea txaBeschrijving;
     @FXML
     private TextField txtUitgeverij;
-
-    private Spel spel;
-    private boolean ingelogd;
     @FXML
     private AnchorPane AnchorPane;
+    @FXML
+    private Button btnOpslaan;
+    @FXML
+    private Button btnAnnuleren;
+    
+    private Spel spel;
+    private boolean ingelogd;
+    private DbConnect db;
     
     public SpellenPaneController(Spel spel, boolean ingelogd)
     {
         this.spel = spel;
         this.ingelogd = ingelogd;
+        db = new DbConnect();
         
         FXMLLoader loader = new FXMLLoader(getClass().getResource("SpellenPane.fxml"));
         loader.setRoot(this);
@@ -80,6 +87,16 @@ public class SpellenPaneController extends AnchorPane
         {
             btnLeen.setDisable(true);
             btnLeen.setVisible(false);
+            btnOpslaan.setDisable(true);
+            btnAnnuleren.setDisable(true);
+            btnOpslaan.setVisible(false);
+            btnAnnuleren.setVisible(false);
+            
+            txtThema.setEditable(false);
+            txtLeeftijd.setEditable(false);
+            txtAantal.setEditable(false);
+            txaBeschrijving.setEditable(false);
+            txtUitgeverij.setEditable(false);
         }
         
         lblNaam.setText(spel.getNaam());
@@ -88,5 +105,27 @@ public class SpellenPaneController extends AnchorPane
         txtAantal.setText("" + spel.getAantal());
         txtUitgeverij.setText(spel.getUitgeverij());
         txaBeschrijving.setText(spel.getBeschrijving());
+    }
+    
+    @FXML
+    private void opslaan()
+    {
+        spel.setThema(txtThema.getText());
+        spel.setLeeftijd(txtLeeftijd.getText());
+        spel.setAantal(Integer.parseInt(txtAantal.getText()));
+        spel.setBeschrijving(txaBeschrijving.getText());
+        spel.setUitgeverij(txtUitgeverij.getText());
+        
+        db.wijzigSpel(spel);
+    }
+    
+    @FXML
+    private void annuleren()
+    {
+        txtThema.setText(spel.getThema());
+        txtLeeftijd.setText(spel.getLeeftijd());
+        txtAantal.setText("" + spel.getAantal());
+        txaBeschrijving.setText(spel.getBeschrijving());
+        txtUitgeverij.setText(spel.getUitgeverij());
     }
 }

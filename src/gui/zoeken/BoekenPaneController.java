@@ -92,11 +92,18 @@ public class BoekenPaneController extends AnchorPane
         if(!ingelogd)
         {
             btnLeen.setDisable(true);
+            btnLeen.setVisible(false);
             btnOpslaan.setDisable(true);
             btnAnnuleren.setDisable(true);
-            btnLeen.setVisible(false);
             btnOpslaan.setVisible(false);
             btnAnnuleren.setVisible(false);
+            
+            txtThema.setEditable(false);
+            txtLeeftijd.setEditable(false);
+            txtAantal.setEditable(false);
+            txaBeschrijving.setEditable(false);
+            txtAuteur.setEditable(false);
+            txtUitgeverij.setEditable(false);
         }
         lblNaam.setText(boek.getNaam());
 

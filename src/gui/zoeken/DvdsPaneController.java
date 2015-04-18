@@ -5,6 +5,7 @@
  */
 package gui.zoeken;
 
+import db.DbConnect;
 import items.Dvd;
 import java.io.IOException;
 import java.net.URL;
@@ -49,13 +50,20 @@ public class DvdsPaneController extends AnchorPane
     private TextArea txaBeschrijving;
     @FXML
     private TextField txtPagLen;
+    @FXML
+    private Button btnOpslaan;
+    @FXML
+    private Button btnAnnuleren;
 
     private Dvd dvd;
     private boolean ingelogd;
+    private DbConnect db;
     
     public DvdsPaneController(Dvd dvd, boolean ingelogd)
     {
         this.dvd = dvd;
+        this.ingelogd = ingelogd;
+        db = new DbConnect();
         
         FXMLLoader loader = new FXMLLoader(getClass().getResource("DvdsPane.fxml"));
         loader.setRoot(this);
@@ -79,6 +87,15 @@ public class DvdsPaneController extends AnchorPane
         {
             btnLeen.setDisable(true);
             btnLeen.setVisible(false);
+            btnOpslaan.setDisable(true);
+            btnAnnuleren.setDisable(true);
+            btnOpslaan.setVisible(false);
+            btnAnnuleren.setVisible(false);
+            
+            txtThema.setEditable(false);
+            txtLeeftijd.setEditable(false);
+            txtAantal.setEditable(false);
+            txaBeschrijving.setEditable(false);
         }
         
         lblNaam.setText(dvd.getNaam());
@@ -89,5 +106,23 @@ public class DvdsPaneController extends AnchorPane
         txaBeschrijving.setText(dvd.getBeschrijving());
     }
     
+    @FXML
+    private void opslaan()
+    {
+        dvd.setThema(txtThema.getText());
+        dvd.setLeeftijd(txtLeeftijd.getText());
+        dvd.setAantal(Integer.parseInt(txtAantal.getText()));
+        dvd.setBeschrijving(txaBeschrijving.getText());
+        
+        db.wijzigDvd(dvd);
+    }
     
+    @FXML
+    private void annuleren()
+    {
+        txtThema.setText(dvd.getThema());
+        txtLeeftijd.setText(dvd.getLeeftijd());
+        txtAantal.setText("" + dvd.getAantal());
+        txaBeschrijving.setText(dvd.getBeschrijving());
+    }
 }

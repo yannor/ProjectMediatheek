@@ -1,5 +1,6 @@
 package gui.zoeken;
 
+import db.DbConnect;
 import items.Verteltas;
 import java.io.IOException;
 import javafx.fxml.FXML;
@@ -48,13 +49,20 @@ public class VerteltassenPaneController extends AnchorPane
     private TableColumn<?, ?> colAantalLengte;
     @FXML
     private TextField txtAuteur;
+    @FXML
+    private Button btnOpslaan;
+    @FXML
+    private Button btnAnnuleren;
+    
     private boolean ingelogd;
     private Verteltas verteltas;
+    private DbConnect db;
 
     public VerteltassenPaneController(Verteltas verteltas, boolean ingelogd)
     {
         this.ingelogd = ingelogd;
         this.verteltas = verteltas;
+        db = new DbConnect();
         
         FXMLLoader loader = new FXMLLoader(getClass().getResource("VerteltassenPane.fxml"));
         loader.setRoot(this);
@@ -78,9 +86,38 @@ public class VerteltassenPaneController extends AnchorPane
         {
             btnLeen.setDisable(true);
             btnLeen.setVisible(false);
+            btnOpslaan.setDisable(true);
+            btnAnnuleren.setDisable(true);
+            btnOpslaan.setVisible(false);
+            btnAnnuleren.setVisible(false);
+            
+            txtThema.setEditable(false);
+            txtLeeftijd.setEditable(false);
+            txtAantal.setEditable(false);
+            txaBeschrijving.setEditable(false);
         }
         
         lblNaam.setText(verteltas.getNaam());
+        txtThema.setText(verteltas.getThema());
+        txtLeeftijd.setText(verteltas.getLeeftijd());
+        txtAantal.setText("" + verteltas.getAantal());
+        txaBeschrijving.setText(verteltas.getBeschrijving());
+    }
+    
+    @FXML
+    private void opslaan()
+    {
+        verteltas.setThema(txtThema.getText());
+        verteltas.setLeeftijd(txtLeeftijd.getText());
+        verteltas.setAantal(Integer.parseInt(txtAantal.getText()));
+        verteltas.setBeschrijving(txaBeschrijving.getText());
+        
+        db.wijzigVerteltas(verteltas);
+    }
+    
+    @FXML
+    private void annuleren()
+    {
         txtThema.setText(verteltas.getThema());
         txtLeeftijd.setText(verteltas.getLeeftijd());
         txtAantal.setText("" + verteltas.getAantal());

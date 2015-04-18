@@ -65,6 +65,10 @@ public class CdsPaneController extends AnchorPane
     private TextField txtPagLen;
     @FXML
     private TextArea txaBeschrijving;
+    @FXML
+    private Button btnOpslaan;
+    @FXML
+    private Button btnAnnuleren;
     
     private Cd cd;
     private DbConnect db;
@@ -76,6 +80,7 @@ public class CdsPaneController extends AnchorPane
     {
         this.cd = cd;
         this.ingelogd = ingelogd;
+        db = new DbConnect();
         
         FXMLLoader loader = new FXMLLoader(getClass().getResource("CdsPane.fxml"));
         loader.setRoot(this);
@@ -99,9 +104,38 @@ public class CdsPaneController extends AnchorPane
         {
             btnLeen.setDisable(true);
             btnLeen.setVisible(false);
+            btnOpslaan.setDisable(true);
+            btnAnnuleren.setDisable(true);
+            btnOpslaan.setVisible(false);
+            btnAnnuleren.setVisible(false);
+            
+            txtThema.setEditable(false);
+            txtLeeftijd.setEditable(false);
+            txtAantal.setEditable(false);
+            txaBeschrijving.setEditable(false);
         }
         lblNaam.setText(cd.getNaam());
         
+        txtThema.setText(cd.getThema());
+        txtLeeftijd.setText(cd.getLeeftijd());
+        txtAantal.setText("" + cd.getAantal());
+        txaBeschrijving.setText(cd.getBeschrijving());
+    }
+    
+    @FXML
+    private void opslaan()
+    {
+        cd.setThema(txtThema.getText());
+        cd.setLeeftijd(txtLeeftijd.getText());
+        cd.setAantal(Integer.parseInt(txtAantal.getText()));
+        cd.setBeschrijving(txaBeschrijving.getText());
+        
+        db.wijzigCd(cd);
+    }
+    
+    @FXML
+    private void annuleren()
+    {
         txtThema.setText(cd.getThema());
         txtLeeftijd.setText(cd.getLeeftijd());
         txtAantal.setText("" + cd.getAantal());

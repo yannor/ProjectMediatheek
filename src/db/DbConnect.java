@@ -224,6 +224,25 @@ public class DbConnect {
         }
     }
     
+    public void wijzigCd(Cd cd)
+    {
+        try
+        {
+            PreparedStatement query = con.prepareStatement("UPDATE cd SET naam = ?, thema = ?, leeftijd = ?, aantal = ?, beschrijving = ? WHERE cdId = ?");
+            query.setString(1, cd.getNaam());
+            query.setString(2, cd.getThema());
+            query.setString(3, cd.getLeeftijd());
+            query.setInt(4, cd.getAantal());
+            query.setString(5, cd.getBeschrijving());
+            query.setInt(6, cd.getId());
+            query.executeUpdate();
+        }
+        catch(Exception ex)
+        {
+            System.out.println("error " + ex);
+        }
+    }
+    
     public Dvd getDvd(int id) {
 //        public Dvd(int id, String naam, String thema, String leeftijd, int aantal, int min) {
 //        super(id, naam, thema, leeftijd, aantal);
@@ -296,6 +315,25 @@ public class DbConnect {
             String query = "DELETE FROM dvd WHERE naam='" + naam + "'";
             st.executeQuery(query);
         }catch(Exception ex){
+            System.out.println("error " + ex);
+        }
+    }
+    
+    public void wijzigDvd(Dvd dvd)
+    {
+        try
+        {
+            PreparedStatement query = con.prepareStatement("UPDATE dvd SET naam = ?, thema = ?, leeftijd = ?, aantal = ?, beschrijving = ? WHERE dvdId = ?");
+            query.setString(1, dvd.getNaam());
+            query.setString(2, dvd.getThema());
+            query.setString(3, dvd.getLeeftijd());
+            query.setInt(4, dvd.getAantal());
+            query.setString(5, dvd.getBeschrijving());
+            query.setInt(6, dvd.getId());
+            query.executeUpdate();
+        }
+        catch(Exception ex)
+        {
             System.out.println("error " + ex);
         }
     }
@@ -375,6 +413,26 @@ public class DbConnect {
         }
     }
     
+    public void wijzigSpel(Spel spel)
+    {
+        try
+        {
+            PreparedStatement query = con.prepareStatement("UPDATE spellen SET naam = ?, thema = ?, leeftijd = ?, aantal = ?, beschrijving = ?, uitgeverij = ? WHERE spelId = ?");
+            query.setString(1, spel.getNaam());
+            query.setString(2, spel.getThema());
+            query.setString(3, spel.getLeeftijd());
+            query.setInt(4, spel.getAantal());
+            query.setString(5, spel.getBeschrijving());
+            query.setString(6, spel.getUitgeverij());
+            query.setInt(7, spel.getId());
+            query.executeUpdate();
+        }
+        catch(Exception ex)
+        {
+            System.out.println("error " + ex);
+        }
+    }
+    
     public Verteltas getVerteltas(int id) {
 
         Verteltas verteltas = null;
@@ -424,6 +482,25 @@ public class DbConnect {
         }
 
         return verteltassen;
+    }
+    
+    public void wijzigVerteltas(Verteltas verteltas)
+    {
+        try
+        {
+            PreparedStatement query = con.prepareStatement("UPDATE verteltas SET naam = ?, thema = ?, leeftijd = ?, aantal = ?, beschrijving = ? WHERE vertelId = ?");
+            query.setString(1, verteltas.getNaam());
+            query.setString(2, verteltas.getThema());
+            query.setString(3, verteltas.getLeeftijd());
+            query.setInt(4, verteltas.getAantal());
+            query.setString(5, verteltas.getBeschrijving());
+            query.setInt(6, verteltas.getId());
+            query.executeUpdate();
+        }
+        catch(Exception ex)
+        {
+            System.out.println("error " + ex);
+        }
     }
     
 //    public void addNieuwSpel(int id, String naam, String thema, String leeftijd, int aantal){

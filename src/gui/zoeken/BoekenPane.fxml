@@ -128,7 +128,7 @@
                         <Insets />
                      </VBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#annuleren" text="Annuleren">
+                  <Button fx:id="btnAnnuleren" mnemonicParsing="false" onAction="#annuleren" text="Annuleren">
                      <font>
                         <Font size="14.0" />
                      </font>
