@@ -7,27 +7,27 @@
 
 
 .zoeken {
--fx-background-image: url("afbeeldingen/zoek.png");
+-fx-background-image: url("zoek.png");
 -fx-background-size: cover;
 -fx-background-repeat: no-repeat;
 -fx-background-color: #5CA32A;
 }
 
 .beheer {
--fx-background-image: url("afbeeldingen/wiel.png");
+-fx-background-image: url("wiel.png");
 -fx-background-size: cover;
 -fx-background-repeat: no-repeat;
 -fx-background-color: #5C032A;
 }
 
 .terugbrengen {
--fx-background-image: url("afbeeldingen/arrow.png");
+-fx-background-image: url("arrow.png");
 -fx-background-size: cover;
 -fx-background-repeat: no-repeat;
 -fx-background-color: #D83F1F;
 }
 .back{
--fx-background-image: url("afbeeldingen/tuin.png");
+-fx-background-image: url("tuin.png");
 -fx-background-position: bottom;
 -fx-background-size: cover;
 -fx-background-repeat: no-repeat;
@@ -54,7 +54,7 @@
 }
 
 .home_zoek{
--fx-background-image: url("afbeeldingen/home.png");
+-fx-background-image: url("home_klein.png");
 -fx-background-size: cover;
 -fx-background-repeat: no-repeat;
 -fx-background-color: #5CA32A;
@@ -62,7 +62,7 @@
 }
 
 .home_uitlening{
--fx-background-image: url("afbeeldingen/home.png");
+-fx-background-image: url("home.png");
 -fx-background-size: cover;
 -fx-background-repeat: no-repeat;
 -fx-background-color: #D83F1F;
@@ -70,7 +70,7 @@
 }
 
 .home_beheer{
--fx-background-image: url("afbeeldingen/home.png");
+-fx-background-image: url("home.png");
 -fx-background-size: cover;
 -fx-background-repeat: no-repeat;
 -fx-background-color: #5C032A;

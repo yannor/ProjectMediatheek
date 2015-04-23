@@ -2,14 +2,12 @@ package gui;
 
 import java.io.IOException;
 import javafx.fxml.*;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
-import javafx.stage.*;
 
 public class HomePage extends Pane {
 
+    ScreenSwitcher switcher;
     @FXML
     private Button btnUitloggen, btnZoeken, btnUitleningen, btnBeheer;
 
@@ -18,8 +16,9 @@ public class HomePage extends Pane {
 
     private String gebruikersNaam;
 
-    public HomePage(String gebruikersnaam) {
+    public HomePage(ScreenSwitcher switcher) {
 
+        this.switcher=switcher;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
         loader.setRoot(this);
         loader.setController(this);
@@ -29,84 +28,54 @@ public class HomePage extends Pane {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-//schermUitgebreid.setVisible(false);
-        lblWelkom.setText("Welkom " + gebruikersnaam);
-        this.gebruikersNaam = gebruikersnaam;
+
+        lblWelkom.setText("Welkom ");
 
     }
 
     @FXML
-    public void uitloggen() {
+    public void afmelden() {
 
-        Scene scene = new Scene(new HomePage_uit());
-        Stage stage = new Stage();
+       switcher.zoeken(false);
         //stage.close();
-        Image applicationIcon = new Image("gui/afbeeldingen/logo_krekel.png");
-        stage.getIcons().add(applicationIcon);
-        Stage dezeStage = (Stage) btnUitloggen.getScene().getWindow();
-        dezeStage.close();
-        stage.setScene(scene);
-        stage.setTitle("Home");
-        stage.setOnShown((WindowEvent t) -> {
-            stage.setMinWidth(scene.getWidth());
-            stage.setMinHeight(scene.getHeight());
-        });
-        stage.show();
+       // Image applicationIcon = new Image("gui/afbeeldingen/logo_krekel.png");
+       // stage.getIcons().add(applicationIcon);
+        
 
     }
-
+//
     @FXML
     public void zoeken() {
 
-        Stage stage = new Stage();
-        //stage.close();
-        Image applicationIcon = new Image("gui/afbeeldingen/logo_krekel.png");
-        stage.getIcons().add(applicationIcon);
-        Stage dezeStage = (Stage) btnZoeken.getScene().getWindow();
-        dezeStage.close();
-
-        Scene scene = new Scene(new gui.zoeken.Zoeken(true, gebruikersNaam));
-        stage.setScene(scene);
-        stage.setTitle("Zoeken");
-
-        stage.show();
-
-    }
-
+    
+    
+    switcher.zoeken(true);
+    
+   }
+//
     @FXML
     public void uitleningTerugbrengen() {
 
-        Stage stage = new Stage();
-        //stage.close();
-        Image applicationIcon = new Image("gui/afbeeldingen/logo_krekel.png");
-        stage.getIcons().add(applicationIcon);
-        Stage dezeStage = (Stage) btnUitleningen.getScene().getWindow();
-        dezeStage.close();
-
-        Scene scene = new Scene(new gui.uitleningen.UitleningTerug(gebruikersNaam));
-        stage.setScene(scene);
-        stage.setTitle("Uitlening Terugbrengen");
-
-        stage.show();
+        switcher.uitleningen();
 
     }
-
-    @FXML
-    public void beheer() {
-
-        Stage stage = new Stage();
-        //stage.close();
-        Image applicationIcon = new Image("gui/afbeeldingen/logo_krekel.png");
-        stage.getIcons().add(applicationIcon);
-        Stage dezeStage = (Stage) btnBeheer.getScene().getWindow();
-        dezeStage.close();
-
-        Scene scene = new Scene(new gui.instellingen.BeheerVrij(gebruikersNaam));
-        stage.setScene(scene);
-        stage.setTitle("Beheer");
-
-        stage.show();
-
-    }
+//
+//    @FXML
+//    public void beheer() {
+//
+//        Stage stage = new Stage();
+//        //stage.close();
+//        Image applicationIcon = new Image("gui/afbeeldingen/logo_krekel.png");
+//        stage.getIcons().add(applicationIcon);
+//        Stage dezeStage = (Stage) btnBeheer.getScene().getWindow();
+//        dezeStage.close();
+//
+//        Scene scene = new Scene(new gui.instellingen.BeheerVrij(gebruikersNaam));
+//        stage.setScene(scene);
+//        stage.setTitle("Beheer");
+//
+//        stage.show();
+//
+//    }
 
 }

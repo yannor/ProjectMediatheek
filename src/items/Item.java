@@ -1,67 +1,39 @@
 package items;
 
+import java.io.Serializable;
+import java.util.List;
+import javafx.beans.property.*;
+import javafx.collections.*;
+import javax.persistence.*;
 
+@Entity
+@Access(AccessType.PROPERTY)
+@NamedQueries({
+    @NamedQuery(name = "Item.findAll", query = "SELECT i FROM Item i")
+})
+@Inheritance(strategy = InheritanceType.JOINED)
+public abstract class Item implements Serializable {
 
-public class Item {
-    
+    private final StringProperty naam = new SimpleStringProperty();
+
+    private final ObservableList<String> themas = FXCollections.observableArrayList();
+    private final StringProperty leeftijd = new SimpleStringProperty();
+
+    private List<Exemplaar> exemplaren;
+
     private int id;
-    private String naam;
-    private String thema;
-    private String leeftijd;
-    private int aantal;
-    private boolean beschadigd;
 
-    public Item( int id, String naam, String thema, String leeftijd, int aantal ) {
-        
-        this.id = id;
-        this.naam = naam;
-        this.thema = thema;
-        this.leeftijd = leeftijd;
-        this.aantal = aantal;
-        this.beschadigd=false;
+    public Item() {
     }
 
-
-    public String getNaam() {
-        return naam;
+    public Item(String naam, String leeftijd, List<String> themas) {
+        setThemas(themas);
+        setLeeftijd(leeftijd);
+        setNaam(naam);
     }
 
-    public void setNaam(String naam) {
-        this.naam = naam;
-    }
-
-    public String getThema() {
-        return thema;
-    }
-
-    public void setThema(String thema) {
-        this.thema = thema;
-    }
-
-    public String getLeeftijd() {
-        return leeftijd;
-    }
-
-    public void setLeeftijd(String leeftijd) {
-        this.leeftijd = leeftijd;
-    }
-
-    public int getAantal() {
-        return aantal;
-    }
-
-    public void setAantal(int aantal) {
-        this.aantal = aantal;
-    }
-
-    public boolean isBeschadigd() {
-        return beschadigd;
-    }
-
-    public void setBeschadigd(boolean beschadigd) {
-        this.beschadigd = beschadigd;
-    }
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getId() {
         return id;
     }
@@ -69,10 +41,73 @@ public class Item {
     public void setId(int id) {
         this.id = id;
     }
-    
-    
-    
 
-    
-    
+    public StringProperty naamProperty() {
+        return naam;
+    }
+
+    public String getNaam() {
+        return naam.get();
+    }
+
+    public void setNaam(String naam) {
+        this.naam.set(naam);
+    }
+
+    public StringProperty leeftijdProperty() {
+        return leeftijd;
+    }
+
+    public String getLeeftijd() {
+        return leeftijd.get();
+    }
+
+    public void setLeeftijd(String leeftijd) {
+        this.leeftijd.set(leeftijd);
+    }
+
+    public ObservableList<String> getThemas() {
+        return themas;
+    }
+
+    public List<String> getThemas2() {
+        return themas;
+    }
+
+    public void setThemas(List<String> thema) {
+        this.themas.setAll(thema);
+    }
+
+    public List<Exemplaar> getExemplaren() {
+        return exemplaren;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 71 * hash + this.id;
+        return hash;
+    }
+
+    @Override
+    public String toString() {
+        return getNaam();
+    }
+
+    public static String eersteLetter(Item item) {
+        if (item instanceof Boek) {
+            return "B";
+        } else if (item instanceof Dvd) {
+            return "D";
+        } else if (item instanceof Cd) {
+            return "C";
+        } else if (item instanceof Spel) {
+            return "S";
+        } else if (item instanceof Verteltas) {
+            return "V";
+        } else if (item instanceof Puzzel) {
+            return "P";
+        }
+        return null;
+    }
 }

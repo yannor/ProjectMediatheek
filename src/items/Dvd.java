@@ -1,23 +1,24 @@
-
 package items;
 
-public class Dvd extends Item {
+import java.io.Serializable;
+import java.util.List;
+import javax.persistence.Entity;
 
-private int min;
+@Entity
+public class Dvd extends Item implements Serializable {
 
-    public Dvd(int id, String naam, String thema, String leeftijd, int aantal, int min) {
-        super(id, naam, thema, leeftijd, aantal);
-        this.min=min;
+    public Dvd() {
+        super();
     }
 
-    public int getMin() {
-        return min;
+    public Dvd(String titel, String leeftijd, List<String> themas) {
+        super(titel, leeftijd, themas);
+
     }
 
-    public void setMin(int min) {
-        this.min = min;
+    @Override
+    public String toString() {
+        return getNaam();
     }
-
-  
 
 }

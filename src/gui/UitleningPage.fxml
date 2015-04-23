@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<fx:root opacity="0.6" prefHeight="800.0" prefWidth="1200.0" styleClass="back" stylesheets="@../resources/css.css" type="AnchorPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TableView layoutX="90.0" layoutY="184.0" opacity="0.75" prefHeight="386.0" prefWidth="897.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="200.0">
+        <columns>
+          <TableColumn minWidth="-1.0" prefWidth="-1.0" text="Soort item" />
+            <TableColumn minWidth="-1.0" prefWidth="-1.0" text="Naam Item" />
+            <TableColumn minWidth="-1.0" prefWidth="-1.0" text="Student">
+               <columns>
+                  <TableColumn minWidth="-1.0" prefWidth="-1.0" text="Naam " />
+                  <TableColumn minWidth="-1.0" prefWidth="-1.0" text="Klas" />
+               </columns>
+            </TableColumn>
+            <TableColumn minWidth="-1.0" prefWidth="-1.0" text="Datum uitlening" />
+            <TableColumn minWidth="-1.0" prefWidth="-1.0" text="Datum terug verwacht" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+      <Button layoutX="1350.0" layoutY="227.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="150.0" text="Terug binnen" AnchorPane.rightAnchor="20.0" />
+      <Button layoutX="1350.0" layoutY="327.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="150.0" text="Details" AnchorPane.rightAnchor="20.0" />
+      <Button layoutX="1350.0" layoutY="427.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="150.0" text="Bewerken" AnchorPane.rightAnchor="20.0" />
+   </children>
+</fx:root>

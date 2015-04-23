@@ -1,21 +1,40 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package items;
 
-/**
- *
- * @author Matthias
- */
-public class Spel extends Item{
+import java.io.Serializable;
+import java.util.List;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+import javax.persistence.Entity;
 
-    public Spel(int id, String naam, String thema, String leeftijd, int aantal) {
-        super(id, naam, thema, leeftijd, aantal);
+@Entity
+public class Spel extends Item implements Serializable {
+
+    private StringProperty uitgeverij = new SimpleStringProperty();
+
+    public Spel() {
+        super();
     }
-    
-    
-    
-    
+
+    public Spel(String titel, String leeftijd, List<String> themas, String uitgeverij) {
+        super(titel, leeftijd, themas);
+        setUitgeverij(uitgeverij);
+    }
+
+    public StringProperty uitgeverijProperty() {
+        return uitgeverij;
+    }
+
+    public String getUitgeverij() {
+        return uitgeverij.get();
+    }
+
+    public void setUitgeverij(String uitgeverij) {
+        this.uitgeverij.set(uitgeverij);
+    }
+
+    @Override
+    public String toString() {
+        return getNaam();
+    }
+
 }
