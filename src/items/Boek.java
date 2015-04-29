@@ -2,15 +2,10 @@ package items;
 
 import java.io.Serializable;
 import java.util.List;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
-import javax.persistence.Access;
-import javax.persistence.AccessType;
-import javax.persistence.Entity;
-/**
- *
- * @author Yannick
- */
+import javafx.beans.property.*;
+import javax.persistence.*;
+
+
 @Entity
 @Access(AccessType.PROPERTY)
 public class Boek extends Item implements Serializable {

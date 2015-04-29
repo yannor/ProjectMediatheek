@@ -6,10 +6,7 @@ import javafx.scene.layout.BorderPane;
 
 public class ScreenSwitcher extends BorderPane {
 
-    /**
- *
- * @author Yannick
- */
+    
     
     
     

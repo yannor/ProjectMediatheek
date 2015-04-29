@@ -1,9 +1,6 @@
 
 package domein;
-/**
- *
- * @author Yannick
- */
+
 public enum TypeGebruiker {
 
 

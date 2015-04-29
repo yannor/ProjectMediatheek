@@ -2,22 +2,9 @@ package items;
 
 import java.io.Serializable;
 import java.util.List;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javax.persistence.Access;
-import javax.persistence.AccessType;
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.Transient;
-/**
- *
- * @author Yannick
- */
+import javafx.collections.*;
+import javax.persistence.*;
+
 @Entity
 @NamedQueries({
     @NamedQuery(name = "Verteltas.findAll", query = "SELECT i FROM Verteltas i")
@@ -41,15 +28,19 @@ public class Verteltas extends Item implements Serializable {
         exInhoud.remove(item);
     }
     
-
+    @Access(AccessType.PROPERTY)
+    @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    public List<Exemplaar> getItems() {
+	return exInhoud;
+    }
    
-    
+    @Transient
     public ObservableList<Exemplaar> getExInhoud() {
         return exInhoud;
     }
 
-    public void setExInhoud(ObservableList<Exemplaar> exInhoud) {
-        this.exInhoud = exInhoud;
+    public void setItems(List<Exemplaar> exemp) {
+	this.exInhoud = FXCollections.observableArrayList(exemp);
     }
     
      

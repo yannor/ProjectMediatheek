@@ -10,7 +10,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="back" stylesheets="@../resources/css.css" type="BorderPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" stylesheets="@../resources/css.css" type="BorderPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <top>
       <AnchorPane prefHeight="40.0" prefWidth="800.0" style="-fx-background-color: green;" BorderPane.alignment="CENTER">
          <children>
@@ -25,7 +25,7 @@
    <left>
       <AnchorPane prefHeight="760.0" prefWidth="409.0" BorderPane.alignment="CENTER">
          <children>
-            <GridPane layoutX="34.0" layoutY="50.0" prefHeight="210.0" prefWidth="100.0">
+            <GridPane layoutX="34.0" layoutY="50.0" prefHeight="210.0" prefWidth="100.0" AnchorPane.topAnchor="75.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>
@@ -46,12 +46,13 @@
                   <Button fx:id="btnTassen" mnemonicParsing="false" onAction="#tassen" prefWidth="75.0" text="Tassen" GridPane.rowIndex="5" />
                </children>
             </GridPane>
-            <ListView fx:id="listItems" layoutX="143.0" layoutY="50.0" onMouseClicked="#selectItem" prefHeight="401.0" prefWidth="252.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="143.0" AnchorPane.topAnchor="50.0" />
+            <ListView fx:id="listItems" layoutX="143.0" layoutY="50.0" onMouseClicked="#selectItem" prefHeight="401.0" prefWidth="252.0" styleClass="border_collor" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="143.0" AnchorPane.topAnchor="75.0" />
+            <TextField fx:id="txtZoeken" layoutX="28.0" layoutY="24.0" onKeyReleased="#zoeken" prefHeight="25.0" prefWidth="158.0" promptText="zoeken" />
          </children>
       </AnchorPane>
    </left>
    <center>
-      <TabPane BorderPane.alignment="CENTER">
+      <TabPane fx:id="detailsPane" BorderPane.alignment="CENTER">
          <tabs>
             <Tab fx:id="tabBoek" closable="false" text="Boek">
                <content>
@@ -101,7 +102,7 @@
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <Label layoutX="23.0" layoutY="251.0" text="Themas">
+                        <Label layoutX="26.0" layoutY="251.0" text="Themas">
                            <font>
                               <Font size="24.0" />
                            </font>
@@ -111,54 +112,299 @@
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="txtLeeftijd" layoutX="121.0" layoutY="98.0" prefHeight="39.0" prefWidth="147.0">
+                        <TextField fx:id="txtLeeftijd" editable="false" layoutX="121.0" layoutY="98.0" prefHeight="39.0" prefWidth="147.0" styleClass="border_collor">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </TextField>
-                        <TextField fx:id="txtAuteur" alignment="CENTER" layoutX="121.0" layoutY="173.0" prefHeight="39.0" prefWidth="300.0">
+                        <TextField fx:id="txtAuteur" alignment="CENTER" editable="false" layoutX="121.0" layoutY="173.0" prefHeight="39.0" prefWidth="300.0" styleClass="border_collor">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </TextField>
-                        <TextField fx:id="txtUitgever" layoutX="446.0" layoutY="98.0" prefHeight="39.0" prefWidth="300.0">
+                        <TextField fx:id="txtUitgever" editable="false" layoutX="446.0" layoutY="98.0" prefHeight="39.0" prefWidth="300.0" styleClass="border_collor">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </TextField>
-                        <TextField fx:id="txtAantal" layoutX="596.0" layoutY="170.0" prefHeight="39.0" prefWidth="109.0">
+                        <TextField fx:id="txtAantal" editable="false" layoutX="596.0" layoutY="170.0" prefHeight="39.0" prefWidth="109.0" styleClass="border_collor">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </TextField>
-                        <TextArea fx:id="txaBeschrijving" layoutX="98.0" layoutY="380.0" prefHeight="181.0" prefWidth="633.0">
+                        <TextArea fx:id="txaBeschrijving" editable="false" layoutX="98.0" layoutY="380.0" prefHeight="181.0" prefWidth="633.0" styleClass="border_collor">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </TextArea>
-                        <Button fx:id="btnUitlenen" layoutX="271.0" layoutY="619.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="254.0" text="Leen uit" />
+                        <Button fx:id="btnUitlenen" layoutX="271.0" layoutY="619.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="254.0" styleClass="border_collor" text="Leen uit" />
                      </children>
                   </AnchorPane>
                </content>
             </Tab>
             <Tab fx:id="tabCd" closable="false" text="Cd">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="btnUitlenen1" layoutX="271.0" layoutY="619.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="254.0" styleClass="border_collor" text="Leen uit" />
+                        <TextField fx:id="txtAantal1" editable="false" layoutX="487.0" layoutY="98.0" prefHeight="39.0" prefWidth="109.0" styleClass="border_collor">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="txtZanger" alignment="CENTER" editable="false" layoutX="121.0" layoutY="173.0" prefHeight="39.0" prefWidth="300.0" styleClass="border_collor">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="txtLeeftijd1" editable="false" layoutX="121.0" layoutY="98.0" prefHeight="39.0" prefWidth="147.0" styleClass="border_collor">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </TextField>
+                        <Label layoutX="26.0" layoutY="251.0" text="Themas">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="26.0" layoutY="175.0" text="Zanger">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="26.0" layoutY="100.0" text="Leeftijd">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="387.0" layoutY="101.0" text="Aantal">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblNaam1" layoutX="26.0" layoutY="19.0" text="Naam">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </Label>
+                        <GridPane layoutX="160.0" layoutY="260.0" prefHeight="17.0" prefWidth="284.0">
+                           <children>
+                              <Label fx:id="lblThema41" layoutX="275.0" layoutY="210.0" text="Label" GridPane.columnIndex="3" />
+                              <Label fx:id="lblThema31" layoutX="225.0" layoutY="210.0" text="Label" GridPane.columnIndex="2" />
+                              <Label fx:id="lblThema21" layoutX="175.0" layoutY="210.0" text="Label" GridPane.columnIndex="1" />
+                              <Label fx:id="lblThema51" layoutX="325.0" layoutY="210.0" text="Label" GridPane.columnIndex="4" />
+                              <Label fx:id="lblThema11" layoutX="125.0" layoutY="210.0" text="Label" />
+                           </children>
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                        </GridPane>
+                        <ListView fx:id="listLiedjes" layoutX="98.0" layoutY="380.0" prefHeight="181.0" prefWidth="633.0" styleClass="border_collor" />
+                        <Label layoutX="94.0" layoutY="340.0" text="Liedjes">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                     </children></AnchorPane>
               </content>
             </Tab>
             <Tab fx:id="tabDvd" closable="false" text="Dvd">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="btnUitlenen2" layoutX="270.0" layoutY="590.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="254.0" styleClass="border_collor" text="Leen uit" />
+                        <TextField fx:id="txtAantal2" editable="false" layoutX="471.0" layoutY="200.0" prefHeight="39.0" prefWidth="109.0" styleClass="border_collor">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="txtLeeftijd2" editable="false" layoutX="124.0" layoutY="197.0" prefHeight="39.0" prefWidth="147.0" styleClass="border_collor">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </TextField>
+                        <Label layoutX="33.0" layoutY="357.0" text="Themas">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="35.0" layoutY="200.0" text="Leeftijd">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="364.0" layoutY="200.0" text="Aantal">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblNaam2" layoutX="302.0" layoutY="63.0" text="Naam">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </Label>
+                        <GridPane layoutX="148.0" layoutY="366.0" prefHeight="17.0" prefWidth="418.0">
+                           <children>
+                              <Label fx:id="lblThema42" layoutX="275.0" layoutY="210.0" text="Label" GridPane.columnIndex="3" />
+                              <Label fx:id="lblThema32" layoutX="225.0" layoutY="210.0" text="Label" GridPane.columnIndex="2" />
+                              <Label fx:id="lblThema22" layoutX="175.0" layoutY="210.0" text="Label" GridPane.columnIndex="1" />
+                              <Label fx:id="lblThema52" layoutX="325.0" layoutY="210.0" text="Label" GridPane.columnIndex="4" />
+                              <Label fx:id="lblThema12" layoutX="125.0" layoutY="210.0" text="Label" />
+                           </children>
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                        </GridPane>
+                     </children></AnchorPane>
               </content>
             </Tab>
             <Tab fx:id="tabSpel" closable="false" text="Gezelschapsspel">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="btnUitlenen3" layoutX="268.0" layoutY="549.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="254.0" styleClass="border_collor" text="Leen uit" />
+                        <TextField fx:id="txtAantal3" editable="false" layoutX="507.0" layoutY="136.0" prefHeight="39.0" prefWidth="109.0" styleClass="border_collor">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="txtLeeftijd3" editable="false" layoutX="140.0" layoutY="136.0" prefHeight="39.0" prefWidth="147.0" styleClass="border_collor">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </TextField>
+                        <Label layoutX="24.0" layoutY="326.0" text="Themas">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="26.0" layoutY="139.0" text="Leeftijd">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="395.0" layoutY="139.0" text="Aantal">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblNaam3" layoutX="26.0" layoutY="19.0" text="Naam">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </Label>
+                        <GridPane layoutX="140.0" layoutY="335.0" prefHeight="17.0" prefWidth="367.0">
+                           <children>
+                              <Label fx:id="lblThema43" layoutX="275.0" layoutY="210.0" text="Label" GridPane.columnIndex="3" />
+                              <Label fx:id="lblThema33" layoutX="225.0" layoutY="210.0" text="Label" GridPane.columnIndex="2" />
+                              <Label fx:id="lblThema23" layoutX="175.0" layoutY="210.0" text="Label" GridPane.columnIndex="1" />
+                              <Label fx:id="lblThema53" layoutX="325.0" layoutY="210.0" text="Label" GridPane.columnIndex="4" />
+                              <Label fx:id="lblThema13" layoutX="125.0" layoutY="210.0" text="Label" />
+                           </children>
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                        </GridPane>
+                        <Label layoutX="23.0" layoutY="240.0" text="Uitgeverij">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="txtUitgeverij" layoutX="169.0" layoutY="237.0" styleClass="border_collor">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </TextField>
+                     </children></AnchorPane>
               </content>
             </Tab>
             <Tab fx:id="tabTas" closable="false" text="Verteltas">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="btnUitlenen4" layoutX="271.0" layoutY="619.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="254.0" styleClass="border_collor" text="Leen uit" />
+                        <TextField fx:id="txtAantal4" editable="false" layoutX="525.0" layoutY="152.0" prefHeight="39.0" prefWidth="109.0" styleClass="border_collor">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="txtLeeftijd4" editable="false" layoutX="121.0" layoutY="152.0" prefHeight="39.0" prefWidth="147.0" styleClass="border_collor">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </TextField>
+                        <Label layoutX="26.0" layoutY="251.0" text="Themas">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="28.0" layoutY="155.0" text="Leeftijd">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="410.0" layoutY="155.0" text="Aantal">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblNaam4" layoutX="302.0" layoutY="52.0" text="Naam">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </Label>
+                        <GridPane layoutX="160.0" layoutY="260.0" prefHeight="17.0" prefWidth="284.0">
+                           <children>
+                              <Label fx:id="lblThema44" layoutX="275.0" layoutY="210.0" text="Label" GridPane.columnIndex="3" />
+                              <Label fx:id="lblThema34" layoutX="225.0" layoutY="210.0" text="Label" GridPane.columnIndex="2" />
+                              <Label fx:id="lblThema24" layoutX="175.0" layoutY="210.0" text="Label" GridPane.columnIndex="1" />
+                              <Label fx:id="lblThema54" layoutX="325.0" layoutY="210.0" text="Label" GridPane.columnIndex="4" />
+                              <Label fx:id="lblThema14" layoutX="125.0" layoutY="210.0" text="Label" />
+                           </children>
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                        </GridPane>
+                        <TableView layoutX="121.0" layoutY="379.0" prefHeight="170.0" prefWidth="347.0">
+                          <columns>
+                            <TableColumn prefWidth="75.0" text="C1" />
+                            <TableColumn prefWidth="75.0" text="C2" />
+                          </columns>
+                        </TableView>
+                        <Label layoutX="122.0" layoutY="331.0" text="Inhoud">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                     </children></AnchorPane>
               </content>
             </Tab>
          </tabs>

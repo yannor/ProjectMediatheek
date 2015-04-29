@@ -2,17 +2,10 @@ package items;
 
 import java.io.Serializable;
 import java.util.List;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javax.persistence.Access;
-import javax.persistence.AccessType;
-import javax.persistence.Entity;
-/**
- *
- * @author Yannick
- */
+import javafx.beans.property.*;
+import javafx.collections.*;
+import javax.persistence.*;
+
 @Entity
 @Access(AccessType.PROPERTY)
 public class Cd extends Item implements Serializable {

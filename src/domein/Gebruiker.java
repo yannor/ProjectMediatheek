@@ -1,15 +1,9 @@
 package domein;
 
 import java.io.Serializable;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 import javax.persistence.*;
-/**
- *
- * @author Yannick
- */
+
 @Entity
 @Access(AccessType.PROPERTY)
 @Table(name = "GEBRUIKERS")

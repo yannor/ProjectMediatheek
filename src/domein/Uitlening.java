@@ -5,10 +5,7 @@ import java.util.Calendar;
 import javafx.beans.property.*;
 
 import javax.persistence.*;
-/**
- *
- * @author Yannick
- */
+
 @Entity
 @Access(AccessType.PROPERTY)
 @NamedQueries({

@@ -3,10 +3,7 @@ package items;
 import java.io.Serializable;
 import javafx.beans.property.*;
 import javax.persistence.*;
-/**
- *
- * @author Yannick
- */
+
 @Entity
 @Access(AccessType.PROPERTY)
 @NamedQueries({
@@ -58,7 +55,7 @@ public class Exemplaar implements Serializable {
         this.item.set(i);
     }
 
-    
+    @ManyToOne
     public Item getItem() {
         return this.item.get();
     }

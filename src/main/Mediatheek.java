@@ -6,10 +6,7 @@ import static javafx.application.Application.launch;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-/**
- *
- * @author Yannick
- */
+
 
 public class Mediatheek extends Application {
 

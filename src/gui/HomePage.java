@@ -1,18 +1,12 @@
 package gui;
 
-import items.Dvd;
-import items.Item;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import javafx.fxml.*;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
+
 import util.ItemManagement;
-/**
- *
- * @author Yannick
- */
+
 public class HomePage extends Pane implements Screen {
 
     ScreenSwitcher switcher;

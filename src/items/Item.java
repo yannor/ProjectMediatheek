@@ -5,10 +5,7 @@ import java.util.List;
 import javafx.beans.property.*;
 import javafx.collections.*;
 import javax.persistence.*;
-/**
- *
- * @author Yannick
- */
+
 @Entity
 @Access(AccessType.PROPERTY)
 @NamedQueries({
@@ -23,7 +20,7 @@ public abstract class Item implements Serializable {
     private final ObservableList<String> themas = FXCollections.observableArrayList();
     private final StringProperty leeftijd = new SimpleStringProperty();
 
-    private List<Exemplaar> exemplaren;
+    private ObservableList<Exemplaar> exemplaren= FXCollections.observableArrayList();
 
     private int id;
     
@@ -73,6 +70,7 @@ public abstract class Item implements Serializable {
         this.leeftijd.set(leeftijd);
     }
 
+    
     public ObservableList<String> getThemas() {
         return themas;
     }
@@ -85,9 +83,7 @@ public abstract class Item implements Serializable {
         this.themas.setAll(thema);
     }
 
-    public List<Exemplaar> getExemplaren() {
-        return exemplaren;
-    }
+   
 
      public StringProperty aantalProperty() {
         return aantal;
@@ -100,6 +96,23 @@ public abstract class Item implements Serializable {
     public void setAantal(String aantal) {
         this.aantal.set(aantal);
     }
+
+    @Transient
+    public ObservableList<Exemplaar> getExemplaren() {
+        return exemplaren;
+    }
+
+    @OneToMany
+    public List<Exemplaar> getListExemplaren() {
+        return exemplaren;
+    }
+    
+    
+    public void setListExemplaren(List<Exemplaar> exemplaren) {
+        this.exemplaren = FXCollections.observableArrayList(exemplaren);
+    }
+    
+    
     
     
 

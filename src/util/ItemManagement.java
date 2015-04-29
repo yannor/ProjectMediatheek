@@ -1,16 +1,14 @@
 
 package util;
 
-import items.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityNotFoundException;
 import persistence.exceptions.NonexistentEntityException;
-/**
- *
- * @author Yannick
- */
+
+import items.*;
+
 public class ItemManagement{
     
      EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager();
@@ -18,6 +16,9 @@ public class ItemManagement{
     private ObservableList<Item> items = FXCollections.observableArrayList();
     private ObservableList<Exemplaar> exemplaren = FXCollections.observableArrayList();
     private ObservableList<Boek> boeken = FXCollections.observableArrayList();
+    private ObservableList<Cd> cds = FXCollections.observableArrayList();
+    private ObservableList<Dvd> dvds = FXCollections.observableArrayList();
+    private ObservableList<Spel> spellen = FXCollections.observableArrayList();
     
     
     public ItemManagement()
@@ -66,6 +67,42 @@ public void addItem(Item item)
         
 	return boeken;
     }
+    
+    public ObservableList<Cd> getCds() {
+        for(int x=0;x<items.size();x++)
+        {
+            if(items.get(x)instanceof Cd)
+            {
+                cds.add((Cd)items.get(x));
+            }
+        }
+        
+	return cds;
+    }
+    
+    public ObservableList<Dvd> getDvds() {
+        for(int x=0;x<items.size();x++)
+        {
+            if(items.get(x)instanceof Dvd)
+            {
+                dvds.add((Dvd)items.get(x));
+            }
+        }
+        
+	return dvds;
+    }
+    
+    public ObservableList<Spel> getSpellen() {
+        for(int x=0;x<items.size();x++)
+        {
+            if(items.get(x)instanceof Spel)
+            {
+                spellen.add((Spel)items.get(x));
+            }
+        }
+        
+	return spellen;
+    }
 
     public ObservableList<Exemplaar> getExemplaren() {
 	return exemplaren;
@@ -98,10 +135,11 @@ public void addItem(Item item)
             em.persist(item);
             em.getTransaction().commit();
         } finally {
-            if (em != null) {
+            
                 em.close();
-            }
+            
         }
+        
     }
 
     public void edit(Item item) throws NonexistentEntityException, Exception {

@@ -3,10 +3,7 @@ package gui;
 import java.io.IOException;
 import javafx.fxml.*;
 import javafx.scene.layout.AnchorPane;
-/**
- *
- * @author Yannick
- */
+
 public class UitleningPage extends AnchorPane implements Screen {
 
    

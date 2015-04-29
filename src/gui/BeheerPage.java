@@ -1,17 +1,13 @@
 package gui;
 
-import items.Boek;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import javafx.fxml.*;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+
 import util.ItemManagement;
-/**
- *
- * @author Yannick
- */
+import items.*;
+
 public class BeheerPage extends BorderPane {
 
     ScreenSwitcher switcher;
@@ -31,13 +27,33 @@ public class BeheerPage extends BorderPane {
         man= new ItemManagement();
 
     }
-    
+     @FXML
+    public void home()
+    {
+        switcher.homePageIn();
+    }
     @FXML
     public void add()
     {
         List<String> testThemas= new ArrayList<>();
         testThemas.add("thema");
-        man.create(new Boek(" titel", " leeftijd",testThemas, " auteur", " uitgever", " beschrijving", " aantal"));
+        for(int x=0;x<10;x++)
+        {
+            man.create(new Boek("Titel "+x, "leeftijd "+x,testThemas, "auteur "+x, " uitgever "+x, " beschrijving "+x, " "+x));
+        
+        
+       
+            man.create(new Cd("Titel "+x, "leeftijd "+x,testThemas, "zanger "+x, testThemas, " "+x));
+        
+        
+        
+            man.create(new Dvd("Titel "+x, "leeftijd "+x,testThemas, " "+x));
+        
+            man.create(new Spel("Titel "+x, "leeftijd "+x,testThemas, " uitgeverij "+x," "+x));
+        }
+        
+       
+        
     }
 
 }
