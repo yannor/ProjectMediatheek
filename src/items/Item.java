@@ -5,7 +5,10 @@ import java.util.List;
 import javafx.beans.property.*;
 import javafx.collections.*;
 import javax.persistence.*;
-
+/**
+ *
+ * @author Yannick
+ */
 @Entity
 @Access(AccessType.PROPERTY)
 @NamedQueries({
@@ -14,6 +17,7 @@ import javax.persistence.*;
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Item implements Serializable {
 
+    
     private final StringProperty naam = new SimpleStringProperty();
 
     private final ObservableList<String> themas = FXCollections.observableArrayList();
@@ -22,14 +26,17 @@ public abstract class Item implements Serializable {
     private List<Exemplaar> exemplaren;
 
     private int id;
+    
+   private final StringProperty aantal = new SimpleStringProperty();
 
     public Item() {
     }
 
-    public Item(String naam, String leeftijd, List<String> themas) {
+    public Item(String naam, String leeftijd, List<String> themas, String aantal) {
         setThemas(themas);
         setLeeftijd(leeftijd);
         setNaam(naam);
+        setAantal(aantal);
     }
 
     @Id
@@ -82,6 +89,20 @@ public abstract class Item implements Serializable {
         return exemplaren;
     }
 
+     public StringProperty aantalProperty() {
+        return aantal;
+    }
+    
+    public String getAantal() {
+        return aantal.get();
+    }
+
+    public void setAantal(String aantal) {
+        this.aantal.set(aantal);
+    }
+    
+    
+
     @Override
     public int hashCode() {
         int hash = 5;
@@ -105,9 +126,7 @@ public abstract class Item implements Serializable {
             return "S";
         } else if (item instanceof Verteltas) {
             return "V";
-        } else if (item instanceof Puzzel) {
-            return "P";
-        }
+        } 
         return null;
     }
 }

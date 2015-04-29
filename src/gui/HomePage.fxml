@@ -5,9 +5,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<fx:root prefHeight="800.0" prefWidth="1200.0" styleClass="back" stylesheets="@../resources/css.css" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root prefHeight="800.0" prefWidth="1200.0" styleClass="back" stylesheets="@../resources/css.css" type="Pane" xmlns="http://javafx.com/javafx/8.0.40-ea" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button fx:id="btnBeheer" layoutX="700.0" layoutY="426.0" mnemonicParsing="false" opacity="0.9" prefHeight="177.0" prefWidth="350.0" styleClass="beheer" />
+      <Button fx:id="btnBeheer" layoutX="700.0" layoutY="426.0" mnemonicParsing="false" onAction="#beheer" opacity="0.9" prefHeight="177.0" prefWidth="350.0" styleClass="beheer" />
       <Button fx:id="btnZoeken" layoutX="75.0" layoutY="150.0" mnemonicParsing="false" onAction="#zoeken" opacity="0.9" prefHeight="457.0" prefWidth="576.0" styleClass="zoeken" />
       <Button fx:id="btnUitloggen" layoutX="818.0" layoutY="33.0" mnemonicParsing="false" onAction="#afmelden" opacity="0.8" prefHeight="70.0" prefWidth="320.0" styleClass="colors" text="Afmelden">
          <font>

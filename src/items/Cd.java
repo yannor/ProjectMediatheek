@@ -6,9 +6,15 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javax.persistence.Access;
+import javax.persistence.AccessType;
 import javax.persistence.Entity;
-
+/**
+ *
+ * @author Yannick
+ */
 @Entity
+@Access(AccessType.PROPERTY)
 public class Cd extends Item implements Serializable {
 
     private StringProperty zanger = new SimpleStringProperty();
@@ -18,8 +24,8 @@ public class Cd extends Item implements Serializable {
         super();
     }
 
-    public Cd(String titel, String leeftijd, List<String> themas, String zanger, List<String> liedjes) {
-        super(titel, leeftijd, themas);
+    public Cd(String titel, String leeftijd, List<String> themas, String zanger, List<String> liedjes, String aantal) {
+        super(titel, leeftijd, themas, aantal);
         setZanger(zanger);
         setLiedjesLijst(liedjes);
     }

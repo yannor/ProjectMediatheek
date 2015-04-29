@@ -4,9 +4,15 @@ import java.io.Serializable;
 import java.util.List;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javax.persistence.Access;
+import javax.persistence.AccessType;
 import javax.persistence.Entity;
-
+/**
+ *
+ * @author Yannick
+ */
 @Entity
+@Access(AccessType.PROPERTY)
 public class Boek extends Item implements Serializable {
 
     private StringProperty auteur = new SimpleStringProperty();
@@ -17,8 +23,8 @@ public class Boek extends Item implements Serializable {
         super();
     }
 
-    public Boek(String titel, String leeftijd, List<String> themas, String auteur, String uitgever, String beschrijving) {
-        super(titel, leeftijd, themas);
+    public Boek(String titel, String leeftijd, List<String> themas, String auteur, String uitgever, String beschrijving, String aantal) {
+        super(titel, leeftijd, themas, aantal);
         setAuteur(auteur);
         setUitgever(uitgever);
         setBeschrijving(beschrijving);

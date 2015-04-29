@@ -1,15 +1,25 @@
 package gui;
 
+import items.Dvd;
+import items.Item;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import javafx.fxml.*;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
-
-public class HomePage extends Pane {
+import util.ItemManagement;
+/**
+ *
+ * @author Yannick
+ */
+public class HomePage extends Pane implements Screen {
 
     ScreenSwitcher switcher;
     @FXML
     private Button btnUitloggen, btnZoeken, btnUitleningen, btnBeheer;
+    
+    ItemManagement it= new ItemManagement();
 
     @FXML
     private Label lblWelkom;
@@ -18,7 +28,7 @@ public class HomePage extends Pane {
 
     public HomePage(ScreenSwitcher switcher) {
 
-        this.switcher=switcher;
+       this.switcher=switcher;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
         loader.setRoot(this);
         loader.setController(this);
@@ -37,9 +47,7 @@ public class HomePage extends Pane {
     public void afmelden() {
 
        switcher.zoeken(false);
-        //stage.close();
-       // Image applicationIcon = new Image("gui/afbeeldingen/logo_krekel.png");
-       // stage.getIcons().add(applicationIcon);
+      
         
 
     }
@@ -78,4 +86,10 @@ public class HomePage extends Pane {
 //
 //    }
 
+    
+    public void beheer()
+    {
+        switcher.beheer();
+        
+    }
 }

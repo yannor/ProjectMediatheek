@@ -3,7 +3,10 @@ package items;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Entity;
-
+/**
+ *
+ * @author Yannick
+ */
 @Entity
 public class Dvd extends Item implements Serializable {
 
@@ -11,8 +14,8 @@ public class Dvd extends Item implements Serializable {
         super();
     }
 
-    public Dvd(String titel, String leeftijd, List<String> themas) {
-        super(titel, leeftijd, themas);
+    public Dvd(String titel, String leeftijd, List<String> themas, String aantal) {
+        super(titel, leeftijd, themas, aantal);
 
     }
 

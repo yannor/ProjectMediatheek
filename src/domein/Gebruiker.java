@@ -6,10 +6,13 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javax.persistence.*;
-
+/**
+ *
+ * @author Yannick
+ */
 @Entity
 @Access(AccessType.PROPERTY)
-@Table(name = "TBL_GEBRUIKERS")
+@Table(name = "GEBRUIKERS")
 @NamedQueries({
     @NamedQuery(name = "Gebruiker.findAll", query = "SELECT g FROM Gebruiker g")
 })

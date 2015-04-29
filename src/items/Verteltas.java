@@ -9,11 +9,15 @@ import javax.persistence.AccessType;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
-
+/**
+ *
+ * @author Yannick
+ */
 @Entity
 @NamedQueries({
     @NamedQuery(name = "Verteltas.findAll", query = "SELECT i FROM Verteltas i")
@@ -25,8 +29,8 @@ public class Verteltas extends Item implements Serializable {
     public Verteltas() {
     }
 
-    public Verteltas(String titel, String leeftijd, List<String> themas) {
-        super(titel, leeftijd, themas);
+    public Verteltas(String titel, String leeftijd, List<String> themas, String aantal) {
+        super(titel, leeftijd, themas, aantal);
     }
 
     public void addItem(Exemplaar item) {
@@ -36,24 +40,27 @@ public class Verteltas extends Item implements Serializable {
     public void removeItem(Exemplaar item) {
         exInhoud.remove(item);
     }
+    
 
-    @Transient
-    public ObservableList<Exemplaar> getObservableInhoud() {
+   
+    
+    public ObservableList<Exemplaar> getExInhoud() {
         return exInhoud;
     }
 
-    @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
-    public List<Exemplaar> getInhoud() {
-        return exInhoud;
+    public void setExInhoud(ObservableList<Exemplaar> exInhoud) {
+        this.exInhoud = exInhoud;
     }
-
-    public void setItems(List<Exemplaar> exInhoud) {
-        this.exInhoud = FXCollections.observableArrayList(exInhoud);
-    }
+    
+     
 
     @Override
     public String toString() {
         return getNaam();
     }
 
+    
+
+    
+    
 }

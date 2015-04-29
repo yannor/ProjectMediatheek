@@ -4,9 +4,15 @@ import java.io.Serializable;
 import java.util.List;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javax.persistence.Access;
+import javax.persistence.AccessType;
 import javax.persistence.Entity;
-
+/**
+ *
+ * @author Yannick
+ */
 @Entity
+@Access(AccessType.PROPERTY)
 public class Spel extends Item implements Serializable {
 
     private StringProperty uitgeverij = new SimpleStringProperty();
@@ -15,8 +21,8 @@ public class Spel extends Item implements Serializable {
         super();
     }
 
-    public Spel(String titel, String leeftijd, List<String> themas, String uitgeverij) {
-        super(titel, leeftijd, themas);
+    public Spel(String titel, String leeftijd, List<String> themas, String uitgeverij, String aantal) {
+        super(titel, leeftijd, themas, aantal);
         setUitgeverij(uitgeverij);
     }
 

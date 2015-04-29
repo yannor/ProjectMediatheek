@@ -5,7 +5,10 @@ import java.util.Calendar;
 import javafx.beans.property.*;
 
 import javax.persistence.*;
-
+/**
+ *
+ * @author Yannick
+ */
 @Entity
 @Access(AccessType.PROPERTY)
 @NamedQueries({
@@ -20,6 +23,8 @@ public class Uitlening implements Serializable {
    
    // private final ObjectProperty<Calendar> datum = new SimpleObjectProperty<>();
     private final BooleanProperty terug = new SimpleBooleanProperty(false);
+    
+    
      private final ObjectProperty<Calendar> uitleenDatum = new SimpleObjectProperty<>();
 
     public Uitlening() {
@@ -29,8 +34,7 @@ public class Uitlening implements Serializable {
 	this.exemplaar.set(ex);
 	this.gebruiker.set(gebr);
 	uitleenDatum.set(Calendar.getInstance());
-	//date.set(Calendar.getInstance());
-	//date.get().add(Calendar.WEEK_OF_MONTH, 1);
+	
     }
 
     
@@ -80,26 +84,9 @@ public class Uitlening implements Serializable {
 	this.terug.set(isTerug);
     }
 
-    
-
-  
-   
-
-//    @Temporal(TemporalType.DATE)
-//    public Calendar getDate() {
-//	return this.date.get();
-//    }
-//
-//    public void setDate(Calendar date) {
-//	this.date.set(date);
-//    }
-//
-//    public ObjectProperty<Calendar> dateProperty() {
-//	return this.date;
-//    }
 
     
-    
+     @Temporal(TemporalType.DATE)
     public Calendar getUitleenDatum() {
 	return this.uitleenDatum.get();
     }

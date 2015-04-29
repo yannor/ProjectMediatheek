@@ -2,18 +2,18 @@
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
   <persistence-unit name="EigenProjectKrekelPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>domein.Gebruiker</class>
     <class>items.Boek</class>
-    <class>items.Item</class>
-    <class>items.Exemplaar</class>
     <class>items.Cd</class>
-    <class>items.Puzzel</class>
-    <class>items.Verteltas</class>
     <class>items.Dvd</class>
+    <class>items.Exemplaar</class>
+    <class>items.Item</class>
     <class>items.Spel</class>
+    <class>domein.Uitlening</class>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:3306,Eigen Project De Krekel"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://127.0.0.1:3306/media"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
-      <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
       <property name="javax.persistence.jdbc.password" value="root"/>
       <property name="javax.persistence.schema-generation.database.action" value="create"/>
     </properties>

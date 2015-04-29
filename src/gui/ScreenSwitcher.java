@@ -1,57 +1,65 @@
 package gui;
 
+import java.io.IOException;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.BorderPane;
 
 public class ScreenSwitcher extends BorderPane {
 
-    private HomePage in;
-    private ColorBar colorBar;
-    private Zoeken zoeken;
-    private DetailPage details;
-    private UitleningPage uitleningen;
+    /**
+ *
+ * @author Yannick
+ */
     
-    private BoekenPage boeken;
+    
+    
+    
+     private final Zoeken zoeken;
+    private final UitleningPage uitleningen;
+    private final HomePage homePage;
+    
+    
 
     public ScreenSwitcher() {
-        initialize();
-        setMinSize(1200, 800);
-        setMaxSize(Integer.MAX_VALUE, Integer.MAX_VALUE);
+        
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("ScreenSwitcher.fxml"));
+        loader.setRoot(this);
+        loader.setController(this);
+        try {
+            loader.load();
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        }
+        
+         zoeken = new Zoeken(this, false);
+         uitleningen = new UitleningPage(this);
+         homePage = new HomePage(this);
+         //setCenter(zoeken);
+           //zoeken.show();
        
     }
 
-    private void initialize() {
-        colorBar = new ColorBar(this);
-        //colorBar.setController(new ColorBar());
-        this.uitleningen= new UitleningPage(this);
-        this.details = new DetailPage(this);
-        this.in = new HomePage(this);
-        this.zoeken = new Zoeken(this);
-        
-        
-        this.boeken = new BoekenPage(this);
-
-
-    }
+    
 
 
     public void homePageIn() {
-        
-        setTop(null);
-        setCenter(in);
-        setLeft(null);
+        setCenter(homePage);
     }
 
     public void zoeken(boolean aangemeld) {
        
-        setTop(new ColorBar(this,aangemeld));
-        setLeft(zoeken);
-        setCenter(details);
+        
+        setCenter(new Zoeken(this, aangemeld));
+       
+       
     }
     
      public void uitleningen() {
-        //colorBar.setTitel("Homepage in");
-        setTop(new ColorBar(this));
-        setCenter(uitleningen);
+       
+    }
+     
+     public void beheer() {
+       setCenter(new BeheerPage(this));
     }
 
 

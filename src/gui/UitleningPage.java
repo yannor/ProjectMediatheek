@@ -3,16 +3,20 @@ package gui;
 import java.io.IOException;
 import javafx.fxml.*;
 import javafx.scene.layout.AnchorPane;
+/**
+ *
+ * @author Yannick
+ */
+public class UitleningPage extends AnchorPane implements Screen {
 
-public class UitleningPage extends AnchorPane {
-
-     ScreenSwitcher switcher= new ScreenSwitcher();
-     
+   
+     ScreenSwitcher switcher;
     
 
     public UitleningPage(ScreenSwitcher switcher) {
 
         this.switcher=switcher;
+     
         FXMLLoader loader = new FXMLLoader(getClass().getResource("UitleningPage.fxml"));
         loader.setRoot(this);
         loader.setController(this);

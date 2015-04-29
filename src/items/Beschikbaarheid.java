@@ -1,6 +1,9 @@
 
 package items;
-
+/**
+ *
+ * @author Yannick
+ */
 public enum Beschikbaarheid {
 
     BESCHIKBAAR("Beschikbaar"),

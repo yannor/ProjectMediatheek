@@ -10,29 +10,161 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.6" prefHeight="800.0" prefWidth="400.0" styleClass="back" stylesheets="@../resources/css.css" type="AnchorPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <GridPane layoutX="20.0" layoutY="20.0" prefHeight="318.0" prefWidth="79.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="20.0">
-         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-         </rowConstraints>
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="back" stylesheets="@../resources/css.css" type="BorderPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <AnchorPane prefHeight="40.0" prefWidth="800.0" style="-fx-background-color: green;" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Allemaal" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-            <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Boeken" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-            <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Cd" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-            <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Dvd" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
-            <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Spelen" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
-            <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Verteltas" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+            <Button fx:id="btnAanmelden" layoutX="534.0" layoutY="13.0" mnemonicParsing="false" onAction="#aanmelden" prefHeight="40.0" prefWidth="115.0" styleClass="colors" text="Aanmelden" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <font>
+                  <Font size="18.0" />
+               </font></Button>
+            <Button fx:id="btnHome" disable="true" mnemonicParsing="false" onAction="#home" prefHeight="40.0" prefWidth="109.0" text="Home" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
          </children>
-      </GridPane>
-      <ListView layoutX="167.0" layoutY="105.0" prefHeight="535.0" prefWidth="290.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="20.0" />
-   </children>
+      </AnchorPane>
+   </top>
+   <left>
+      <AnchorPane prefHeight="760.0" prefWidth="409.0" BorderPane.alignment="CENTER">
+         <children>
+            <GridPane layoutX="34.0" layoutY="50.0" prefHeight="210.0" prefWidth="100.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Button fx:id="btnAllemaal" mnemonicParsing="false" onAction="#allemaal" prefWidth="75.0" text="Allemaal" />
+                  <Button fx:id="btnBoeken" mnemonicParsing="false" onAction="#boeken" prefWidth="75.0" text="Boeken" GridPane.rowIndex="1" />
+                  <Button fx:id="btnCds" mnemonicParsing="false" onAction="#cds" prefWidth="75.0" text="Cds" GridPane.rowIndex="2" />
+                  <Button fx:id="btnDvds" mnemonicParsing="false" onAction="#dvds" prefWidth="75.0" text="Dvds" GridPane.rowIndex="3" />
+                  <Button fx:id="btnSpellen" mnemonicParsing="false" onAction="#spellen" prefWidth="75.0" text="Spellen" GridPane.rowIndex="4" />
+                  <Button fx:id="btnTassen" mnemonicParsing="false" onAction="#tassen" prefWidth="75.0" text="Tassen" GridPane.rowIndex="5" />
+               </children>
+            </GridPane>
+            <ListView fx:id="listItems" layoutX="143.0" layoutY="50.0" onMouseClicked="#selectItem" prefHeight="401.0" prefWidth="252.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="143.0" AnchorPane.topAnchor="50.0" />
+         </children>
+      </AnchorPane>
+   </left>
+   <center>
+      <TabPane BorderPane.alignment="CENTER">
+         <tabs>
+            <Tab fx:id="tabBoek" closable="false" text="Boek">
+               <content>
+                  <AnchorPane prefHeight="748.0" prefWidth="746.0">
+                     <children>
+                        <GridPane layoutX="160.0" layoutY="260.0" prefHeight="17.0" prefWidth="284.0" AnchorPane.leftAnchor="160.0" AnchorPane.rightAnchor="-16.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Label fx:id="lblThema4" layoutX="275.0" layoutY="210.0" text="Label" GridPane.columnIndex="3" />
+                              <Label fx:id="lblThema3" layoutX="225.0" layoutY="210.0" text="Label" GridPane.columnIndex="2" />
+                              <Label fx:id="lblThema2" layoutX="175.0" layoutY="210.0" text="Label" GridPane.columnIndex="1" />
+                              <Label fx:id="lblThema5" layoutX="325.0" layoutY="210.0" text="Label" GridPane.columnIndex="4" />
+                              <Label fx:id="lblThema1" layoutX="125.0" layoutY="210.0" text="Label" />
+                           </children>
+                        </GridPane>
+                        <Label fx:id="lblNaam" layoutX="26.0" layoutY="19.0" text="Naam">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="500.0" layoutY="172.0" text="Aantal">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="322.0" layoutY="100.0" text="Uitgever">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="26.0" layoutY="100.0" text="Leeftijd">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="26.0" layoutY="175.0" text="Auteur">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="23.0" layoutY="251.0" text="Themas">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="105.0" layoutY="334.0" text="Beschrijving">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="txtLeeftijd" layoutX="121.0" layoutY="98.0" prefHeight="39.0" prefWidth="147.0">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="txtAuteur" alignment="CENTER" layoutX="121.0" layoutY="173.0" prefHeight="39.0" prefWidth="300.0">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="txtUitgever" layoutX="446.0" layoutY="98.0" prefHeight="39.0" prefWidth="300.0">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="txtAantal" layoutX="596.0" layoutY="170.0" prefHeight="39.0" prefWidth="109.0">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </TextField>
+                        <TextArea fx:id="txaBeschrijving" layoutX="98.0" layoutY="380.0" prefHeight="181.0" prefWidth="633.0">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </TextArea>
+                        <Button fx:id="btnUitlenen" layoutX="271.0" layoutY="619.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="254.0" text="Leen uit" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab fx:id="tabCd" closable="false" text="Cd">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
+            <Tab fx:id="tabDvd" closable="false" text="Dvd">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
+            <Tab fx:id="tabSpel" closable="false" text="Gezelschapsspel">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
+            <Tab fx:id="tabTas" closable="false" text="Verteltas">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
+         </tabs>
+      </TabPane>
+   </center>
+   <right>
+      <Pane prefHeight="760.0" prefWidth="67.0" BorderPane.alignment="CENTER" />
+   </right>
 </fx:root>

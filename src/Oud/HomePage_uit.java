@@ -11,7 +11,10 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.stage.*;
-
+/**
+ *
+ * @author Yannick
+ */
 public class HomePage_uit extends Pane {
 
     ScreenSwitcher switcher;
