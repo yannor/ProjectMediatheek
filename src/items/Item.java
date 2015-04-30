@@ -30,7 +30,7 @@ public abstract class Item implements Serializable {
     }
 
     public Item(String naam, String leeftijd, List<String> themas, String aantal) {
-        setThemas(themas);
+        setThemas2(themas);
         setLeeftijd(leeftijd);
         setNaam(naam);
         setAantal(aantal);
@@ -75,11 +75,9 @@ public abstract class Item implements Serializable {
         return themas;
     }
 
-    public List<String> getThemas2() {
-        return themas;
-    }
 
-    public void setThemas(List<String> thema) {
+
+    public void setThemas2(List<String> thema) {
         this.themas.setAll(thema);
     }
 
@@ -101,11 +99,12 @@ public abstract class Item implements Serializable {
     public ObservableList<Exemplaar> getExemplaren() {
         return exemplaren;
     }
-
+    @Access(AccessType.PROPERTY)
     @OneToMany
     public List<Exemplaar> getListExemplaren() {
         return exemplaren;
     }
+   
     
     
     public void setListExemplaren(List<Exemplaar> exemplaren) {

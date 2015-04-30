@@ -20,12 +20,12 @@ public class Verteltas extends Item implements Serializable {
         super(titel, leeftijd, themas, aantal);
     }
 
-    public void addItem(Exemplaar item) {
-        exInhoud.add(item);
+    public void addItem(Exemplaar ex) {
+        exInhoud.add(ex);
     }
 
-    public void removeItem(Exemplaar item) {
-        exInhoud.remove(item);
+    public void removeItem(Exemplaar ex) {
+        exInhoud.remove(ex);
     }
     
     @Access(AccessType.PROPERTY)

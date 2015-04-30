@@ -19,12 +19,13 @@ public class Zoeken extends BorderPane implements Screen {
     ScreenSwitcher switcher;
 
     @FXML
-    private ListView listItems, listLiedjes;
+    private ListView listItems, listLiedjes, listExemplaren;
 
     @FXML
     private Button btnAllemaal, btnCds, btnBoeken, btnDvds, btnSpellen, btnTassen;
 
     ObservableList<Item> items;
+    ObservableList<Exemplaar> exemplaren;
 
     @FXML
     private TextField txtAuteur, txtUitgever, txtZanger, txtUitgeverij;
@@ -33,13 +34,14 @@ public class Zoeken extends BorderPane implements Screen {
     private TextArea txaBeschrijving;
     
     @FXML
-    private TextField txtAantal1, txtLeeftijd1,txtAantal, txtLeeftijd,
+    private TextField txtAantal1, txtLeeftijd1,txtAantal, txtLeeftijd, txtAantal4, txtLeeftijd4,
             txtAantal2, txtLeeftijd2,txtAantal3, txtLeeftijd3;
 
     
     @FXML
     private Label lblNaam, lblThema1, lblThema2, lblThema3, lblThema4, lblThema5, lblNaam1, lblThema11, lblThema21, lblThema31, lblThema41, lblThema51,
-            lblNaam2, lblThema12, lblThema22, lblThema32, lblThema42, lblThema52, lblNaam3, lblThema13, lblThema23, lblThema33, lblThema43, lblThema53;
+            lblNaam2, lblThema12, lblThema22, lblThema32, lblThema42, lblThema52, lblNaam3, lblThema13, lblThema23, lblThema33, lblThema43, lblThema53,
+            lblNaam4, lblThema14, lblThema24, lblThema34, lblThema44, lblThema54;
 
     
   
@@ -209,6 +211,7 @@ public class Zoeken extends BorderPane implements Screen {
     }
 
     public void selectItem() {
+        
         Item plaatsLijst =(Item) listItems.getSelectionModel().getSelectedItem(); //plaats in de lijst van het geslecteerde item
         int d = plaatsLijst.getId(); //id van het geslecteerde item
         
@@ -231,7 +234,7 @@ public class Zoeken extends BorderPane implements Screen {
                     txtUitgever.setText(hulp.getUitgever());
                     txaBeschrijving.setText(hulp.getBeschrijving());
 
-                    lblThema1.setText("");
+                   // lblThema1.setText();
 
                     lblThema2.setText("");
                     lblThema3.setText("");
@@ -310,6 +313,36 @@ public class Zoeken extends BorderPane implements Screen {
                     lblThema33.setText("");
                     lblThema43.setText("");
                     lblThema53.setText("");
+                }
+            }
+        }
+        
+          if (listItems.getSelectionModel().getSelectedItem() instanceof Verteltas) 
+        {
+
+            sluitTabs(5);
+            for (int y = 0; y < itemManagement.getItems().size(); y++) 
+            {
+                if (itemManagement.getItems().get(y).getId() == d) 
+                {
+                    Verteltas hulp= (Verteltas)itemManagement.getItems().get(y);
+                    lblNaam4.setText(hulp.getNaam());
+                    txtAantal4.setText(hulp.getAantal());
+                    txtLeeftijd4.setText(hulp.getLeeftijd());
+                    
+                    for(int len=0;len<hulp.getExInhoud().size();len++)
+                    {
+                        exemplaren.add(hulp.getExInhoud().get(len));
+                    }
+                    
+                    listExemplaren.setItems(exemplaren);
+
+                    lblThema14.setText("");
+
+                    lblThema24.setText("");
+                    lblThema34.setText("");
+                    lblThema44.setText("");
+                    lblThema54.setText("");
                 }
             }
         }

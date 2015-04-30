@@ -393,17 +393,12 @@
                               <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                         </GridPane>
-                        <TableView layoutX="121.0" layoutY="379.0" prefHeight="170.0" prefWidth="347.0">
-                          <columns>
-                            <TableColumn prefWidth="75.0" text="C1" />
-                            <TableColumn prefWidth="75.0" text="C2" />
-                          </columns>
-                        </TableView>
                         <Label layoutX="122.0" layoutY="331.0" text="Inhoud">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </Label>
+                        <ListView fx:id="listExemplaren" layoutX="121.0" layoutY="374.0" prefHeight="200.0" prefWidth="427.0" styleClass="border_collor" />
                      </children></AnchorPane>
               </content>
             </Tab>

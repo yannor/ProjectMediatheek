@@ -39,21 +39,27 @@ public class BeheerPage extends BorderPane {
         testThemas.add("thema");
         for(int x=0;x<10;x++)
         {
-            man.create(new Boek("Titel "+x, "leeftijd "+x,testThemas, "auteur "+x, " uitgever "+x, " beschrijving "+x, " "+x));
+            man.create(new Boek("Boek "+x, "leeftijd "+x,testThemas, "auteur "+x, " uitgever "+x, " beschrijving "+x, " "+x));
         
-        
-       
-            man.create(new Cd("Titel "+x, "leeftijd "+x,testThemas, "zanger "+x, testThemas, " "+x));
-        
-        
-        
-            man.create(new Dvd("Titel "+x, "leeftijd "+x,testThemas, " "+x));
-        
-            man.create(new Spel("Titel "+x, "leeftijd "+x,testThemas, " uitgeverij "+x," "+x));
+            man.create(new Cd("Cd "+x, "leeftijd "+x,testThemas, "zanger "+x, testThemas, " "+x));
+
+            man.create(new Dvd("Dvd "+x, "leeftijd "+x,testThemas, " "+x));        
+            man.create(new Spel("Spel "+x, "leeftijd "+x,testThemas, " uitgeverij "+x," "+x));
+            
+            man.create(new Verteltas("Verteltas "+x, "leeftijd "+x,testThemas," "+x));
+            
+            
         }
         
        
         
     }
+    public void addExInTas()
+    {
+      
+        
+        man.getTassen().get(1).addItem(new Exemplaar("a", man.getItems().get(1), Beschikbaarheid.BESCHIKBAAR));
+    }
+    
 
 }

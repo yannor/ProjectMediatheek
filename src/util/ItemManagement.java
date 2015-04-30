@@ -19,7 +19,7 @@ public class ItemManagement{
     private ObservableList<Cd> cds = FXCollections.observableArrayList();
     private ObservableList<Dvd> dvds = FXCollections.observableArrayList();
     private ObservableList<Spel> spellen = FXCollections.observableArrayList();
-    
+    private ObservableList<Verteltas> tassen = FXCollections.observableArrayList();
     
     public ItemManagement()
     {
@@ -103,6 +103,18 @@ public void addItem(Item item)
         
 	return spellen;
     }
+    
+    public ObservableList<Verteltas> getTassen() {
+        for(int x=0;x<items.size();x++)
+        {
+            if(items.get(x)instanceof Verteltas)
+            {
+                tassen.add((Verteltas)items.get(x));
+            }
+        }
+        
+	return tassen;
+    }
 
     public ObservableList<Exemplaar> getExemplaren() {
 	return exemplaren;
@@ -136,7 +148,7 @@ public void addItem(Item item)
             em.getTransaction().commit();
         } finally {
             
-                em.close();
+               em.close();
             
         }
         
