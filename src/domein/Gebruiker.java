@@ -1,7 +1,9 @@
 package domein;
 
 import java.io.Serializable;
+import java.util.List;
 import javafx.beans.property.*;
+import javafx.collections.*;
 import javax.persistence.*;
 
 @Entity
@@ -12,9 +14,7 @@ import javax.persistence.*;
 })
 public class Gebruiker implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Access(AccessType.FIELD)
+    
     private int id;
 
     private final StringProperty naam = new SimpleStringProperty();
@@ -22,32 +22,85 @@ public class Gebruiker implements Serializable {
     private final StringProperty klas = new SimpleStringProperty();
     private final StringProperty email = new SimpleStringProperty();
     private final ObjectProperty<TypeGebruiker> type = new SimpleObjectProperty<>();
-    private String wachtwoord;
+    private final StringProperty straat = new SimpleStringProperty();
+    private final StringProperty gemeente = new SimpleStringProperty();
+    private final StringProperty postCode = new SimpleStringProperty();
+    
+    private final ObservableList<Uitlening> uitleningen= FXCollections.observableArrayList();
+    
+    
+    
 
     public Gebruiker() {
     }
 
-    public Gebruiker(String naam, String voorNaam, String klas, String email, TypeGebruiker type, String wachtwoord) {
+    public Gebruiker(String naam, String voorNaam, String klas, String email, TypeGebruiker type, String straat, String gemeente, String postCode) {
         this.naam.set(naam);
         this.voorNaam.set(voorNaam);
         this.klas.set(klas);
         this.email.set(email);
         this.type.set(type);
-        this.wachtwoord = wachtwoord;
+        
+        this.straat.set(straat);
+        this.gemeente.set(gemeente);
+        this.postCode.set(postCode);
     }
 
+    
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public int getId() {
         return id;
     }
+    
+     public void setId(int id) {
+        this.id=id;
+    }
+    
+    
 
-    public String getWachtwoord() {
-        return wachtwoord;
+
+    
+    
+    
+    public StringProperty getStraat() {
+        return straat;
+    }
+    
+    public StringProperty straatProperty() {
+        return straat;
     }
 
-    public void setWachtwoord(String wachtwoord) {
-        this.wachtwoord = wachtwoord;
+     public void setStraat(String straat) {
+        this.straat.set(straat);
+    }
+    
+    public StringProperty getGemeente() {
+        return gemeente;
+    }
+    
+    public StringProperty gemeenteProperty() {
+        return gemeente;
     }
 
+     public void setGemeente(String gemeente) {
+        this.gemeente.set(gemeente);
+    }
+     
+     public StringProperty getPostCode() {
+        return postCode;
+    }
+    
+    public StringProperty postCodeProperty() {
+        return postCode;
+    }
+
+     public void setPostCode(String postCode) {
+        this.postCode.set(postCode);
+    }
+    
+     
     public StringProperty naamProperty() {
         return naam;
     }
@@ -107,5 +160,15 @@ public class Gebruiker implements Serializable {
     public void setTypeGebruiker(TypeGebruiker type) {
         this.type.set(type);
     }
+    
+    
+    
+    @OneToMany(cascade = CascadeType.ALL)
+    public List<Uitlening> getUitlening() {
+	return this.uitleningen;
+    }
 
+    public void setUitlening(List<Uitlening> uitleningen) {
+	this.uitleningen.setAll(uitleningen);
+    }
 }

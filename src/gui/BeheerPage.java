@@ -41,7 +41,7 @@ public class BeheerPage extends BorderPane {
         {
             man.create(new Boek("Boek "+x, "leeftijd "+x,testThemas, "auteur "+x, " uitgever "+x, " beschrijving "+x, " "+x));
         
-            man.create(new Cd("Cd "+x, "leeftijd "+x,testThemas, "zanger "+x, testThemas, " "+x));
+            man.create(new Cd("Cd "+x, "leeftijd "+x,testThemas, testThemas, " "+x));
 
             man.create(new Dvd("Dvd "+x, "leeftijd "+x,testThemas, " "+x));        
             man.create(new Spel("Spel "+x, "leeftijd "+x,testThemas, " uitgeverij "+x," "+x));

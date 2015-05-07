@@ -258,7 +258,7 @@ public class Zoeken extends BorderPane implements Screen {
                     txtAantal1.setText(hulp.getAantal());
                     txtLeeftijd1.setText(hulp.getLeeftijd());
                     
-                    txtZanger.setText(hulp.getZanger());
+                    
                     listLiedjes.setItems(hulp.getLiedjes());
                     
                     lblThema11.setText("");
@@ -462,15 +462,30 @@ public class Zoeken extends BorderPane implements Screen {
            {
                if(itemManagement.getItems().get(x).getNaam().toLowerCase().trim().contains(txtZoeken.getText().toLowerCase().trim()))
                {
+                   if(items.contains(itemManagement.getItems().get(x)))
+                   {
+                       
+                   }
+                   else
                    items.add(itemManagement.getItems().get(x));
                }
                
                if(itemManagement.getItems().get(x).getLeeftijd().toLowerCase().trim().contains(txtZoeken.getText().toLowerCase().trim()))
                {
+                   if(items.contains(itemManagement.getItems().get(x)))
+                   {
+                       
+                   }
+                   else
                    items.add(itemManagement.getItems().get(x));
                }
                if(itemManagement.getItems().get(x).getAantal().toLowerCase().trim().contains(txtZoeken.getText().toLowerCase().trim()))
                {
+                    if(items.contains(itemManagement.getItems().get(x)))
+                   {
+                       
+                   }
+                   else
                    items.add(itemManagement.getItems().get(x));
                }
                

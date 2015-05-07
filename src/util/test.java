@@ -1,5 +1,7 @@
 package util;
 
+import domein.Gebruiker;
+import domein.TypeGebruiker;
 import items.Boek;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,16 +12,14 @@ public class test{
 
 public static void main(String[] args) {
     
+   Gebruiker gebr= new Gebruiker( "naam","voorNaam","klas", "email", TypeGebruiker.LEERLING, "straat", "gemeente", "postCode");
    
-    List<String> testThemas= new ArrayList<>();
-        testThemas.add("thema");
-        Boek boek= new Boek(" titel", " leeftijd",testThemas, " auteur", " uitgever", " beschrijving", " aantal");
         
     
         EntityManager entityManager 
                 = JPAUtil.getEntityManagerFactory().createEntityManager();
         entityManager.getTransaction().begin();
-           entityManager.persist(boek);
+           //entityManager.persist(gebr);
             
         entityManager.getTransaction().commit();
         entityManager.close();

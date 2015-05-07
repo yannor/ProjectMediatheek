@@ -148,7 +148,7 @@ public void addItem(Item item)
             em.getTransaction().commit();
         } finally {
             
-               em.close();
+            //   em.close();
             
         }
         
