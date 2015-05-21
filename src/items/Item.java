@@ -20,20 +20,19 @@ public abstract class Item implements Serializable {
     private final ObservableList<String> themas = FXCollections.observableArrayList();
     private final StringProperty leeftijd = new SimpleStringProperty();
 
-    private ObservableList<Exemplaar> exemplaren= FXCollections.observableArrayList();
+   
 
     private int id;
-    
-   private final StringProperty aantal = new SimpleStringProperty();
+ 
 
     public Item() {
     }
 
-    public Item(String naam, String leeftijd, List<String> themas, String aantal) {
+    public Item(String naam, String leeftijd, List<String> themas) {
         setThemas2(themas);
         setLeeftijd(leeftijd);
         setNaam(naam);
-        setAantal(aantal);
+      
     }
 
     @Id
@@ -78,38 +77,17 @@ public abstract class Item implements Serializable {
 
 
     public void setThemas2(List<String> thema) {
+        if (thema.isEmpty())
+        {
+            this.themas.add("leeg");
+        }
+        else
         this.themas.setAll(thema);
     }
 
    
 
-     public StringProperty aantalProperty() {
-        return aantal;
-    }
-    
-    public String getAantal() {
-        return aantal.get();
-    }
-
-    public void setAantal(String aantal) {
-        this.aantal.set(aantal);
-    }
-
-    @Transient
-    public ObservableList<Exemplaar> getExemplaren() {
-        return exemplaren;
-    }
-    @Access(AccessType.PROPERTY)
-    @OneToMany
-    public List<Exemplaar> getListExemplaren() {
-        return exemplaren;
-    }
    
-    
-    
-    public void setListExemplaren(List<Exemplaar> exemplaren) {
-        this.exemplaren = FXCollections.observableArrayList(exemplaren);
-    }
     
     
     

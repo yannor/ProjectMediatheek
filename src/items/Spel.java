@@ -15,8 +15,8 @@ public class Spel extends Item implements Serializable {
         super();
     }
 
-    public Spel(String titel, String leeftijd, List<String> themas, String uitgeverij, String aantal) {
-        super(titel, leeftijd, themas, aantal);
+    public Spel(String titel, String leeftijd, List<String> themas, String uitgeverij) {
+        super(titel, leeftijd, themas);
         setUitgeverij(uitgeverij);
     }
 

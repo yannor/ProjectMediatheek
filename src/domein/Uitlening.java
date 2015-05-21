@@ -15,7 +15,7 @@ public class Uitlening implements Serializable {
 
     private int id;
 
-    private final ObjectProperty<items.Exemplaar> exemplaar = new SimpleObjectProperty<>();
+    private final ObjectProperty<items.Item> item = new SimpleObjectProperty<>();
     private final ObjectProperty<Gebruiker> gebruiker = new SimpleObjectProperty<>();
    
    // private final ObjectProperty<Calendar> datum = new SimpleObjectProperty<>();
@@ -27,8 +27,8 @@ public class Uitlening implements Serializable {
     public Uitlening() {
     }
 
-    public Uitlening(items.Exemplaar ex, Gebruiker gebr) {
-	this.exemplaar.set(ex);
+    public Uitlening(items.Item ex, Gebruiker gebr) {
+	this.item.set(ex);
 	this.gebruiker.set(gebr);
 	uitleenDatum.set(Calendar.getInstance());
 	
@@ -45,16 +45,16 @@ public class Uitlening implements Serializable {
 	this.id = id;
     }
     
-      public ObjectProperty<items.Exemplaar> ExemplaarProperty() {
-	return exemplaar;
+      public ObjectProperty<items.Item> ExemplaarProperty() {
+	return item;
     }
     @ManyToOne
-    public items.Exemplaar getExemplaar() {
-	return exemplaar.get();
+    public items.Item getExemplaar() {
+	return item.get();
     }
 
-    public void setExemplaar(items.Exemplaar ex) {
-	this.exemplaar.set(ex);
+    public void setExemplaar(items.Item ex) {
+	this.item.set(ex);
     }
 
  public ObjectProperty<Gebruiker> gebruikerProperty() {

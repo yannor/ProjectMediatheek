@@ -1,7 +1,10 @@
 package domein;
 
-import java.io.Serializable;
-import java.util.List;
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.util.*;
+import java.util.logging.*;
 import javafx.beans.property.*;
 import javafx.collections.*;
 import javax.persistence.*;
@@ -26,13 +29,18 @@ public class Gebruiker implements Serializable {
     private final StringProperty gemeente = new SimpleStringProperty();
     private final StringProperty postCode = new SimpleStringProperty();
     
+    
+   
+    
+    
+    
     private final ObservableList<Uitlening> uitleningen= FXCollections.observableArrayList();
     
-    
+     public Gebruiker() {
+       
+    }
     
 
-    public Gebruiker() {
-    }
 
     public Gebruiker(String naam, String voorNaam, String klas, String email, TypeGebruiker type, String straat, String gemeente, String postCode) {
         this.naam.set(naam);
@@ -57,15 +65,16 @@ public class Gebruiker implements Serializable {
      public void setId(int id) {
         this.id=id;
     }
-    
+
+  
     
 
 
     
     
     
-    public StringProperty getStraat() {
-        return straat;
+    public String getStraat() {
+        return straat.get();
     }
     
     public StringProperty straatProperty() {
@@ -76,8 +85,8 @@ public class Gebruiker implements Serializable {
         this.straat.set(straat);
     }
     
-    public StringProperty getGemeente() {
-        return gemeente;
+    public String getGemeente() {
+        return gemeente.get();
     }
     
     public StringProperty gemeenteProperty() {
@@ -88,8 +97,8 @@ public class Gebruiker implements Serializable {
         this.gemeente.set(gemeente);
     }
      
-     public StringProperty getPostCode() {
-        return postCode;
+     public String getPostCode() {
+        return postCode.get();
     }
     
     public StringProperty postCodeProperty() {
@@ -171,4 +180,15 @@ public class Gebruiker implements Serializable {
     public void setUitlening(List<Uitlening> uitleningen) {
 	this.uitleningen.setAll(uitleningen);
     }
+
+    @Override
+    public String toString() {
+        return naam.get() +", "+ voorNaam.get() + " " + "(" + klas.get().trim()+")";
+    }
+    
+    
+
+ 
+ 
+    
 }

@@ -7,4 +7,4 @@
 <?import javafx.scene.layout.*?>
 
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="back" stylesheets="@../resources/css.css" type="BorderPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" />
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" styleClass="back" stylesheets="@../resources/css.css" type="BorderPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" />

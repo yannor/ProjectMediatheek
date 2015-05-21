@@ -11,8 +11,8 @@ public class Dvd extends Item implements Serializable {
         super();
     }
 
-    public Dvd(String titel, String leeftijd, List<String> themas, String aantal) {
-        super(titel, leeftijd, themas, aantal);
+    public Dvd(String titel, String leeftijd, List<String> themas) {
+        super(titel, leeftijd, themas);
 
     }
 

@@ -6,7 +6,6 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
 <fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="320.0" prefWidth="500.0" type="BorderPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <bottom>
       <GridPane BorderPane.alignment="CENTER">
@@ -21,11 +20,19 @@
          <children>
             <Button mnemonicParsing="false" prefWidth="100.0" text="Terug" GridPane.halignment="CENTER" />
             <Button defaultButton="true" mnemonicParsing="false" prefWidth="100.0" text="Finish" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
-            <Button cancelButton="true" mnemonicParsing="false" prefWidth="100.0" text="Cancel" GridPane.columnIndex="2" GridPane.halignment="CENTER" />
+            <Button cancelButton="true" mnemonicParsing="false" onAction="#verwijderGebruiker" prefWidth="100.0" text="Verwijder gebruiker" GridPane.columnIndex="2" GridPane.halignment="CENTER" />
          </children>
       </GridPane>
    </bottom>
    <center>
-      <ListView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <ListView fx:id="listGebruikers" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
    </center>
+   <top>
+      <Pane prefHeight="38.0" prefWidth="500.0" BorderPane.alignment="CENTER">
+         <children>
+            <TextField fx:id="txtZoeken" layoutX="250.0" layoutY="7.0" prefHeight="25.0" prefWidth="163.0" promptText="zoeken" />
+            <Button layoutX="426.0" layoutY="7.0" mnemonicParsing="false" onAction="#zoeken" text="Zoeken" />
+         </children>
+      </Pane>
+   </top>
 </fx:root>

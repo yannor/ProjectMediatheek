@@ -137,7 +137,7 @@
                               <Font size="18.0" />
                            </font>
                         </TextArea>
-                        <Button fx:id="btnUitlenen" layoutX="271.0" layoutY="619.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="254.0" styleClass="border_collor" text="Leen uit" />
+                        <Button fx:id="btnLeenUit" layoutX="271.0" layoutY="619.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="254.0" styleClass="border_collor" text="Leen uit" visible="false" />
                      </children>
                   </AnchorPane>
                </content>
@@ -152,7 +152,7 @@
                               <Font size="18.0" />
                            </font>
                         </TextField>
-                        <TextField fx:id="txtZanger" alignment="CENTER" editable="false" layoutX="121.0" layoutY="173.0" prefHeight="39.0" prefWidth="300.0" styleClass="border_collor">
+                        <TextField fx:id="txtBeschrijving" alignment="CENTER" editable="false" layoutX="181.0" layoutY="214.0" prefHeight="39.0" prefWidth="300.0" styleClass="border_collor">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -162,12 +162,12 @@
                               <Font size="18.0" />
                            </font>
                         </TextField>
-                        <Label layoutX="26.0" layoutY="251.0" text="Themas">
+                        <Label layoutX="24.0" layoutY="339.0" text="Themas">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <Label layoutX="26.0" layoutY="175.0" text="Zanger">
+                        <Label layoutX="24.0" layoutY="217.0" text="Beschrijving">
                            <font>
                               <Font size="24.0" />
                            </font>
@@ -187,7 +187,7 @@
                               <Font size="36.0" />
                            </font>
                         </Label>
-                        <GridPane layoutX="160.0" layoutY="260.0" prefHeight="17.0" prefWidth="284.0">
+                        <GridPane layoutX="146.0" layoutY="348.0" prefHeight="17.0" prefWidth="284.0">
                            <children>
                               <Label fx:id="lblThema41" layoutX="275.0" layoutY="210.0" text="Label" GridPane.columnIndex="3" />
                               <Label fx:id="lblThema31" layoutX="225.0" layoutY="210.0" text="Label" GridPane.columnIndex="2" />
@@ -206,12 +206,6 @@
                               <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                         </GridPane>
-                        <ListView fx:id="listLiedjes" layoutX="98.0" layoutY="380.0" prefHeight="181.0" prefWidth="633.0" styleClass="border_collor" />
-                        <Label layoutX="94.0" layoutY="340.0" text="Liedjes">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
                      </children></AnchorPane>
               </content>
             </Tab>

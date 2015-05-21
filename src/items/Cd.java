@@ -11,28 +11,28 @@ import javax.persistence.*;
 public class Cd extends Item implements Serializable {
 
     
-    private ObservableList<String> liedjes = FXCollections.observableArrayList();
+    private final StringProperty beschrijving = new SimpleStringProperty();
 
     public Cd() {
         super();
     }
 
-    public Cd(String titel, String leeftijd, List<String> themas, List<String> liedjes, String aantal) {
-        super(titel, leeftijd, themas, aantal);
-        setLiedjesLijst(liedjes);
+    public Cd(String titel, String leeftijd, List<String> themas, String beschr) {
+        super(titel, leeftijd, themas);
+        setBeschrijving(beschr);
     }
 
 
-    public ObservableList<String> getLiedjes() {
-        return liedjes;
+   public StringProperty beschrijvingProperty() {
+        return beschrijving;
     }
 
-    public List<String> getLiedjesList() {
-        return liedjes;
+    public String getBeschrijving() {
+        return beschrijving.get();
     }
 
-    public void setLiedjesLijst(List<String> liedjesLijst) {
-        this.liedjes = FXCollections.observableList(liedjesLijst);
+    public void setBeschrijving(String beschrijving) {
+        this.beschrijving.set(beschrijving);
     }
 
     @Override

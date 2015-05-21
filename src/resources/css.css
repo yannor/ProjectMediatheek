@@ -86,3 +86,55 @@
     -fx-border-color:black;
     
 }
+
+.ItemBeheerButton{
+    -fx-background-image: url("ItemButton.png");
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+}
+
+.LlnBeheerButton{
+    
+    -fx-background-image: url("LlnButton.png");
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+}
+
+.WachtwoorBeheerButton{
+    
+    -fx-background-image: url("WachtwoordButton.png");
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+
+}
+
+.AddButton{
+    -fx-background-image: url("Add.png");
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+}
+
+.DeleteButton{
+    -fx-background-image: url("Delete.png");
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+}
+
+.EditButton{
+    -fx-background-image: url("edit.png");
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+}
+
+.ExcelButton{
+    -fx-background-image: url("excel.png");
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+    
+}
+
+.DeleteAllButton{
+    -fx-background-image: url("DeleteAll.png");
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+}

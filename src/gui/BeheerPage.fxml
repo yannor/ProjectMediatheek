@@ -1,43 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
-<?import java.net.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" stylesheets="@../resources/css.css" type="BorderPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root styleClass="back" stylesheets="@../resources/css.css" type="BorderPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <center>
-      <Pane opacity="0.6" prefHeight="200.0" prefWidth="200.0" styleClass="back" BorderPane.alignment="CENTER">
+      <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
          <children>
-            <TextField layoutX="802.0" layoutY="41.0" opacity="0.8" prefHeight="39.0" prefWidth="326.0" promptText="Zoeken in instellingen">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </TextField>
-            <Button layoutX="294.0" layoutY="130.0" mnemonicParsing="false" onAction="#add" text="Add testItem" />
-            <Button layoutX="455.0" layoutY="130.0" mnemonicParsing="false" onAction="#addExInTas" text="Ex in tas" />
-            <Button layoutX="600.0" layoutY="130.0" mnemonicParsing="false" text="Button" />
-            <Button layoutX="294.0" layoutY="186.0" mnemonicParsing="false" text="Button" />
-            <Button layoutX="455.0" layoutY="186.0" mnemonicParsing="false" text="Button" />
-            <Button layoutX="600.0" layoutY="186.0" mnemonicParsing="false" text="Button" />
-         </children></Pane>
+            <Button fx:id="btnItems" layoutX="42.0" layoutY="119.0" minHeight="100.0" minWidth="100.0" mnemonicParsing="false" onAction="#items" styleClass="ItemBeheerButton" stylesheets="@../resources/css.css" HBox.hgrow="ALWAYS" />
+            <Separator maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" visible="false" HBox.hgrow="ALWAYS" />
+            <Button fx:id="btnLeerlingen" layoutX="183.0" layoutY="119.0" minHeight="100.0" minWidth="100.0" mnemonicParsing="false" onAction="#leerlingen" styleClass="LlnBeheerButton" HBox.hgrow="ALWAYS" />
+            <Separator maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" visible="false" HBox.hgrow="ALWAYS" />
+            <Button fx:id="btnWachtwoord" layoutX="326.0" layoutY="119.0" minHeight="100.0" minWidth="100.0" mnemonicParsing="false" onAction="#wachtwoord" styleClass="WachtwoorBeheerButton" HBox.hgrow="ALWAYS" />
+         </children>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </HBox>
    </center>
    <top>
-      <AnchorPane styleClass="back_topBeheer" BorderPane.alignment="CENTER">
+      <HBox prefHeight="45.0" prefWidth="320.0" BorderPane.alignment="CENTER">
          <children>
-            <GridPane layoutY="8.0" prefHeight="66.0" prefWidth="152.0" styleClass="beheer" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="788.0" minWidth="10.0" prefWidth="106.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-            </GridPane>
-            <Button fx:id="btnBackHome" layoutX="1514.0" mnemonicParsing="false" onAction="#home" prefHeight="73.0" prefWidth="98.0" styleClass="home_beheer" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <Label fx:id="lblBeheer" layoutX="26.0" layoutY="12.0" text="Beheer" HBox.hgrow="ALWAYS">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <Separator visible="false" HBox.hgrow="ALWAYS" />
+            <Button fx:id="btnHome" layoutX="317.0" layoutY="15.0" mnemonicParsing="false" onAction="#home" prefHeight="40.0" prefWidth="45.0" styleClass="home_beheer" stylesheets="@../resources/css.css" HBox.hgrow="ALWAYS" />
          </children>
-      </AnchorPane>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </HBox>
    </top>
 </fx:root>

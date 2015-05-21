@@ -1,5 +1,6 @@
 package gui;
 
+import domein.Gebruiker;
 import java.io.IOException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.BorderPane;
@@ -11,14 +12,16 @@ public class ScreenSwitcher extends BorderPane {
     
     
     
-     private final Zoeken zoeken;
+     
     private final UitleningPage uitleningen;
     private final HomePage homePage;
+     private Gebruiker gebruiker;
     
     
 
     public ScreenSwitcher() {
         
+         gebruiker = new Gebruiker();
          FXMLLoader loader = new FXMLLoader(getClass().getResource("ScreenSwitcher.fxml"));
         loader.setRoot(this);
         loader.setController(this);
@@ -28,7 +31,7 @@ public class ScreenSwitcher extends BorderPane {
             throw new RuntimeException(ex);
         }
         
-         zoeken = new Zoeken(this, false);
+       
          uitleningen = new UitleningPage(this);
          homePage = new HomePage(this);
          //setCenter(zoeken);
@@ -43,12 +46,11 @@ public class ScreenSwitcher extends BorderPane {
         setCenter(homePage);
     }
 
-    public void zoeken(boolean aangemeld) {
-       
-        
-        setCenter(new Zoeken(this, aangemeld));
-       
-       
+     public void zoeken()
+    {
+
+        setCenter(new Zoeken(this));
+
     }
     
      public void uitleningen() {
@@ -58,6 +60,58 @@ public class ScreenSwitcher extends BorderPane {
      public void beheer() {
        setCenter(new BeheerPage(this));
     }
+     
+     public void itemBeheer()
+     {
+         setCenter(new BeheerItems(this));
+     }
+     
+     public void leerlingenBeheer()
+     {
+         setCenter(new BeheerLeerlingen(this));
+     }
+     
+     
+     
+     public void deleteLeerling()
+     {
+         setCenter(new DeleteLeerling());
+     }
+     public void editLeerling()
+     {
+         setCenter(new EditLeerling(this));
+     }
+     public void itemToevoegen()
+     {
+         setCenter(new ItemToevoegen(this));
+     }
+     
+     public void editItem()
+     {
+         setCenter(new EditItem(this));
+     }
+     
+     public void deleteItem()
+     {
+         setCenter(new DeleteItem(this));
+     }
+     
+     public void wijzigWachtwoord()
+     {
+         setCenter(new WijzigWachtwoord(this));
+     }
+     
+     
+         public Gebruiker getGebruiker()
+    {
+        return gebruiker;
+    }
 
+    public void setGebruiker(Gebruiker gebruiker)
+    {
+        this.gebruiker = gebruiker;
+    }
 
 }
+
+

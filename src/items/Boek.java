@@ -18,8 +18,8 @@ public class Boek extends Item implements Serializable {
         super();
     }
 
-    public Boek(String titel, String leeftijd, List<String> themas, String auteur, String uitgever, String beschrijving, String aantal) {
-        super(titel, leeftijd, themas, aantal);
+    public Boek(String titel, String leeftijd, List<String> themas, String auteur, String uitgever, String beschrijving) {
+        super(titel, leeftijd, themas);
         setAuteur(auteur);
         setUitgever(uitgever);
         setBeschrijving(beschrijving);

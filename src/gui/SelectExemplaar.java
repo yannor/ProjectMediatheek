@@ -1,5 +1,6 @@
 package gui;
 
+import items.Item;
 import java.io.IOException;
 import javafx.fxml.*;
 import javafx.scene.layout.BorderPane;
@@ -11,7 +12,7 @@ public class SelectExemplaar extends BorderPane {
     
     ItemManagement man;
 
-    public SelectExemplaar() {
+    public SelectExemplaar(Item item) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("SelectExemplaar.fxml"));
         loader.setRoot(this);
         loader.setController(this);
@@ -22,6 +23,9 @@ public class SelectExemplaar extends BorderPane {
             ex.printStackTrace();
         }
         man= new ItemManagement();
+        
+        
+        
 
     }
 }

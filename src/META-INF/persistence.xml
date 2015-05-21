@@ -7,7 +7,6 @@
     <class>items.Boek</class>
     <class>items.Cd</class>
     <class>items.Dvd</class>
-    <class>items.Exemplaar</class>
     <class>items.Item</class>
     <class>items.Spel</class>
     <class>items.Verteltas</class>

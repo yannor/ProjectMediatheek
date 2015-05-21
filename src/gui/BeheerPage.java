@@ -1,19 +1,27 @@
 package gui;
 
 import java.io.IOException;
-import java.util.*;
-import javafx.fxml.*;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
-
 import util.ItemManagement;
-import items.*;
+
 
 public class BeheerPage extends BorderPane {
 
-    ScreenSwitcher switcher;
-    ItemManagement man;
+   @FXML
+   private Button btnHome,btnItems, btnLeerlingen, btnWachtwoord;
 
-    public BeheerPage(ScreenSwitcher switcher) {
+   @FXML
+   private Label lblBeheer;
+ 
+   private ScreenSwitcher switcher;
+   
+   //constructor switcher maken (ik krijg altijd een wit scherm ipv mijne gui als ik het doe zoals bij andere pagina's
+   //indien nodig ook klasse switcher zelf aanpassen
+   public BeheerPage(ScreenSwitcher switcher) {
         this.switcher = switcher;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("BeheerPage.fxml"));
         loader.setRoot(this);
@@ -24,42 +32,30 @@ public class BeheerPage extends BorderPane {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-        man= new ItemManagement();
+       ItemManagement man = new ItemManagement();
 
     }
-     @FXML
-    public void home()
-    {
-        switcher.homePageIn();
-    }
-    @FXML
-    public void add()
-    {
-        List<String> testThemas= new ArrayList<>();
-        testThemas.add("thema");
-        for(int x=0;x<10;x++)
-        {
-            man.create(new Boek("Boek "+x, "leeftijd "+x,testThemas, "auteur "+x, " uitgever "+x, " beschrijving "+x, " "+x));
-        
-            man.create(new Cd("Cd "+x, "leeftijd "+x,testThemas, testThemas, " "+x));
-
-            man.create(new Dvd("Dvd "+x, "leeftijd "+x,testThemas, " "+x));        
-            man.create(new Spel("Spel "+x, "leeftijd "+x,testThemas, " uitgeverij "+x," "+x));
-            
-            man.create(new Verteltas("Verteltas "+x, "leeftijd "+x,testThemas," "+x));
-            
-            
-        }
-        
-       
-        
-    }
-    public void addExInTas()
-    {
-      
-        
-        man.getTassen().get(1).addItem(new Exemplaar("a", man.getItems().get(1), Beschikbaarheid.BESCHIKBAAR));
-    }
-    
-
+   @FXML
+   private void home()
+   {
+      switcher.homePageIn();
+   }
+   
+   @FXML
+   private void items()
+   {
+       switcher.itemBeheer();
+   }
+   
+   @FXML
+   private void leerlingen()
+   {
+       switcher.leerlingenBeheer();
+   }
+   @FXML
+   private void wachtwoord()
+   {
+       switcher.wijzigWachtwoord();
+   }
+   
 }

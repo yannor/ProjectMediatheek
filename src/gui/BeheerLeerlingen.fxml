@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<fx:root prefHeight="302.0" prefWidth="432.0" styleClass="back" stylesheets="@../resources/css.css" type="BorderPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <bottom>
+      <HBox BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="btnExcel" layoutX="36.0" layoutY="226.0" minHeight="100.0" minWidth="100.0" mnemonicParsing="false" onAction="#importExcel" styleClass="ExcelButton" HBox.hgrow="ALWAYS" />
+            <Separator visible="false" HBox.hgrow="ALWAYS" />
+            <Button fx:id="btnDeleteAll" layoutX="146.0" layoutY="226.0" minHeight="100.0" minWidth="100.0" mnemonicParsing="false" onAction="#deleteAll" styleClass="DeleteAllButton" HBox.hgrow="ALWAYS" />
+            <Separator visible="false" HBox.hgrow="ALWAYS" />
+            <Button minHeight="100.0" minWidth="100.0" mnemonicParsing="false" text="Button" visible="false" HBox.hgrow="ALWAYS" />
+         </children>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </HBox>
+   </bottom>
+   <center>
+      <HBox BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="btnAdd" alignment="CENTER" cacheHint="SCALE" contentDisplay="CENTER" layoutX="23.0" layoutY="84.0" minHeight="100.0" minWidth="100.0" mnemonicParsing="false" onAction="#add" styleClass="AddButton" textAlignment="CENTER" HBox.hgrow="ALWAYS" />
+            <Separator visible="false" HBox.hgrow="ALWAYS" />
+            <Button fx:id="btnDelete" alignment="CENTER" contentDisplay="CENTER" layoutX="123.0" layoutY="84.0" minHeight="100.0" minWidth="100.0" mnemonicParsing="false" onAction="#delete" styleClass="DeleteButton" HBox.hgrow="ALWAYS" />
+            <Separator visible="false" HBox.hgrow="ALWAYS" />
+            <Button fx:id="btnEdit" layoutX="229.0" layoutY="84.0" minHeight="100.0" minWidth="100.0" mnemonicParsing="false" onAction="#edit" styleClass="EditButton" HBox.hgrow="ALWAYS" />
+         </children>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </HBox>
+   </center>
+   <top>
+      <HBox BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="btnHomeBeheer" mnemonicParsing="false" onAction="#homeBeheer" prefHeight="40.0" prefWidth="74.0" styleClass="beheer" />
+            <Label fx:id="lblBeheerLeerlingen" layoutX="36.0" layoutY="42.0" text="Beheer Leerlingen" HBox.hgrow="ALWAYS">
+               <font>
+                  <Font size="30.0" />
+               </font>
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </Label>
+            <Separator visible="false" HBox.hgrow="ALWAYS" />
+            <Button fx:id="btnHome" layoutX="308.0" layoutY="43.0" mnemonicParsing="false" onAction="#home" prefHeight="40.0" prefWidth="45.0" styleClass="home_beheer" stylesheets="@../resources/css.css" HBox.hgrow="ALWAYS" />
+         </children>
+         <BorderPane.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </BorderPane.margin>
+      </HBox>
+   </top>
+</fx:root>

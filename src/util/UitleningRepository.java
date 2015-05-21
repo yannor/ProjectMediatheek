@@ -7,8 +7,6 @@ package util;
 
 import java.util.Calendar;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 
 import domein.*;
 import items.*;
@@ -31,7 +29,7 @@ public class UitleningRepository {
     }
     
     
-    public void uitleningAanpassen(Gebruiker gebruiker, Exemplaar exemplaar, int id, boolean terug, Calendar uitleenDatum ){
+    public void uitleningAanpassen(Gebruiker gebruiker, Item exemplaar, int id, boolean terug, Calendar uitleenDatum ){
         em.getTransaction().begin();
             Uitlening uitlening = em.find(Uitlening.class, gebruiker);
             if (uitlening != null){

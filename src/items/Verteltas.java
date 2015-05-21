@@ -11,35 +11,35 @@ import javax.persistence.*;
 })
 public class Verteltas extends Item implements Serializable {
 
-    private ObservableList<Exemplaar> exInhoud = FXCollections.observableArrayList();
+    private ObservableList<Item> exInhoud = FXCollections.observableArrayList();
 
     public Verteltas() {
     }
 
-    public Verteltas(String titel, String leeftijd, List<String> themas, String aantal) {
-        super(titel, leeftijd, themas, aantal);
+    public Verteltas(String titel, String leeftijd, List<String> themas) {
+        super(titel, leeftijd, themas);
     }
 
-    public void addItem(Exemplaar ex) {
+    public void addItem(Item ex) {
         exInhoud.add(ex);
     }
 
-    public void removeItem(Exemplaar ex) {
+    public void removeItem(Item ex) {
         exInhoud.remove(ex);
     }
     
     @Access(AccessType.PROPERTY)
     @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
-    public List<Exemplaar> getItems() {
+    public List<Item> getItems() {
 	return exInhoud;
     }
    
     @Transient
-    public ObservableList<Exemplaar> getExInhoud() {
+    public ObservableList<Item> getExInhoud() {
         return exInhoud;
     }
 
-    public void setItems(List<Exemplaar> exemp) {
+    public void setItems(List<Item> exemp) {
 	this.exInhoud = FXCollections.observableArrayList(exemp);
     }
     

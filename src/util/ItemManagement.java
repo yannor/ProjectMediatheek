@@ -14,7 +14,6 @@ public class ItemManagement{
      EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager();
     
     private ObservableList<Item> items = FXCollections.observableArrayList();
-    private ObservableList<Exemplaar> exemplaren = FXCollections.observableArrayList();
     private ObservableList<Boek> boeken = FXCollections.observableArrayList();
     private ObservableList<Cd> cds = FXCollections.observableArrayList();
     private ObservableList<Dvd> dvds = FXCollections.observableArrayList();
@@ -39,16 +38,7 @@ public void addItem(Item item)
         save();
     }
 
-    public void addExemplaar(Exemplaar ex) {
-
-	exemplaren.add(ex);
-        save();
-    }
-
-    public void removeExemplaar(Exemplaar ex) {
-	exemplaren.remove(ex);
-        save();
-    }
+   
 
     public ObservableList<Item> getItems() {
 	return items;
@@ -116,16 +106,14 @@ public void addItem(Item item)
 	return tassen;
     }
 
-    public ObservableList<Exemplaar> getExemplaren() {
-	return exemplaren;
-    }
+   
 
     public void save ()
     {
 
          
         em.getTransaction().begin();
-            em.persist(exemplaren);
+           
             em.persist(items);
         em.getTransaction().commit();
         em.close();
@@ -135,7 +123,7 @@ public void addItem(Item item)
     public void start()
     {
         items.setAll(JPAUtil.getInstance().getEntityManager().createNamedQuery("Item.findAll", Item.class).getResultList());
-	exemplaren.setAll(JPAUtil.getInstance().getEntityManager().createNamedQuery("Exemplaar.findAll", Exemplaar.class).getResultList());
+
         
     }
 
@@ -148,7 +136,7 @@ public void addItem(Item item)
             em.getTransaction().commit();
         } finally {
             
-            //   em.close();
+               em.close();
             
         }
         

@@ -1,5 +1,7 @@
 package gui;
 
+import domein.Gebruiker;
+import domein.TypeGebruiker;
 import java.io.IOException;
 import javafx.fxml.*;
 import javafx.scene.control.*;
@@ -7,56 +9,74 @@ import javafx.scene.layout.Pane;
 
 import util.ItemManagement;
 
-public class HomePage extends Pane implements Screen {
+public class HomePage extends Pane implements Screen
+{
 
     ScreenSwitcher switcher;
     @FXML
     private Button btnUitloggen, btnZoeken, btnUitleningen, btnBeheer;
-    
-    ItemManagement it= new ItemManagement();
+
+    ItemManagement it = new ItemManagement();
 
     @FXML
     private Label lblWelkom;
 
-    private String gebruikersNaam;
+    public HomePage(ScreenSwitcher switcher)
+    {
 
-    public HomePage(ScreenSwitcher switcher) {
-
-       this.switcher=switcher;
+        this.switcher = switcher;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
         loader.setRoot(this);
         loader.setController(this);
 
-        try {
+        try
+        {
             loader.load();
-        } catch (IOException ex) {
+        }
+        catch (IOException ex)
+        {
             ex.printStackTrace();
         }
 
-        lblWelkom.setText("Welkom ");
-
+        lblWelkom.setText("Welkom " + this.switcher.getGebruiker().getVoorNaam() + " " + this.switcher.getGebruiker().getNaam());
+        if(this.switcher.getGebruiker().getTypeGebruiker() == TypeGebruiker.ADMIN)
+        {
+            
+        }
+        else if(this.switcher.getGebruiker().getTypeGebruiker() == TypeGebruiker.ANDERE)
+        {
+            btnBeheer.setDisable(true);
+            btnBeheer.setVisible(false);
+        }
+        // mag niet, leerling mag enkel zoeken en niet naar de homepage komen
+        else if(this.switcher.getGebruiker().getTypeGebruiker() == TypeGebruiker.LEERLING)
+        {
+            System.err.println("Toegang geweigerd");
+            this.switcher.zoeken();
+        }
     }
 
     @FXML
-    public void afmelden() {
-
-       switcher.zoeken(false);
-      
-        
+    public void afmelden()
+    {
+        switcher.setGebruiker(new Gebruiker());
+        switcher.zoeken();
 
     }
 //
-    @FXML
-    public void zoeken() {
 
-    
-    
-    switcher.zoeken(true);
-    
-   }
-//
     @FXML
-    public void uitleningTerugbrengen() {
+    public void zoeken()
+    {
+
+        switcher.zoeken();
+
+    }
+//
+
+    @FXML
+    public void uitleningTerugbrengen()
+    {
 
         switcher.uitleningen();
 
@@ -80,10 +100,9 @@ public class HomePage extends Pane implements Screen {
 //
 //    }
 
-    
     public void beheer()
     {
         switcher.beheer();
-        
+
     }
 }
