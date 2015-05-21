@@ -1,10 +1,7 @@
 package domein;
 
 import java.io.*;
-import java.math.*;
-import java.security.*;
 import java.util.*;
-import java.util.logging.*;
 import javafx.beans.property.*;
 import javafx.collections.*;
 import javax.persistence.*;

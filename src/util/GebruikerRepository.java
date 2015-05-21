@@ -38,7 +38,7 @@ public class GebruikerRepository {
   
   
    public void destroy(int id)  {
-       
+       em = JPAUtil.getEntityManagerFactory().createEntityManager();
         try {
            
             em.getTransaction().begin();
@@ -49,8 +49,9 @@ public class GebruikerRepository {
             } catch (EntityNotFoundException enfe) {
                 enfe.printStackTrace();
             }
-            em.remove(gebr);
+             em.remove(gebr);
             em.getTransaction().commit();
+           
         } finally {
             if (em != null) {
                 em.close();

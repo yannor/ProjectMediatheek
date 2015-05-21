@@ -26,17 +26,7 @@ public class ItemManagement{
     }
 
 
-public void addItem(Item item)
-{
-    items.add(item);
-    save();
-    
-}
 
-    public void removeItem(Item item) {
-	items.remove(item);
-        save();
-    }
 
    
 
@@ -165,7 +155,7 @@ public void addItem(Item item)
     }
     
     public void destroy(int id)  {
-       
+       em = JPAUtil.getEntityManagerFactory().createEntityManager();
         try {
            
             em.getTransaction().begin();

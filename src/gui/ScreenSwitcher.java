@@ -112,6 +112,30 @@ public class ScreenSwitcher extends BorderPane {
         this.gebruiker = gebruiker;
     }
 
+      
+    public void addBoek()
+    {
+        setCenter(new AddBoek(this));
+    }
+    
+    public void addCd()
+    {
+        setCenter(new AddCd(this));
+    }
+    
+    public void addFilm()
+    {
+        setCenter(new AddFilm(this));
+    }
+    public void addSpel()
+    {
+        setCenter(new AddSpel(this));
+    }
+    public void addTas()
+    {
+        setCenter(new AddTas(this));
+    }
 }
+
 
 

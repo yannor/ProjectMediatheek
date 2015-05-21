@@ -11,10 +11,10 @@ import util.ItemManagement;
 public class ItemToevoegen extends BorderPane
 {
     @FXML
-    private Label lblSoort,lblTitel,lblAuteur,lblThema, lblBeschrijving;
+    private Label lblItemsToevoegen;
     
     @FXML
-    private Button btnToevoegen,btnCancel;
+    private Button btnItems,btnHome, btnBoek, btnCd, btnSpel, btnFilm, btnTas;
     
     ScreenSwitcher switcher;
     
@@ -35,14 +35,36 @@ public class ItemToevoegen extends BorderPane
     }
      
     @FXML
-    public void add()
+    public void addBoek()
     {
-        //lln toevoegen
+        switcher.addBoek();
+    }
+    public void addCd()
+    {
+        switcher.addCd();
+    }
+    public void addFilm()
+    {
+        switcher.addFilm();
+    }
+    public void addSpel()
+    {
+        switcher.addSpel();
+    }
+    public void addTas()
+    {
+        switcher.addTas();
+    }
+     
+    @FXML
+    public void items()
+    {
+        switcher.itemBeheer();
     }
     
     @FXML
-    public void cancel()
+    public void home()
     {
-        switcher.itemBeheer();
+        switcher.homePageIn();
     }
 }

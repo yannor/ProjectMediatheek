@@ -113,7 +113,7 @@ fileChooser.getExtensionFilters().addAll(
     {
        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 alert.setTitle("Leerlingen verwijderen");
-
+alert.setHeaderText(null);
 alert.setContentText("Bent u zeker dat u alle leerlingen wilt verwijderen?");
 
 Optional<ButtonType> result = alert.showAndWait();

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import java.lang.*?>
@@ -8,43 +9,49 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<fx:root type="BorderPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-   <center>
-      <GridPane alignment="CENTER" prefHeight="428.0" prefWidth="274.0" BorderPane.alignment="CENTER">
-         <children>
-            <Label text="Item toevoegen">
-               <font>
-                  <Font size="18.0" />
-               </font></Label>
-            <ComboBox fx:id="dbItem" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Label fx:id="lblSoort" text="Soort Item" GridPane.rowIndex="1" />
-            <Label fx:id="lblTitel" text="Titel" GridPane.rowIndex="2" />
-            <Label fx:id="lblAuteur" text="Auteur / Artiest" GridPane.rowIndex="3" />
-            <Label fx:id="lblThema" text="Hoofdthema" GridPane.rowIndex="4" />
-            <Label fx:id="lblBeschrijving" text="Beschrijving" GridPane.rowIndex="5" />
-            <TextField fx:id="txtTitel" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextField fx:id="txtAuteur" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <TextField fx:id="txtThema" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <Button fx:id="btnToevoegen" alignment="CENTER" mnemonicParsing="false" onAction="#add" text="Toevoegen" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
-            <Button fx:id="btnCancel" alignment="CENTER" cancelButton="true" contentDisplay="CENTER" mnemonicParsing="false" onAction="#cancel" text="Annuleren" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
-            <TextArea fx:id="taBeschrijving" prefHeight="72.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-         </children>
-         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="25.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
-         </rowConstraints>
-      </GridPane>
-   </center>
+<fx:root minHeight="430.0" minWidth="600.0" styleClass="back" stylesheets="@../resources/css.css" type="BorderPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <padding>
       <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
    </padding>
+   <top>
+      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="btnItems" minHeight="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#items" styleClass="ItemBeheerButton" stylesheets="@../../../Project/project14mei/EigenProjectKrekel/src/resources/css.css" HBox.hgrow="ALWAYS">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </Button>
+            <Label fx:id="lblItemsToevoegen" text="Item toevoegen" HBox.hgrow="ALWAYS">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+            <Separator visible="false" HBox.hgrow="ALWAYS" />
+            <Button fx:id="btnHome" minHeight="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#home" styleClass="home_beheer" HBox.hgrow="ALWAYS" />
+         </children>
+      </HBox>
+   </top>
+   <center>
+      <GridPane BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Button fx:id="btnBoek" alignment="CENTER" minHeight="100.0" minWidth="100.0" mnemonicParsing="false" onAction="#addBoek" styleClass="addBoek" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+            <Button fx:id="btnCd" minHeight="100.0" minWidth="100.0" mnemonicParsing="false" onAction="#addCd" styleClass="addCd" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+            <Button fx:id="btnFilm" minHeight="100.0" minWidth="100.0" mnemonicParsing="false" onAction="#addFilm" styleClass="addFilm" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+            <Button fx:id="btnSpel" minHeight="100.0" minWidth="100.0" mnemonicParsing="false" onAction="#addSpel" styleClass="addSpel" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+            <Button fx:id="btnTas" minHeight="100.0" minWidth="100.0" mnemonicParsing="false" onAction="#addTas" styleClass="addTas" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+         </children>
+      </GridPane>
+   </center>
 </fx:root>

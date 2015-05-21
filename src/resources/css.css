@@ -138,3 +138,33 @@
     -fx-background-size: cover;
     -fx-background-repeat: no-repeat;
 }
+
+.addBoek{
+    -fx-background-image: url("addBoek.png");
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+}
+
+.addCd{
+    -fx-background-image: url("addCd.png");
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+}
+
+.addFilm{
+    -fx-background-image: url("addFilm.png");
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+}
+
+.addSpel{
+    -fx-background-image: url("addSpel.png");
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+}
+
+.addTas{
+    -fx-background-image: url("addTas.png");
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+}
